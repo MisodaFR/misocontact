@@ -16,7 +16,7 @@
             app:destination="@id/SecondFragment" />
     </fragment>
 
-    <fragment
+    <!--<fragment
         android:id="@+id/SecondFragment"
         android:name="fr.misoda.card.SecondFragment"
         android:label="@string/second_fragment_label"
@@ -25,5 +25,24 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+    </fragment>-->
+
+    <fragment
+        android:id="@+id/SecondFragment"
+        android:name="fr.misoda.card.SecondFragment"
+        android:label="SecondFragment"
+        tools:layout="@layout/fragment_second">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_SaveToContactsFragment"
+            app:destination="@id/SaveToContactsFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/SaveToContactsFragment"
+        android:name="fr.misoda.card.SaveToContactsFragment"
+        android:label="SaveToContactsFragment"
+        tools:layout="@layout/fragment_save_to_contacts">
+    </fragment>
+
 </navigation>

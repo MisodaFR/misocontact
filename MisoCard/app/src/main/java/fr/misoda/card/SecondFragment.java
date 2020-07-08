@@ -296,7 +296,7 @@ public class SecondFragment extends Fragment {
         Log.d(TAG, "detectedTexts : " + detectedTexts);
 
         NavHostFragment.findNavController(SecondFragment.this)
-                .navigate(R.id.action_SecondFragment_to_FirstFragment);
+                .navigate(R.id.action_SecondFragment_to_SaveToContactsFragment);
 
         return !detectedTexts.equals("");
     }
