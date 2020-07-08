@@ -20,14 +20,11 @@ public class SaveToContactsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_save_to_contacts, container, false);
 
-        textValue = (TextView) view.findViewById(R.id.tv_text_value);
+        textValue = view.findViewById(R.id.tv_text_value);
 
-        view.findViewById(R.id.btn_save_to_contacts).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // save to contact
-                createOrEditAContact();
-            }
+        view.findViewById(R.id.btn_save_to_contacts).setOnClickListener(view1 -> {
+            // save to contact
+            createOrEditAContact(SecondFragment.textResult);
         });
 
         return view;
@@ -38,20 +35,15 @@ public class SaveToContactsFragment extends Fragment {
         textValue.setText(SecondFragment.textResult);
     }
 
-    public void createOrEditAContact() {
+    public void createOrEditAContact(String text) {
         // Creates a new Intent to insert or edit a contact
         Intent intent = new Intent(Intent.ACTION_INSERT_OR_EDIT);
         // Sets the MIME type
         intent.setType(ContactsContract.Contacts.CONTENT_ITEM_TYPE);
         // Add code here to insert extended data, if desired
 
-        intent.putExtra(ContactsContract.Intents.Insert.EMAIL, "toto@gmail.com")
-                /*
-                 * In this example, sets the email type to be a work email.
-                 * You can set other email types as necessary.
-                 */
-                .putExtra(ContactsContract.Intents.Insert.EMAIL_TYPE,
-                        ContactsContract.CommonDataKinds.Email.TYPE_WORK)
+        intent.putExtra(ContactsContract.Intents.Insert.EMAIL, ContactHelper.getEmail(text))
+                .putExtra(ContactsContract.Intents.Insert.EMAIL_TYPE, ContactsContract.CommonDataKinds.Email.TYPE_WORK)
                 // Inserts a phone number
                 .putExtra(ContactsContract.Intents.Insert.PHONE, "01 22 22 22 22")
                 .putExtra(ContactsContract.Intents.Insert.PHONE_TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_WORK)
