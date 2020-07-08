@@ -22,4 +22,23 @@ public class ContactHelperTest {
         email = ContactHelper.getEmail(text);
         Assert.assertEquals("ffis@gmail.com", email);
     }
+
+    @Test
+    public void getName() {
+        String text = "kjdkfjd@gmail.com \n";
+        String name = ContactHelper.getName(text);
+        Assert.assertEquals(StringUtils.EMPTY, name);
+
+        text = "Laura\nlaura@gmail.com \nMobile: 06 66 66 66 66";
+        name = ContactHelper.getName(text);
+        Assert.assertEquals("Laura", name);
+
+        text = "Laura \nlaura@gmail.com \nMobile: 06 66 66 66 66";
+        name = ContactHelper.getName(text);
+        Assert.assertEquals("Laura ", name);
+
+        text = "Laura Anna\nlaura@gmail.com \nMobile: 06 66 66 66 66";
+        name = ContactHelper.getName(text);
+        Assert.assertEquals("Laura Anna", name);
+    }
 }

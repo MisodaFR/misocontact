@@ -51,7 +51,7 @@ public class SaveToContactsFragment extends Fragment {
                 .putExtra(ContactsContract.Intents.Insert.SECONDARY_PHONE, "06 77 77 77 77")
                 .putExtra(ContactsContract.Intents.Insert.SECONDARY_PHONE_TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE);
 
-        intent.putExtra(ContactsContract.Intents.Insert.NAME, "Test App MisoCard");
+        intent.putExtra(ContactsContract.Intents.Insert.NAME, ContactHelper.getName(text));
 
         // Sends the Intent with an request ID
         startActivity(intent);
