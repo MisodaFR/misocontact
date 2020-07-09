@@ -45,10 +45,10 @@ public class SaveToContactsFragment extends Fragment {
         intent.putExtra(ContactsContract.Intents.Insert.EMAIL, ContactHelper.getEmail(text))
                 .putExtra(ContactsContract.Intents.Insert.EMAIL_TYPE, ContactsContract.CommonDataKinds.Email.TYPE_WORK)
                 // Inserts a phone number
-                .putExtra(ContactsContract.Intents.Insert.PHONE, "01 22 22 22 22")
+                .putExtra(ContactsContract.Intents.Insert.PHONE, ContactHelper.getWorkPhone(text))
                 .putExtra(ContactsContract.Intents.Insert.PHONE_TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_WORK)
 
-                .putExtra(ContactsContract.Intents.Insert.SECONDARY_PHONE, "06 77 77 77 77")
+                .putExtra(ContactsContract.Intents.Insert.SECONDARY_PHONE, ContactHelper.getMobilePhone(text))
                 .putExtra(ContactsContract.Intents.Insert.SECONDARY_PHONE_TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE);
 
         intent.putExtra(ContactsContract.Intents.Insert.NAME, ContactHelper.getName(text));
