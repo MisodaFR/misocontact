@@ -21,6 +21,8 @@ import android.util.SparseArray;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
 
+import fr.misoda.card.common.Constant;
+
 /**
  * A very simple Processor which receives detected TextBlocks and adds them to the overlay
  * as OcrGraphics.
@@ -44,26 +46,19 @@ public class OcrDetectorProcessor implements Detector.Processor<TextBlock> {
     @Override
     public void receiveDetections(Detector.Detections<TextBlock> detections) {
         mGraphicOverlay.clear();
-        /*SparseArray<TextBlock> items = detections.getDetectedItems();
+        SparseArray<TextBlock> items = detections.getDetectedItems();
+        StringBuilder texts = new StringBuilder();
         for (int i = 0; i < items.size(); ++i) {
             TextBlock item = items.valueAt(i);
+            texts.append(item.getValue()).append("\n");
+
+            // Co the bo qua review text de nhin cho ro anh, co the parametrer tinh chat nay sau
             OcrGraphic graphic = new OcrGraphic(mGraphicOverlay, item);
             mGraphicOverlay.add(graphic);
-        }*/
-
-        SparseArray<TextBlock> items = detections.getDetectedItems();
-        String texts = "";
-        for (int i = 0; i < items.size(); ++i) {
-            TextBlock item = items.valueAt(i);
-            texts += item.getValue() + "\n";
-
-            // Bo qua review text de nhin cho ro anh, co the parametrer tinh chat nay sau
-            /*OcrGraphic graphic = new OcrGraphic(mGraphicOverlay, item);
-            mGraphicOverlay.add(graphic);*/
         }
-        Log.d("Hienhienhien", texts);
+        Log.d(Constant.LOG_TAG_SCAN_TEXT, texts.toString());
 
-        detectedTexts = texts;
+        detectedTexts = texts.toString();
     }
 
     public String getDetectedTexts() {

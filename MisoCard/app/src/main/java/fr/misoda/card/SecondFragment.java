@@ -31,6 +31,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 
+import fr.misoda.card.common.Constant;
+
 public class SecondFragment extends Fragment {
 
     private static final String TAG = "OcrCaptureActivity";
@@ -293,7 +295,7 @@ public class SecondFragment extends Fragment {
         data.putExtra(TextBlockObject, detectedTexts);
         setResult(CommonStatusCodes.SUCCESS, data);
         finish();*/
-        Log.d(TAG, "detectedTexts : " + detectedTexts);
+        Log.d(Constant.LOG_TAG_SCAN_TEXT, "detectedTexts : " + detectedTexts);
 
         NavHostFragment.findNavController(SecondFragment.this)
                 .navigate(R.id.action_SecondFragment_to_SaveToContactsFragment);
