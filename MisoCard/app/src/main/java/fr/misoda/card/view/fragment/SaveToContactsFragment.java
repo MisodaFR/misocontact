@@ -27,7 +27,7 @@ public class SaveToContactsFragment extends Fragment {
 
         view.findViewById(R.id.btn_save_to_contacts).setOnClickListener(view1 -> {
             // save to contact
-            createOrEditAContact(SecondFragment.textResult);
+            createOrEditAContact(ScanTextFragment.textResult);
         });
 
         return view;
@@ -35,7 +35,7 @@ public class SaveToContactsFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        textValue.setText(SecondFragment.textResult);
+        textValue.setText(ScanTextFragment.textResult);
     }
 
     public void createOrEditAContact(String text) {

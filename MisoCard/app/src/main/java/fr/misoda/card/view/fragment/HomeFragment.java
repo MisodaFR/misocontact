@@ -13,7 +13,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import fr.misoda.card.R;
 
-public class FirstFragment extends Fragment {
+public class HomeFragment extends Fragment {
     // Use a compound button so either checkbox or switch widgets work.
     private CompoundButton autoFocus;
     private CompoundButton useFlash;
@@ -36,8 +36,8 @@ public class FirstFragment extends Fragment {
         view.findViewById(R.id.read_text).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                NavHostFragment.findNavController(HomeFragment.this)
+                        .navigate(R.id.action_HomeFragment_to_ScanTextFragment);
             }
         });
 
@@ -47,6 +47,6 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        textValue.setText(SecondFragment.textResult);
+        textValue.setText(ScanTextFragment.textResult);
     }
 }

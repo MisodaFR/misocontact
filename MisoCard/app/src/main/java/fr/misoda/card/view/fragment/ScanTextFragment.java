@@ -39,7 +39,7 @@ import fr.misoda.card.view.component.OcrGraphic;
 import fr.misoda.card.R;
 import fr.misoda.card.common.Constant;
 
-public class SecondFragment extends Fragment {
+public class ScanTextFragment extends Fragment {
 
     private static final String TAG = "OcrCaptureActivity";
 
@@ -74,14 +74,10 @@ public class SecondFragment extends Fragment {
         mPreview = (CameraSourcePreview) view.findViewById(R.id.preview);
         mGraphicOverlay = (GraphicOverlay<OcrGraphic>) view.findViewById(R.id.graphicOverlay);
 
-        view.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent e) {
-                boolean b = scaleGestureDetector.onTouchEvent(e);
-                boolean c = gestureDetector.onTouchEvent(e);
-
-                return b || c;
-            }
+        view.setOnTouchListener((v, e) -> {
+            boolean b = scaleGestureDetector.onTouchEvent(e);
+            boolean c = gestureDetector.onTouchEvent(e);
+            return b || c;
         });
 
         return view;
@@ -114,9 +110,7 @@ public class SecondFragment extends Fragment {
         gestureDetector = new GestureDetector(getActivity(), new CaptureGestureListener());
         scaleGestureDetector = new ScaleGestureDetector(getActivity(), new ScaleListener());
 
-        Snackbar.make(mGraphicOverlay, "Tap to capture. Pinch/Stretch to zoom",
-                Snackbar.LENGTH_LONG)
-                .show();
+        Snackbar.make(mGraphicOverlay, "Tap to capture. Pinch/Stretch to zoom", Snackbar.LENGTH_LONG).show();
     }
 
     /**
@@ -219,8 +213,7 @@ public class SecondFragment extends Fragment {
 
         // Creates and starts the camera.  Note that this uses a higher resolution in comparison
         // to other detection examples to enable the text recognizer to detect small pieces of text.
-        mCameraSource =
-                new CameraSource.Builder(getActivity(), textRecognizer)
+        mCameraSource = new CameraSource.Builder(getActivity(), textRecognizer)
                         .setFacing(CameraSource.CAMERA_FACING_BACK)
                         .setRequestedPreviewSize(1280, 1024)
                         .setRequestedFps(2.0f)
@@ -303,8 +296,8 @@ public class SecondFragment extends Fragment {
         finish();*/
         Log.d(Constant.LOG_TAG_SCAN_TEXT, "detectedTexts : " + detectedTexts);
 
-        NavHostFragment.findNavController(SecondFragment.this)
-                .navigate(R.id.action_SecondFragment_to_SaveToContactsFragment);
+        NavHostFragment.findNavController(ScanTextFragment.this)
+                .navigate(R.id.action_ScanTextFragment_to_SaveToContactsFragment);
 
         return !detectedTexts.equals("");
     }
