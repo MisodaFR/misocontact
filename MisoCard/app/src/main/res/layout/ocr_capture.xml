@@ -6,16 +6,16 @@
     android:layout_height="match_parent"
     android:keepScreenOn="true">
 
-    <fr.misoda.card.CameraSourcePreview
+    <fr.misoda.card.view.component.CameraSourcePreview
         android:id="@+id/preview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <fr.misoda.card.GraphicOverlay
+        <fr.misoda.card.view.component.GraphicOverlay
             android:id="@+id/graphicOverlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-    </fr.misoda.card.CameraSourcePreview>
+    </fr.misoda.card.view.component.CameraSourcePreview>
 
 </LinearLayout>

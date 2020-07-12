@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="fr.misoda.card.FirstFragment"
+        android:name="fr.misoda.card.view.fragment.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
@@ -18,7 +18,7 @@
 
     <!--<fragment
         android:id="@+id/SecondFragment"
-        android:name="fr.misoda.card.SecondFragment"
+        android:name="fr.misoda.card.view.fragment.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
 
@@ -29,7 +29,7 @@
 
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="fr.misoda.card.SecondFragment"
+        android:name="fr.misoda.card.view.fragment.SecondFragment"
         android:label="SecondFragment"
         tools:layout="@layout/fragment_second">
 
@@ -40,7 +40,7 @@
 
     <fragment
         android:id="@+id/SaveToContactsFragment"
-        android:name="fr.misoda.card.SaveToContactsFragment"
+        android:name="fr.misoda.card.view.fragment.SaveToContactsFragment"
         android:label="SaveToContactsFragment"
         tools:layout="@layout/fragment_save_to_contacts">
     </fragment>

@@ -1,4 +1,4 @@
-package fr.misoda.card;
+package fr.misoda.card.view.activity;
 
 import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -9,6 +9,8 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+
+import fr.misoda.card.R;
 
 public class MainActivity extends AppCompatActivity {
 

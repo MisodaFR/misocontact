@@ -1,4 +1,4 @@
-package fr.misoda.card;
+package fr.misoda.card.common;
 
 import org.apache.commons.lang3.StringUtils;
 

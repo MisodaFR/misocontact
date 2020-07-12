@@ -1,4 +1,4 @@
-package fr.misoda.card;
+package fr.misoda.card.view.fragment;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -31,6 +31,12 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 
+import fr.misoda.card.view.component.CameraSource;
+import fr.misoda.card.view.component.CameraSourcePreview;
+import fr.misoda.card.view.component.GraphicOverlay;
+import fr.misoda.card.worker.OcrDetectorProcessor;
+import fr.misoda.card.view.component.OcrGraphic;
+import fr.misoda.card.R;
 import fr.misoda.card.common.Constant;
 
 public class SecondFragment extends Fragment {
