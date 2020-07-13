@@ -8,35 +8,21 @@
     android:paddingBottom="@dimen/activity_vertical_margin">
 
     <TextView
-        android:id="@+id/status_message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerHorizontal="true"
-        android:text="Click the button to create or edit a contact"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/holo_blue_light"
-        android:textStyle="bold" />
-
-    <TextView
         android:id="@+id/tv_text_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/status_message"
-        android:layout_alignEnd="@+id/status_message"
-        android:layout_alignRight="@+id/status_message"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_marginTop="16dp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_save_to_contacts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Save to contacts" />
+        android:background="@drawable/bg_circle"
+        android:padding="@dimen/dp_12"
+        android:src="@drawable/ic_contacts_white_32_2" />
 
 </RelativeLayout>
