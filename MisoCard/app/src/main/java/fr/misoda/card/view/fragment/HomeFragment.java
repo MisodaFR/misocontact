@@ -14,6 +14,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import fr.misoda.card.R;
 
 public class HomeFragment extends Fragment {
+    public static final String LOG_TAG = HomeFragment.class.getSimpleName();
     // Use a compound button so either checkbox or switch widgets work.
     private CompoundButton autoFocus;
     private CompoundButton useFlash;
@@ -21,32 +22,22 @@ public class HomeFragment extends Fragment {
     private TextView textValue;
 
     private static final int RC_OCR_CAPTURE = 9003;
-    private static final String TAG = "MainActivity";
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_first, container, false);
-        statusMessage = (TextView) view.findViewById(R.id.status_message);
-        textValue = (TextView) view.findViewById(R.id.text_value);
+        statusMessage = view.findViewById(R.id.status_message);
+        textValue = view.findViewById(R.id.text_value);
 
-        autoFocus = (CompoundButton) view.findViewById(R.id.auto_focus);
-        useFlash = (CompoundButton) view.findViewById(R.id.use_flash);
+        autoFocus = view.findViewById(R.id.auto_focus);
+        useFlash = view.findViewById(R.id.use_flash);
 
-        view.findViewById(R.id.read_text).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(HomeFragment.this)
-                        .navigate(R.id.action_HomeFragment_to_ScanTextFragment);
-            }
-        });
+        view.findViewById(R.id.read_text).setOnClickListener(view1 -> NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_HomeFragment_to_ScanTextFragment));
 
         return view;
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        textValue.setText(ScanTextFragment.textResult);
     }
 }

@@ -31,13 +31,13 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 
+import fr.misoda.card.R;
+import fr.misoda.card.common.Constant;
 import fr.misoda.card.view.component.CameraSource;
 import fr.misoda.card.view.component.CameraSourcePreview;
 import fr.misoda.card.view.component.GraphicOverlay;
-import fr.misoda.card.worker.OcrDetectorProcessor;
 import fr.misoda.card.view.component.OcrGraphic;
-import fr.misoda.card.R;
-import fr.misoda.card.common.Constant;
+import fr.misoda.card.worker.OcrDetectorProcessor;
 
 public class ScanTextFragment extends Fragment {
 
@@ -64,15 +64,13 @@ public class ScanTextFragment extends Fragment {
 
     private OcrDetectorProcessor ocrDetectorProcessor;
 
-    public static String textResult = ""; // Usage temporaire, à remplacer plus tard
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.ocr_capture, container, false);
 
-        mPreview = (CameraSourcePreview) view.findViewById(R.id.preview);
-        mGraphicOverlay = (GraphicOverlay<OcrGraphic>) view.findViewById(R.id.graphicOverlay);
+        mPreview = view.findViewById(R.id.preview);
+        mGraphicOverlay = view.findViewById(R.id.graphicOverlay);
 
         view.setOnTouchListener((v, e) -> {
             boolean b = scaleGestureDetector.onTouchEvent(e);
@@ -214,12 +212,12 @@ public class ScanTextFragment extends Fragment {
         // Creates and starts the camera.  Note that this uses a higher resolution in comparison
         // to other detection examples to enable the text recognizer to detect small pieces of text.
         mCameraSource = new CameraSource.Builder(getActivity(), textRecognizer)
-                        .setFacing(CameraSource.CAMERA_FACING_BACK)
-                        .setRequestedPreviewSize(1280, 1024)
-                        .setRequestedFps(2.0f)
-                        .setFlashMode(useFlash ? Camera.Parameters.FLASH_MODE_TORCH : null)
-                        .setFocusMode(autoFocus ? Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE : null)
-                        .build();
+                .setFacing(CameraSource.CAMERA_FACING_BACK)
+                .setRequestedPreviewSize(1280, 1024)
+                .setRequestedFps(2.0f)
+                .setFlashMode(useFlash ? Camera.Parameters.FLASH_MODE_TORCH : null)
+                .setFocusMode(autoFocus ? Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE : null)
+                .build();
     }
 
     /**
@@ -240,13 +238,7 @@ public class ScanTextFragment extends Fragment {
 
         final Activity thisActivity = getActivity();
 
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ActivityCompat.requestPermissions(thisActivity, permissions,
-                        RC_HANDLE_CAMERA_PERM);
-            }
-        };
+        View.OnClickListener listener = view -> ActivityCompat.requestPermissions(thisActivity, permissions, RC_HANDLE_CAMERA_PERM);
 
         Snackbar.make(mGraphicOverlay, R.string.permission_camera_rationale,
                 Snackbar.LENGTH_INDEFINITE)
@@ -289,15 +281,15 @@ public class ScanTextFragment extends Fragment {
         return text != null;*/
 
         String detectedTexts = ocrDetectorProcessor.getDetectedTexts();
-        textResult = detectedTexts;
         /*Intent data = new Intent();
         data.putExtra(TextBlockObject, detectedTexts);
         setResult(CommonStatusCodes.SUCCESS, data);
         finish();*/
         Log.d(Constant.LOG_TAG_SCAN_TEXT, "detectedTexts : " + detectedTexts);
 
-        NavHostFragment.findNavController(ScanTextFragment.this)
-                .navigate(R.id.action_ScanTextFragment_to_SaveToContactsFragment);
+        ScanTextFragmentDirections.ActionScanTextFragmentToSaveToContactsFragment action = ScanTextFragmentDirections.actionScanTextFragmentToSaveToContactsFragment();
+        action.setScannedText(detectedTexts);
+        NavHostFragment.findNavController(ScanTextFragment.this).navigate(action);
 
         return !detectedTexts.equals("");
     }
@@ -355,5 +347,4 @@ public class ScanTextFragment extends Fragment {
             mCameraSource.doZoom(detector.getScaleFactor());
         }
     }
-
 }

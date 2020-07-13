@@ -11,23 +11,24 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import fr.misoda.card.common.ContactHelper;
 import fr.misoda.card.R;
+import fr.misoda.card.common.ContactHelper;
 
 public class SaveToContactsFragment extends Fragment {
     // Use a compound button so either checkbox or switch widgets work.
-    private TextView textValue;
+    private TextView tvTextValue;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_save_to_contacts, container, false);
 
-        textValue = view.findViewById(R.id.tv_text_value);
+        tvTextValue = view.findViewById(R.id.tv_text_value);
 
         view.findViewById(R.id.btn_save_to_contacts).setOnClickListener(view1 -> {
             // save to contact
-            createOrEditAContact(ScanTextFragment.textResult);
+            String textResult = SaveToContactsFragmentArgs.fromBundle(getArguments()).getScannedText();
+            createOrEditAContact(textResult);
         });
 
         return view;
@@ -35,7 +36,8 @@ public class SaveToContactsFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        textValue.setText(ScanTextFragment.textResult);
+        String textResult = SaveToContactsFragmentArgs.fromBundle(getArguments()).getScannedText();
+        tvTextValue.setText(textResult);
     }
 
     public void createOrEditAContact(String text) {
