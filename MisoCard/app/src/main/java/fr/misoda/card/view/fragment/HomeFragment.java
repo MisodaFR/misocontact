@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,21 +17,21 @@ public class HomeFragment extends Fragment {
     // Use a compound button so either checkbox or switch widgets work.
     private CompoundButton autoFocus;
     private CompoundButton useFlash;
-    private TextView statusMessage;
-    private TextView textValue;
 
-    private static final int RC_OCR_CAPTURE = 9003;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        statusMessage = view.findViewById(R.id.status_message);
-        textValue = view.findViewById(R.id.text_value);
 
-        autoFocus = view.findViewById(R.id.auto_focus);
-        useFlash = view.findViewById(R.id.use_flash);
+        autoFocus = view.findViewById(R.id.switch_auto_focus);
+        useFlash = view.findViewById(R.id.switch_use_flash);
 
-        view.findViewById(R.id.read_text).setOnClickListener(view1 -> NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_HomeFragment_to_ScanTextFragment));
+        view.findViewById(R.id.img_btn_scan_text).setOnClickListener(view1 -> {
+            HomeFragmentDirections.ActionHomeFragmentToScanTextFragment action = HomeFragmentDirections.actionHomeFragmentToScanTextFragment();
+            action.setAutoFocus(autoFocus.isChecked());
+            action.setUseFlash(useFlash.isChecked());
+            NavHostFragment.findNavController(HomeFragment.this).navigate(action);
+        });
 
         return view;
     }

@@ -92,9 +92,9 @@ public class ScanTextFragment extends Fragment {
             }
         });*/
 
-        // read parameters from the intent used to launch the activity.
-        boolean autoFocus = true; // to modify after
-        boolean useFlash = false;
+        ScanTextFragmentArgs args = ScanTextFragmentArgs.fromBundle(getArguments());
+        boolean autoFocus = args.getAutoFocus();
+        boolean useFlash = args.getUseFlash();
 
         // Check for the camera permission before accessing the camera.  If the
         // permission is not granted yet, request permission.

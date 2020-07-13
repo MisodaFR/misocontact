@@ -11,6 +11,16 @@
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_home">
 
+        <argument
+            android:name="autoFocus"
+            android:defaultValue="true"
+            app:argType="boolean" />
+
+        <argument
+            android:name="useFlash"
+            android:defaultValue="false"
+            app:argType="boolean" />
+
         <action
             android:id="@+id/action_HomeFragment_to_ScanTextFragment"
             app:destination="@id/ScanTextFragment" />
@@ -23,9 +33,19 @@
         tools:layout="@layout/fragment_second">
 
         <argument
+            android:name="autoFocus"
+            android:defaultValue="true"
+            app:argType="boolean" />
+
+        <argument
+            android:name="useFlash"
+            android:defaultValue="false"
+            app:argType="boolean" />
+
+        <argument
             android:name="scannedText"
-            app:argType="string"
-            android:defaultValue="" />
+            android:defaultValue=""
+            app:argType="string" />
 
         <action
             android:id="@+id/action_ScanTextFragment_to_SaveToContactsFragment"
@@ -39,8 +59,8 @@
         tools:layout="@layout/fragment_save_to_contacts">
         <argument
             android:name="scannedText"
-            app:argType="string"
-            android:defaultValue="" />
+            android:defaultValue=""
+            app:argType="string" />
     </fragment>
 
 </navigation>
