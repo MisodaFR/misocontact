@@ -30,7 +30,7 @@
         android:id="@+id/ScanTextFragment"
         android:name="fr.misoda.card.view.fragment.ScanTextFragment"
         android:label="ScanTextFragment"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_scan_text">
 
         <argument
             android:name="autoFocus"

@@ -6,6 +6,34 @@
         android:id="@+id/action_settings"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+
+    <group>
+        <item
+            android:title="@string/light_dark_theme"
+            app:showAsAction="never">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/action_light_theme"
+                        android:title="@string/light" />
+                    <item
+                        android:id="@+id/action_dark_theme"
+                        android:title="@string/dark" />
+                    <!--<item
+                        android:id="@+id/action_battery_saver_theme"
+                        android:title="@string/set_by_battery_saver" />
+                    <item
+                        android:id="@+id/action_system_theme"
+                        android:title="@string/system_default" />
+                    <item
+                        android:id="@+id/action_custom_theme"
+                        android:title="@string/custom" />-->
+                </group>
+            </menu>
+        </item>
+
+    </group>
+
     <item
         android:id="@+id/action_quit_app"
         android:title="Quit app"

@@ -23,9 +23,9 @@
     <string name="ocr_failure">No text captured</string>
     <string name="ocr_error">"Error reading text: %1$s"</string>
 
-    <string name="light_dark_theme">Themes (light, dark, etc.)</string>
-    <string name="light">Light</string>
-    <string name="dark">Dark</string>
-    <string name="set_by_battery_saver">Set by Battery Saver</string>
-    <string name="system_default">System default</string>
+    <string name="light_dark_theme">Chế độ sáng, tối, …</string>
+    <string name="light">Sáng</string>
+    <string name="dark">Tối</string>
+    <string name="set_by_battery_saver">Theo chế độ tiết kiệm pin</string>
+    <string name="system_default">Theo hệ thống</string>
 </resources>

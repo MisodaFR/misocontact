@@ -6,6 +6,7 @@
     tools:context=".view.fragment.HomeFragment">
 
     <RelativeLayout
+        android:background="@color/white_grey"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -37,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_circle"
                 android:padding="@dimen/dp_12"
-                android:src="@drawable/ic_photo_camera_white_32_2" />
+                android:src="@drawable/ic_photo_camera_32_2" />
 
             <Switch
                 android:id="@+id/switch_use_flash"
