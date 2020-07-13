@@ -16,7 +16,6 @@
         tools:context="com.google.android.gms.samples.vision.ocrreader.MainActivity">
 
         <LinearLayout
-            android:id="@+id/layout_btns"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
