@@ -67,7 +67,7 @@ public class ScanTextFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.ocr_capture, container, false);
+        View view = inflater.inflate(R.layout.fragment_scan_text, container, false);
 
         mPreview = view.findViewById(R.id.preview);
         mGraphicOverlay = view.findViewById(R.id.graphicOverlay);
