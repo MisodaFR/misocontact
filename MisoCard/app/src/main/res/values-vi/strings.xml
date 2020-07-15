@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MisoCard</string>
+    <string name="app_name">Miso contact</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -17,8 +17,8 @@
     <string name="title_activity_main">Ocr Detector Sample</string>
     <string name="ocr_header">Click &quot;Detect Text&quot; to detect text</string>
     <string name="read_text">Detect Text</string>
-    <string name="auto_focus">Auto Focus</string>
-    <string name="use_flash">Use Flash</string>
+    <string name="auto_focus">Tự động lấy nét</string>
+    <string name="use_flash">Sử dụng flash</string>
     <string name="ocr_success">Text read successfully</string>
     <string name="ocr_failure">No text captured</string>
     <string name="ocr_error">"Error reading text: %1$s"</string>
@@ -28,4 +28,7 @@
     <string name="dark">Tối</string>
     <string name="set_by_battery_saver">Theo chế độ tiết kiệm pin</string>
     <string name="system_default">Theo hệ thống</string>
+
+    <string name="quit_app">Thoát ứng dụng</string>
+    <string name="version">Phiên bản</string>
 </resources>

@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
+import org.apache.commons.lang3.StringUtils;
+
+import fr.misoda.card.BuildConfig;
 import fr.misoda.card.R;
 import fr.misoda.card.common.AppConfig;
 import fr.misoda.card.common.Constant;
@@ -24,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setSubtitle(getString(R.string.version) + StringUtils.SPACE + BuildConfig.VERSION_NAME);
     }
 
     @Override
@@ -54,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.action_settings:
-                return true;
+            /*case R.id.action_settings:
+                return true;*/
             case R.id.action_quit_app:
                 finish();
                 return true;
