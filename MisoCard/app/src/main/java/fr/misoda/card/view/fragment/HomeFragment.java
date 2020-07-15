@@ -2,6 +2,9 @@ package fr.misoda.card.view.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
@@ -20,7 +23,6 @@ public class HomeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         autoFocus = view.findViewById(R.id.switch_auto_focus);
@@ -33,10 +35,31 @@ public class HomeFragment extends Fragment {
             NavHostFragment.findNavController(HomeFragment.this).navigate(action);
         });
 
+        setHasOptionsMenu(true);
+
         return view;
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        getActivity().getMenuInflater().inflate(R.menu.menu_main, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id) {
+            case R.id.action_settings:
+                NavHostFragment.findNavController(this).navigate(R.id.action_setting_fragment);
+                return true;
+            default:
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

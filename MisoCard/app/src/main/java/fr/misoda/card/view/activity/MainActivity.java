@@ -7,6 +7,8 @@ import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -14,6 +16,7 @@ import fr.misoda.card.BuildConfig;
 import fr.misoda.card.R;
 import fr.misoda.card.common.AppConfig;
 import fr.misoda.card.common.Constant;
+import fr.misoda.card.view.fragment.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setSubtitle(getString(R.string.version) + StringUtils.SPACE + BuildConfig.VERSION_NAME);
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -39,10 +42,10 @@ public class MainActivity extends AppCompatActivity {
 
         switch (theme) {
             case AppCompatDelegate.MODE_NIGHT_NO:
-                menu.findItem(R.id.action_light_theme).setChecked(true);
+                //menu.findItem(R.id.action_light_theme).setChecked(true);
                 break;
             case AppCompatDelegate.MODE_NIGHT_YES:
-                menu.findItem(R.id.action_dark_theme).setChecked(true);
+                //menu.findItem(R.id.action_dark_theme).setChecked(true);
                 break;
             default:
         }
@@ -58,9 +61,10 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         switch (id) {
-            /*case R.id.action_settings:
-                return true;*/
-            case R.id.action_quit_app:
+            case R.id.action_settings:
+                Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.action_settings_fragment);
+                return true;
+            *//*case R.id.action_quit_app:
                 finish();
                 return true;
             case R.id.action_light_theme:
@@ -76,10 +80,10 @@ public class MainActivity extends AppCompatActivity {
                     AppConfig.getInstance().setInt(Constant.KEY_THEME, AppCompatDelegate.MODE_NIGHT_YES);
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 }
-                return true;
+                return true;*//*
             default:
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }

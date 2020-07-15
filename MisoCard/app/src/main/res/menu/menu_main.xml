@@ -2,12 +2,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="fr.misoda.card.view.activity.MainActivity">
-    <!--<item
+    <item
+        android:icon="@drawable/ic_action_settings_white"
         android:id="@+id/action_settings"
         android:title="@string/action_settings"
-        app:showAsAction="never" />-->
+        app:showAsAction="always" />
 
-    <group>
+    <!--<group>
         <item
             android:title="@string/light_dark_theme"
             app:showAsAction="never">
@@ -19,7 +20,7 @@
                     <item
                         android:id="@+id/action_dark_theme"
                         android:title="@string/dark" />
-                    <!--<item
+                    &lt;!&ndash;<item
                         android:id="@+id/action_battery_saver_theme"
                         android:title="@string/set_by_battery_saver" />
                     <item
@@ -27,7 +28,7 @@
                         android:title="@string/system_default" />
                     <item
                         android:id="@+id/action_custom_theme"
-                        android:title="@string/custom" />-->
+                        android:title="@string/custom" />&ndash;&gt;
                 </group>
             </menu>
         </item>
@@ -37,5 +38,5 @@
     <item
         android:id="@+id/action_quit_app"
         android:title="@string/quit_app"
-        app:showAsAction="never" />
+        app:showAsAction="never" />-->
 </menu>

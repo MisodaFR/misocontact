@@ -31,4 +31,5 @@
 
     <string name="quit_app">Thoát ứng dụng</string>
     <string name="version">Phiên bản</string>
+    <string name="dark_theme">Chế độ tối</string>
 </resources>

@@ -31,4 +31,5 @@
 
     <string name="quit_app">Quit app</string>
     <string name="version">Version</string>
+    <string name="dark_theme">Dark theme</string>
 </resources>
