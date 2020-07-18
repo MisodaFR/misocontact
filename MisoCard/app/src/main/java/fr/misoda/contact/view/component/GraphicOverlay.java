@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package fr.misoda.card.view.component;
+package fr.misoda.contact.view.component;
 
 import android.content.Context;
 import android.graphics.Canvas;

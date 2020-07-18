@@ -5,16 +5,16 @@
     android:background="@color/white_grey"
     android:keepScreenOn="true">
 
-    <fr.misoda.card.view.component.CameraSourcePreview
+    <fr.misoda.contact.view.component.CameraSourcePreview
         android:id="@+id/preview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <fr.misoda.card.view.component.GraphicOverlay
+        <fr.misoda.contact.view.component.GraphicOverlay
             android:id="@+id/graphicOverlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-    </fr.misoda.card.view.component.CameraSourcePreview>
+    </fr.misoda.contact.view.component.CameraSourcePreview>
 
 </LinearLayout>

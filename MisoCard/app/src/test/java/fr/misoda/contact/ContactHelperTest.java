@@ -1,10 +1,10 @@
-package fr.misoda.card;
+package fr.misoda.contact;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fr.misoda.card.common.ContactHelper;
+import fr.misoda.contact.common.ContactHelper;
 
 public class ContactHelperTest {
 

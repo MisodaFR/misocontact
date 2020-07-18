@@ -1,4 +1,4 @@
-package fr.misoda.card;
+package fr.misoda.contact;
 
 import org.junit.Test;
 

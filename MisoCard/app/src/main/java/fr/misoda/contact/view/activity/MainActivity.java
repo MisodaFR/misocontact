@@ -1,22 +1,17 @@
-package fr.misoda.card.view.activity;
+package fr.misoda.contact.view.activity;
 
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 
 import org.apache.commons.lang3.StringUtils;
 
-import fr.misoda.card.BuildConfig;
-import fr.misoda.card.R;
-import fr.misoda.card.common.AppConfig;
-import fr.misoda.card.common.Constant;
-import fr.misoda.card.view.fragment.HomeFragment;
+import fr.misoda.contact.BuildConfig;
+import fr.misoda.contact.R;
+import fr.misoda.contact.common.AppConfig;
+import fr.misoda.contact.common.Constant;
 
 public class MainActivity extends AppCompatActivity {
 

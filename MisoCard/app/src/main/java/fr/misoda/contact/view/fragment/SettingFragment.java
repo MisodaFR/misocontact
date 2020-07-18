@@ -1,4 +1,4 @@
-package fr.misoda.card.view.fragment;
+package fr.misoda.contact.view.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,9 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
-import fr.misoda.card.R;
-import fr.misoda.card.common.AppConfig;
-import fr.misoda.card.common.Constant;
+import fr.misoda.contact.R;
+import fr.misoda.contact.common.AppConfig;
+import fr.misoda.contact.common.Constant;
 
 public class SettingFragment extends Fragment {
     private Switch switchDarkTheme;

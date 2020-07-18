@@ -1,4 +1,4 @@
-package fr.misoda.card.view.fragment;
+package fr.misoda.contact.view.fragment;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -31,13 +31,13 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 
-import fr.misoda.card.R;
-import fr.misoda.card.common.Constant;
-import fr.misoda.card.view.component.CameraSource;
-import fr.misoda.card.view.component.CameraSourcePreview;
-import fr.misoda.card.view.component.GraphicOverlay;
-import fr.misoda.card.view.component.OcrGraphic;
-import fr.misoda.card.worker.OcrDetectorProcessor;
+import fr.misoda.contact.R;
+import fr.misoda.contact.common.Constant;
+import fr.misoda.contact.view.component.CameraSource;
+import fr.misoda.contact.view.component.CameraSourcePreview;
+import fr.misoda.contact.view.component.GraphicOverlay;
+import fr.misoda.contact.view.component.OcrGraphic;
+import fr.misoda.contact.worker.OcrDetectorProcessor;
 
 public class ScanTextFragment extends Fragment {
 

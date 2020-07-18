@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/HomeFragment"
-        android:name="fr.misoda.card.view.fragment.HomeFragment"
+        android:name="fr.misoda.contact.view.fragment.HomeFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_home">
 
@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/ScanTextFragment"
-        android:name="fr.misoda.card.view.fragment.ScanTextFragment"
+        android:name="fr.misoda.contact.view.fragment.ScanTextFragment"
         android:label="ScanTextFragment"
         tools:layout="@layout/fragment_scan_text">
 
@@ -54,7 +54,7 @@
 
     <fragment
         android:id="@+id/SaveToContactsFragment"
-        android:name="fr.misoda.card.view.fragment.SaveToContactsFragment"
+        android:name="fr.misoda.contact.view.fragment.SaveToContactsFragment"
         android:label="SaveToContactsFragment"
         tools:layout="@layout/fragment_save_to_contacts">
         <argument
@@ -65,7 +65,7 @@
 
     <fragment
         android:id="@+id/SettingFragment"
-        android:name="fr.misoda.card.view.fragment.SettingFragment"
+        android:name="fr.misoda.contact.view.fragment.SettingFragment"
         android:label="TestFragment"
         tools:layout="@layout/fragment_setting" />
 

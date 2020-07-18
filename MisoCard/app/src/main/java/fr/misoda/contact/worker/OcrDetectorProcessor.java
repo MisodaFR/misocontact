@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package fr.misoda.card.worker;
+package fr.misoda.contact.worker;
 
 import android.util.Log;
 import android.util.SparseArray;
@@ -21,9 +21,9 @@ import android.util.SparseArray;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
 
-import fr.misoda.card.common.Constant;
-import fr.misoda.card.view.component.GraphicOverlay;
-import fr.misoda.card.view.component.OcrGraphic;
+import fr.misoda.contact.common.Constant;
+import fr.misoda.contact.view.component.GraphicOverlay;
+import fr.misoda.contact.view.component.OcrGraphic;
 
 /**
  * A very simple Processor which receives detected TextBlocks and adds them to the overlay

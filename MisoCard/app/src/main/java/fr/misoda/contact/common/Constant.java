@@ -1,4 +1,4 @@
-package fr.misoda.card.common;
+package fr.misoda.contact.common;
 
 public class Constant {
     private Constant() {

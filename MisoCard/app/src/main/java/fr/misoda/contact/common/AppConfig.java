@@ -1,10 +1,10 @@
-package fr.misoda.card.common;
+package fr.misoda.contact.common;
 
 import android.content.SharedPreferences;
 
 import androidx.preference.PreferenceManager;
 
-import fr.misoda.card.view.activity.MainActivity;
+import fr.misoda.contact.view.activity.MainActivity;
 
 public class AppConfig {
     private static final AppConfig instance = new AppConfig();

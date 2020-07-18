@@ -1,4 +1,4 @@
-package fr.misoda.card;
+package fr.misoda.contact;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;

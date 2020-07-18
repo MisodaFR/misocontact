@@ -1,4 +1,4 @@
-package fr.misoda.card.view.fragment;
+package fr.misoda.contact.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import fr.misoda.card.R;
-import fr.misoda.card.common.ContactHelper;
+import fr.misoda.contact.R;
+import fr.misoda.contact.common.ContactHelper;
 
 public class SaveToContactsFragment extends Fragment {
     // Use a compound button so either checkbox or switch widgets work.

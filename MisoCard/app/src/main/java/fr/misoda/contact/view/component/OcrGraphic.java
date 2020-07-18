@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package fr.misoda.card.view.component;
+package fr.misoda.contact.view.component;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -24,8 +24,6 @@ import com.google.android.gms.vision.text.Text;
 import com.google.android.gms.vision.text.TextBlock;
 
 import java.util.List;
-
-import fr.misoda.card.view.component.GraphicOverlay;
 
 /**
  * Graphic instance for rendering TextBlock position, size, and ID within an associated graphic

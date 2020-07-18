@@ -1,4 +1,4 @@
-package fr.misoda.card.view.fragment;
+package fr.misoda.contact.view.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import fr.misoda.card.R;
+import fr.misoda.contact.R;
 
 public class HomeFragment extends Fragment {
     public static final String LOG_TAG = HomeFragment.class.getSimpleName();
