@@ -32,4 +32,22 @@
     <string name="quit_app">Quitter l\'application</string>
     <string name="version">Version</string>
     <string name="dark_theme">Thème sombre</string>
+
+    <string name="app_infos">Infos de l\'application</string>
+    <string name="manufacturer">Frabricant</string>
+    <string name="model">Modèle</string>
+    <string name="android_version_off_device">Version d\'Android OS sur le dispositif</string>
+    <string name="app_name_label">Nom de l\'application</string>
+    <string name="app_type">Type de l\'application</string>
+    <string name="free_contain_ads">Gratuit, contenant des pubs</string>
+    <string name="free_contain_no_ads">Gratuit, contenant aucun pub</string>
+    <string name="app_version">Verstion de l\'application</string>
+    <string name="update_date">Date de mise à jour</string>
+    <string name="device_info">Infos du dispositif</string>
+    <string name="device_app_infos">Infos du dispositif et de l\'application</string>
+    <string name="compare_app_version">Vous pouvez comparer la version de l\'application ici et celle sur Play Store pour voir si l\'application a été mise à jour à la dernière version.</string>
+    <string name="guide_update_app">Habituellement, cette application sera mise à jour automatiquement. Sinon, vous pouvez ouvrir Play Store, chercher l\'application et la mettre à jour manuellement.</string>
+
+    <string name="two_points">" :"</string>
+    <string name="chu_y">Remarque</string>
 </resources>

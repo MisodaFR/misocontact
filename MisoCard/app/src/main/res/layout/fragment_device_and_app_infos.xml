@@ -1,0 +1,143 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_grey"
+    android:padding="@dimen/dp_16">
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_16"
+        android:text="@string/device_app_infos"
+        android:textAlignment="viewStart"
+        android:textColor="@color/blue_green"
+        android:textSize="@dimen/text_size_23"
+        android:textStyle="bold" />
+
+    <ScrollView
+        style="@style/scrollbar_shape_style_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dialog_title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="3dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_device_infos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/device_info"
+                android:textColor="@color/black_white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_manufacturer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Hãng sản xuất : Motorola"
+                android:textColor="@color/black_white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_model"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Mẫu thiết bị : XT1562"
+                android:textColor="@color/black_white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_version_android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Phiên bản hệ điều hành Android trên thiết bị : 7.1.1"
+                android:textColor="@color/black_white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_app_infos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/app_infos"
+                android:textColor="@color/black_white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_app_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Tên ứng dụng : "
+                android:textColor="@color/black_white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_app_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Kiểu ứng dụng : miễn phí, có chứa quảng cáo"
+                android:textColor="@color/black_white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_app_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Phiên bản ứng dụng : 10.4.7"
+                android:textColor="@color/black_white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_date_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Ngày cập nhật : 20/10/2019"
+                android:textColor="@color/black_white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_remark_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/chu_y"
+                android:textColor="@color/black_white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_remark_content_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/compare_app_version"
+                android:textColor="@color/black_white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_remark_content_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/guide_update_app"
+                android:textColor="@color/black_white"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

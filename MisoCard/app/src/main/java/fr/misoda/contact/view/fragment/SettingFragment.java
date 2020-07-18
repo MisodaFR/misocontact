@@ -9,6 +9,7 @@ import android.widget.Switch;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import fr.misoda.contact.R;
 import fr.misoda.contact.common.AppConfig;
@@ -32,6 +33,7 @@ public class SettingFragment extends Fragment {
         });
 
         view.findViewById(R.id.layout_quit_app).setOnClickListener(v -> getActivity().finish());
+        view.findViewById(R.id.layout_device_app_infos).setOnClickListener(v -> NavHostFragment.findNavController(SettingFragment.this).navigate(R.id.action_SettingFragment_to_DeviceAndAppInfosFragment));
 
         return view;
     }

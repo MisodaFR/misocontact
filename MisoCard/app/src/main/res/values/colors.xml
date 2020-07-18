@@ -14,11 +14,14 @@
     <color name="green">#00FF00</color>
     <color name="green_2">#46a644</color>
 
+    <color name="orange">#F06D2F</color>
+
     <color name="white_grey">@color/white</color>
     <color name="blue_white">@color/colorPrimary</color>
     <color name="blue_dark_black">@color/colorPrimaryDark</color>
     <color name="black_white">@color/black</color>
     <color name="black_grey">@color/black</color>
     <color name="grey_light_grey_dark">@color/grey_light</color>
+    <color name="blue_green">@color/colorPrimary</color>
 
 </resources>

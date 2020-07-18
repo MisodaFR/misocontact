@@ -66,11 +66,23 @@
     <fragment
         android:id="@+id/SettingFragment"
         android:name="fr.misoda.contact.view.fragment.SettingFragment"
-        android:label="TestFragment"
-        tools:layout="@layout/fragment_setting" />
+        android:label="SettingFragment"
+        tools:layout="@layout/fragment_setting">
+
+        <action
+            android:id="@+id/action_SettingFragment_to_DeviceAndAppInfosFragment"
+            app:destination="@id/DeviceAndAppInfosFragment" />
+
+    </fragment>
 
     <action
         android:id="@+id/action_setting_fragment"
         app:destination="@id/SettingFragment" />
+
+    <fragment
+        android:id="@+id/DeviceAndAppInfosFragment"
+        android:name="fr.misoda.contact.view.fragment.DeviceAndAppInfosFragment"
+        android:label="DeviceAndAppInfosFragment"
+        tools:layout="@layout/fragment_device_and_app_infos" />
 
 </navigation>

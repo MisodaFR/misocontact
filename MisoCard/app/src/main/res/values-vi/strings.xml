@@ -32,4 +32,21 @@
     <string name="quit_app">Thoát ứng dụng</string>
     <string name="version">Phiên bản</string>
     <string name="dark_theme">Chế độ tối</string>
+
+    <string name="app_infos">Thông tin ứng dụng</string>
+    <string name="manufacturer">Hãng sản xuất</string>
+    <string name="model">Mẫu thiết bị</string>
+    <string name="android_version_off_device">Phiên bản hệ điều hành Android trên thiết bị</string>
+    <string name="app_name_label">Tên ứng dụng</string>
+    <string name="app_type">Kiểu ứng dụng</string>
+    <string name="free_contain_no_ads">Miễn phí, không chứa quảng cáo</string>
+    <string name="app_version">Phiên bản ứng dụng</string>
+    <string name="update_date">Ngày cập nhật</string>
+    <string name="device_info">Thông tin thiết bị</string>
+    <string name="device_app_infos">Thông tin thiết bị và ứng dụng</string>
+    <string name="compare_app_version">Bạn có thể so sánh phiên bản ứng dụng ở đây và phiên bản ứng dụng trên CH Play để biết ứng dụng đã được cập nhật lên phiên bản mới nhất hay chưa.</string>
+    <string name="guide_update_app">Thông thường ứng dụng sẽ được cập nhật tự động. Nếu không, bạn có thể mở CH Play, tìm ứng dụng và cập nhật bằng tay.</string>
+
+    <string name="two_points">:</string>
+    <string name="chu_y">Chú ý</string>
 </resources>
