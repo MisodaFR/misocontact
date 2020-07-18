@@ -39,7 +39,6 @@
     <string name="android_version_off_device">Android OS version on device</string>
     <string name="app_name_label">Application name</string>
     <string name="app_type">Application type</string>
-    <string name="free_contain_ads">Free, contains ads</string>
     <string name="free_contain_no_ads">Free, containts no ads</string>
     <string name="app_version">Application version</string>
     <string name="update_date">Update date</string>
@@ -50,4 +49,24 @@
 
     <string name="two_points">:</string>
     <string name="chu_y">Remark</string>
+    <string name="huongdan_sudung">Application tour guide</string>
+
+    <string name="cancel_tourguide">Exit</string>
+    <string name="ban_vua_nhap_vao_dong">You have just clicked on the line</string>
+    <string name="khi_ungdung_hoatdong">When the application works</string>
+    <string name="saukhi_nhapvao_dongnay">after clicking on this line</string>
+    <string name="chua_cac_sach_da_va_dang_duocdoc">the application will open a window containing the books or files that have been and are currently being read</string>
+    <string name="tieptuc_xemhuondan_nhapvao_menu_benphai">To continue following the application tour guide, please click on each line in the menu that appears on the right</string>
+    <string name="ungdung_se_mocuaso">the application will open the window</string>
+    <string name="de_ban_thaydoi_tocdo_va_docao_cua_giongnoi">lets you change the speed and pitch of the voice</string>
+    <string name="de_ban_thaydoi_kieuchu_kichthuoc_phongchu">lets you change the text style, size, and font of the content in the text part</string>
+    <string name="chedo_manhinh_giup_ungdung">Full screen mode gives the app more space on the screen to display book page content</string>
+    <string name="o_chedo_nay_phia_duoi_day_man_hinh_co">In this mode, the bottom of the screen on the right will have a pink button, you can click this button and the minimize button to return to the normal screen mode</string>
+    <string name="ban_cothe_hengio_tudong_doc">you can set the hour to read automatically</string>
+    <string name="chucnang_nay_giongnhu_chucnang_baothuc">This function is similar to the alarm function</string>
+    <string name="ban_cothe_hengio_tudong_dungdoc">you can set the hour to stop read automatically</string>
+    <string name="ungdung_se_mo_cuaso_hienthi_thongtin">the application will open a window to display your device information and application information</string>
+    <string name="ungdung_se_huongdan_ban_cach_sudung_tungbuocmot">the application will show you how to use it step by step</string>
+    <string name="xem_huongdan_sudung">Follow application tour guide</string>
+    <string name="tieptuc">Next</string>
 </resources>

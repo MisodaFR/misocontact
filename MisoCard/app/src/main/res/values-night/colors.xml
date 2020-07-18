@@ -10,4 +10,7 @@
     <color name="black_grey">@color/grey_dark</color>
     <color name="grey_light_grey_dark">@color/grey_dark</color>
     <color name="blue_green">@color/green</color>
+    <color name="white_black">#000</color>
+    <color name="black_orange">#ff9100</color>
+
 </resources>

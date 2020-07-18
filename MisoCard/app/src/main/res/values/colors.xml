@@ -23,5 +23,7 @@
     <color name="black_grey">@color/black</color>
     <color name="grey_light_grey_dark">@color/grey_light</color>
     <color name="blue_green">@color/colorPrimary</color>
+    <color name="white_black">#fff</color>
+    <color name="black_orange">#000000</color>
 
 </resources>

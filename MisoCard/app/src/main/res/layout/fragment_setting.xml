@@ -16,6 +16,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/layout_dark_theme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_rectangle_state_pressed"
@@ -45,6 +46,35 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/layout_tour_guide"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rectangle_state_pressed"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_circle_black_grey"
+                    android:padding="@dimen/dp_8"
+                    android:src="@drawable/ic_manual_user_white_24_2" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:text="@string/huongdan_sudung"
+                    android:textColor="@color/black_white"
+                    android:textSize="@dimen/sp_16" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/layout_device_app_infos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -67,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/dp_16"
-                    android:text="Device and app infos"
+                    android:text="@string/device_app_infos"
                     android:textColor="@color/black_white"
                     android:textSize="@dimen/sp_16" />
 

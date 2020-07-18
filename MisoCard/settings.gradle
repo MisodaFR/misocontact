@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':material_showcaseview_lib'
 rootProject.name = "MisoCard"

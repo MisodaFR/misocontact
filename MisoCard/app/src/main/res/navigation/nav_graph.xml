@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/HomeFragment"
         android:name="fr.misoda.contact.view.fragment.HomeFragment"
-        android:label="@string/first_fragment_label"
+        android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
 
         <argument
@@ -73,6 +73,10 @@
             android:id="@+id/action_SettingFragment_to_DeviceAndAppInfosFragment"
             app:destination="@id/DeviceAndAppInfosFragment" />
 
+        <action
+            android:id="@+id/action_SettingFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+
     </fragment>
 
     <action
@@ -84,5 +88,12 @@
         android:name="fr.misoda.contact.view.fragment.DeviceAndAppInfosFragment"
         android:label="DeviceAndAppInfosFragment"
         tools:layout="@layout/fragment_device_and_app_infos" />
+
+    <!--Tro ve HomeFragment va xoa het nhung fragment trong stack-->
+    <action
+        android:id="@+id/toHomeFragment"
+        app:destination="@id/HomeFragment"
+        app:popUpTo="@+id/HomeFragment"
+        app:popUpToInclusive="true" />
 
 </navigation>

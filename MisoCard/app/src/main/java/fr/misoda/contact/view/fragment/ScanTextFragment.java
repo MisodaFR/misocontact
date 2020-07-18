@@ -19,9 +19,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -32,16 +36,20 @@ import com.google.android.material.snackbar.Snackbar;
 import java.io.IOException;
 
 import fr.misoda.contact.R;
+import fr.misoda.contact.common.AppConfig;
 import fr.misoda.contact.common.Constant;
 import fr.misoda.contact.view.component.CameraSource;
 import fr.misoda.contact.view.component.CameraSourcePreview;
 import fr.misoda.contact.view.component.GraphicOverlay;
 import fr.misoda.contact.view.component.OcrGraphic;
 import fr.misoda.contact.worker.OcrDetectorProcessor;
+import uk.co.deanwild.materialshowcaseview.IShowcaseListener;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 public class ScanTextFragment extends Fragment {
-
     private static final String TAG = "OcrCaptureActivity";
+    private static final String SHOWCASE_ID = "Showcase of ScanTextFragment";
 
     // Intent request code to handle updating play services if needed.
     private static final int RC_HANDLE_GMS = 9001;
@@ -65,6 +73,22 @@ public class ScanTextFragment extends Fragment {
     private OcrDetectorProcessor ocrDetectorProcessor;
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (!AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false)) {
+            return;
+        }
+        // This callback will only be called when MyFragment is at least Started.
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                // do nothing if in tour guide
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_scan_text, container, false);
@@ -84,13 +108,10 @@ public class ScanTextFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        /*view.findViewById(R.id.button_second).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-            }
-        });*/
+        if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false)) {
+            presentTourguide();
+            return;
+        }
 
         ScanTextFragmentArgs args = ScanTextFragmentArgs.fromBundle(getArguments());
         boolean autoFocus = args.getAutoFocus();
@@ -117,6 +138,9 @@ public class ScanTextFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false)) {
+            return;
+        }
         startCameraSource();
     }
 
@@ -126,6 +150,9 @@ public class ScanTextFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+        if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false)) {
+            return;
+        }
         if (mPreview != null) {
             mPreview.stop();
         }
@@ -138,6 +165,9 @@ public class ScanTextFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false)) {
+            return;
+        }
         if (mPreview != null) {
             mPreview.release();
         }
@@ -346,5 +376,48 @@ public class ScanTextFragment extends Fragment {
         public void onScaleEnd(ScaleGestureDetector detector) {
             mCameraSource.doZoom(detector.getScaleFactor());
         }
+    }
+
+    public void presentTourguide() {
+        FragmentActivity mainAct = getActivity();
+        MaterialShowcaseView.resetSingleUse(mainAct, SHOWCASE_ID);
+        ShowcaseConfig config = new ShowcaseConfig();
+        config.setDelay(500); // half second between each showcase view
+
+        View view = new View(mainAct);
+        int blueWhite = mainAct.getResources().getColor(R.color.blue_white);
+        int blackWhite = mainAct.getResources().getColor(R.color.black_white);
+        int whiteBlack = mainAct.getResources().getColor(R.color.white_black);
+        int blackOrange = mainAct.getResources().getColor(R.color.black_orange);
+        new MaterialShowcaseView.Builder(mainAct)
+                .setTitleText("jhkdfjdf")
+                .setTitleTextColor(blueWhite)
+                .setTarget(view)
+                .setSkipText(R.string.cancel_tourguide)
+                .setDismissText(getString(R.string.tieptuc))
+                .setDismissBtnBackground(blackWhite, whiteBlack)
+                .setSkipBtnBackground(blackWhite, whiteBlack)
+                .setContentText("fkdfjdkjf")
+                .setContentTextColor(blackOrange)
+                //.setMaskColour(whiteBlack)
+                .setListener(new IShowcaseListener() {
+                    @Override
+                    public void onShowcaseDisplayed(MaterialShowcaseView showcaseView) {
+
+                    }
+
+                    @Override
+                    public void onShowcaseDismissed(MaterialShowcaseView showcaseView) {
+                        NavController navController = NavHostFragment.findNavController(ScanTextFragment.this);
+                        if (showcaseView.isWasSkipped()) { // Cancel btn is cliked
+                            AppConfig.getInstance().setBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false);
+                            navController.navigate(R.id.toHomeFragment);
+                        } else { // Next btn is clicked
+                            navController.navigate(R.id.action_ScanTextFragment_to_SaveToContactsFragment);
+                        }
+                    }
+                })
+                .show();
+
     }
 }

@@ -39,7 +39,6 @@
     <string name="android_version_off_device">Version d\'Android OS sur le dispositif</string>
     <string name="app_name_label">Nom de l\'application</string>
     <string name="app_type">Type de l\'application</string>
-    <string name="free_contain_ads">Gratuit, contenant des pubs</string>
     <string name="free_contain_no_ads">Gratuit, contenant aucun pub</string>
     <string name="app_version">Verstion de l\'application</string>
     <string name="update_date">Date de mise à jour</string>
@@ -50,4 +49,24 @@
 
     <string name="two_points">" :"</string>
     <string name="chu_y">Remarque</string>
+    <string name="huongdan_sudung">Guide de visite d\'application</string>
+
+    <string name="cancel_tourguide">Quitter</string>
+    <string name="ban_vua_nhap_vao_dong">Vous venez de cliquer sur la ligne</string>
+    <string name="khi_ungdung_hoatdong">Quand l\'application fonctionne</string>
+    <string name="saukhi_nhapvao_dongnay">après avoir cliqué sur cette ligne</string>
+    <string name="chua_cac_sach_da_va_dang_duocdoc">l\'application ouvrira une fenêtre contenant les livres ou fichiers qui ont été et sont actuellement lues</string>
+    <string name="tieptuc_xemhuondan_nhapvao_menu_benphai">Pour continuer à suivre le guide de visite d\'application, cliquez sur chaque ligne du menu qui apparaît à droite</string>
+    <string name="ungdung_se_mocuaso">l\'application ouvrira la fenêtre</string>
+    <string name="de_ban_thaydoi_tocdo_va_docao_cua_giongnoi">vous permet de changer la vitesse et la hauteur de la voix</string>
+    <string name="de_ban_thaydoi_kieuchu_kichthuoc_phongchu">vous permet de modifier le style, la taille et la police du contenu dans le texte</string>
+    <string name="chedo_manhinh_giup_ungdung">Le mode plein écran donne à l\'application plus d\'espace à l\'écran pour afficher le contenu de la page de livre</string>
+    <string name="o_chedo_nay_phia_duoi_day_man_hinh_co">Dans ce mode, le bas de l\'écran à droite aura un bouton rose, vous pouvez cliquer sur ce bouton et le bouton de réduction pour revenir au mode d\'écran normal</string>
+    <string name="ban_cothe_hengio_tudong_doc">vous pouvez établir la minuterie pour lire automatiquement</string>
+    <string name="chucnang_nay_giongnhu_chucnang_baothuc">Cette fonction est similaire à la fonction d\'alarme</string>
+    <string name="ban_cothe_hengio_tudong_dungdoc">vous pouvez établir la minuterie pour arrêter automatiquement la lecture</string>
+    <string name="ungdung_se_mo_cuaso_hienthi_thongtin">l\'application ouvrira une fenêtre pour afficher les informations de votre appareil et les informations de l\'application</string>
+    <string name="ungdung_se_huongdan_ban_cach_sudung_tungbuocmot">l\'application vous montrera comment l\'utiliser étape par étape</string>
+    <string name="xem_huongdan_sudung">Suivre le guide de visite d\'application</string>
+    <string name="tieptuc">Continuer</string>
 </resources>

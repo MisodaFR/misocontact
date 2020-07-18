@@ -67,6 +67,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'org.apache.commons:commons-lang3:3.9'
     implementation "androidx.preference:preference:1.1.1"
+    implementation project(':material_showcaseview_lib')
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

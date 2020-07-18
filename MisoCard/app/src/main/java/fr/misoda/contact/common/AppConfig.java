@@ -35,4 +35,15 @@ public class AppConfig {
         editor.putInt(key, value);
         editor.apply();
     }
+
+    public boolean getBoolean(String key, boolean defautValue) {
+        return PreferenceManager.getDefaultSharedPreferences(mainAct).getBoolean(key, defautValue);
+    }
+
+    public void setBoolean(String key, boolean value) {
+        SharedPreferences.Editor editor;
+        editor = PreferenceManager.getDefaultSharedPreferences(mainAct).edit();
+        editor.putBoolean(key, value);
+        editor.apply();
+    }
 }
