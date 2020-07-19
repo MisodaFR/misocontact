@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.util.Log;
@@ -389,17 +390,19 @@ public class ScanTextFragment extends Fragment {
         int blackWhite = mainAct.getResources().getColor(R.color.black_white);
         int whiteBlack = mainAct.getResources().getColor(R.color.white_black);
         int blackOrange = mainAct.getResources().getColor(R.color.black_orange);
+        int darkGreen = mainAct.getResources().getColor(R.color.dark_green);
         new MaterialShowcaseView.Builder(mainAct)
-                .setTitleText("jhkdfjdf")
-                .setTitleTextColor(blueWhite)
+                .setTitleText("Cửa sổ" + " '" + "Quét văn bản" + "'")
                 .setTarget(view)
                 .setSkipText(R.string.cancel_tourguide)
                 .setDismissText(getString(R.string.tieptuc))
-                .setDismissBtnBackground(blackWhite, whiteBlack)
-                .setSkipBtnBackground(blackWhite, whiteBlack)
-                .setContentText("fkdfjdkjf")
-                .setContentTextColor(blackOrange)
-                //.setMaskColour(whiteBlack)
+                .setDismissBtnBackground(darkGreen, Color.BLACK)
+                .setSkipBtnBackground(darkGreen, Color.BLACK)
+                .setContentText("Bạn đang ở cửa sổ" + " " + "'Quét văn bản'" + ". " +
+                        "Cửa sổ này được mở sau khi bạn nhấp nút 'Mở camera' ở cửa sổ trước" + ". " +
+                        "Khi ứng dụng hoạt động" + ", " + "kết quả văn bản sẽ được hiển thị trên màn hình khi bạn quét bằng camera" + ". " +
+                        "Bạn nhấp vào một ví trí bất kì trên màn hình để chọn kết quả và chuyển sang cửa sổ 'Lưu vào danh bạ'" + ".")
+                .setContentTextColor(mainAct.getResources().getColor(R.color.green))
                 .setListener(new IShowcaseListener() {
                     @Override
                     public void onShowcaseDisplayed(MaterialShowcaseView showcaseView) {

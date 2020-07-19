@@ -69,4 +69,5 @@
     <string name="ungdung_se_huongdan_ban_cach_sudung_tungbuocmot">l\'application vous montrera comment l\'utiliser étape par étape</string>
     <string name="xem_huongdan_sudung">Suivre le guide de visite d\'application</string>
     <string name="tieptuc">Continuer</string>
+    <string name="nguoidung_se_tat_hoantoan_ungdung">l\'utilisateur éteindra complètement l\'application</string>
 </resources>

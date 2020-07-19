@@ -107,7 +107,6 @@ public class SaveToContactsFragment extends Fragment {
         IShowcaseListener showcaseListener = new IShowcaseListener() {
             @Override
             public void onShowcaseDisplayed(MaterialShowcaseView showcaseView) {
-                //Toast.makeText(getApplicationContext(), "Showcase displayed", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -122,30 +121,9 @@ public class SaveToContactsFragment extends Fragment {
             }
         };
 
-        String contentOpenCameraBtn = "Bạn nhấp nút này để mở danh bạ, tạo mới hoặc sửa rồi lưu contact" + Constant.DOT;
-        MaterialShowcaseView sequenceItem = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.btn_save_to_contacts, "Nút mở camera", "Here is the open camera button", contentOpenCameraBtn, showcaseListener).build();
+        String content = "Bạn nhấp nút này để mở danh bạ, tạo mới hoặc sửa rồi lưu liên lạc" + Constant.DOT;
+        MaterialShowcaseView sequenceItem = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.btn_save_to_contacts, "Nút" + " " + "mở danh bạ", "Dưới đây là nút" + " " + "mở danh bạ", content, showcaseListener).build();
         sequence.addSequenceItem(sequenceItem);
-
-        /*IShowcaseListener showcaseListenerForBtnUseFlash = new IShowcaseListener() {
-            @Override
-            public void onShowcaseDisplayed(MaterialShowcaseView showcaseView) {
-                //Toast.makeText(getApplicationContext(), "Showcase displayed", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onShowcaseDismissed(MaterialShowcaseView showcaseView) {
-                // Neu nguoi dung bam nut Thoat tren huong dan thi phan huong dan se ket thuc va app se chinh thuc hoat dong
-                if (showcaseView.isWasSkipped()) {
-                    AppConfig.getInstance().setBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false);
-                    //mainAct.beginApp();
-                } else {
-                    menu.performIdentifierAction(R.id.action_settings, 0);
-                }
-            }
-        };
-
-        sequenceItem = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.switch_use_flash, "Nút bật/tắt sử dụng flash", "Here is the rrrrr button", "kkk", showcaseListenerForBtnUseFlash).build();
-        sequence.addSequenceItem(sequenceItem);*/
 
         sequence.start();
     }

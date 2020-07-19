@@ -114,7 +114,6 @@ public class HomeFragment extends Fragment {
         IShowcaseListener showcaseListener = new IShowcaseListener() {
             @Override
             public void onShowcaseDisplayed(MaterialShowcaseView showcaseView) {
-                //Toast.makeText(getApplicationContext(), "Showcase displayed", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -128,18 +127,25 @@ public class HomeFragment extends Fragment {
             }
         };
 
-        String contentOpenCameraBtn = "Bạn nhấp nút này để mở camera và quét văn bản" + Constant.DOT;
-        MaterialShowcaseView.Builder item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.img_btn_scan_text, "Nút mở camera", "Here is the open camera button", contentOpenCameraBtn, showcaseListener);
+        String tooltipText = "Nút" + " " + "mở camera";
+        String title = "Dưới đây là nút" + " " + "mở camera";
+        String content = "Khi bạn nhấp nút này" + ", " + "camera sẽ được mở ở cửa sổ tiếp theo để quét văn bản" + Constant.DOT;
+        MaterialShowcaseView.Builder item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.img_btn_scan_text, tooltipText, title, content, showcaseListener);
         sequence.addSequenceItem(item.build());
 
-        item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.switch_auto_focus, "Nút bật/tắt tự động lấy nét", "Here is the dfd button", "jkdjf", showcaseListener);
+        tooltipText = "Nút" + " " + "bật/tắt tự động lấy nét";
+        title = "Dưới đây là nút" + " " + "bật/tắt tự động lấy nét";
+        content = "Khi bạn nhấp nút này" + ", " + "chế độ lấy nét tự động sẽ được bật (xanh) hoặc tắt (xám)" +
+                ". " +
+                "Khi chế độ được bật" + ", " + "camera sẽ tự động lấy nét khi quét văn bản ở cửa sổ thứ hai" +
+                ".";
+        item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.switch_auto_focus, tooltipText, title, content, showcaseListener);
         item.withRectangleShape();
         sequence.addSequenceItem(item.build());
 
         IShowcaseListener showcaseListenerForBtnUseFlash = new IShowcaseListener() {
             @Override
             public void onShowcaseDisplayed(MaterialShowcaseView showcaseView) {
-                //Toast.makeText(getApplicationContext(), "Showcase displayed", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -155,7 +161,13 @@ public class HomeFragment extends Fragment {
             }
         };
 
-        item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.switch_use_flash, "Nút bật/tắt sử dụng flash", "Here is the rrrrr button", "kkk", showcaseListenerForBtnUseFlash);
+        tooltipText = "Nút" + " " + "bật/tắt sử dụng đèn flash";
+        title = "Dưới đây là nút" + " " + "bật/tắt sử dụng đèn flash";
+        content = "Khi bạn nhấp nút này" + ", " + "chế độ sử dụng đèn flash sẽ được bật (xanh) hoặc tắt (xám)" +
+                ". " +
+                "Khi chế độ được bật" + ", " + "đèn flash sẽ được bật khi quét văn bản ở cửa sổ thứ hai" +
+                ".";
+        item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.switch_use_flash, tooltipText, title, content, showcaseListenerForBtnUseFlash);
         item.withRectangleShape();
         sequence.addSequenceItem(item.build());
 
@@ -172,17 +184,17 @@ public class HomeFragment extends Fragment {
                 .corner(30)
                 .textColor(Color.parseColor("#007686"))
                 .textSize(TypedValue.COMPLEX_UNIT_SP, 16)
-                .text("<b>" + "Nut kjdkf" + " '" + "jkjdkf" + "'" + "</b>");
+                .text("<b>" + "Nút mở cửa sổ" + " '" + "Chức năng, cài đặt, thông tin" + "'" + "</b>");
 
         new MaterialShowcaseView.Builder(mainAct)
-                .setTitleText("jkjdfkj" + " '" + "kjdkjf" + "'")
+                .setTitleText("Trên đây là nút mở cửa sổ" + " '" + "Chức năng, cài đặt, thông tin" + "'")
                 .setTarget(view)
                 .setSkipText(R.string.cancel_tourguide)
                 .setDismissText(getString(R.string.tieptuc))
                 .setSkipBtnBackground(darkGreen, foregroundWhiteOrBlackOfDarkGreen)
                 .setDismissBtnBackground(darkGreen, foregroundWhiteOrBlackOfDarkGreen)
-                .setContentText("kjkdjf" + ", " + "jjjj" + " '" + "kkkk" + "'" + ". " +
-                        getString(R.string.chedo_manhinh_giup_ungdung) + ". " + getString(R.string.o_chedo_nay_phia_duoi_day_man_hinh_co) + ".")
+                .setContentText("Khi bạn nhấp nút này" + ", " + "ứng dụng sẽ mở cửa sổ" + " '" + "Chức năng, cài đặt, thông tin" + "' " +
+                        "để bạn có thể thay đổi chế độ sáng, tối, xem hướng dẫn sử dụng, xem thông tin về thiết bị và ứng dụng hoặc thoát ứng dụng" + ".")
                 .setContentTextColor(mainAct.getResources().getColor(R.color.green))
                 .setListener(new IShowcaseListener() {
                     @Override

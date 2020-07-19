@@ -69,4 +69,5 @@
     <string name="ungdung_se_huongdan_ban_cach_sudung_tungbuocmot">the application will show you how to use it step by step</string>
     <string name="xem_huongdan_sudung">Follow application tour guide</string>
     <string name="tieptuc">Next</string>
+    <string name="nguoidung_se_tat_hoantoan_ungdung">user will turn off the application completely</string>
 </resources>
