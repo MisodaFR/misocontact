@@ -31,7 +31,7 @@ import uk.co.deanwild.materialshowcaseview.ShowcaseTooltip;
 
 public class HomeFragment extends Fragment {
     public static final String LOG_TAG = HomeFragment.class.getSimpleName();
-    private static final String SHOWCASE_ID = "Showcase of Miso contact";
+    private static final String SHOWCASE_ID = "Showcase of HomeFragment";
     // Use a compound button so either checkbox or switch widgets work.
     private Switch switchAutoFocus;
     private Switch switchUseFlash;
@@ -129,11 +129,12 @@ public class HomeFragment extends Fragment {
         };
 
         String contentOpenCameraBtn = "Bạn nhấp nút này để mở camera và quét văn bản" + Constant.DOT;
-        MaterialShowcaseView sequenceItem = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.img_btn_scan_text, "Nút mở camera", "Here is the open camera button", contentOpenCameraBtn, showcaseListener).build();
-        sequence.addSequenceItem(sequenceItem);
+        MaterialShowcaseView.Builder item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.img_btn_scan_text, "Nút mở camera", "Here is the open camera button", contentOpenCameraBtn, showcaseListener);
+        sequence.addSequenceItem(item.build());
 
-        sequenceItem = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.switch_auto_focus, "Nút bật/tắt tự động lấy nét", "Here is the dfd button", "jkdjf", showcaseListener).build();
-        sequence.addSequenceItem(sequenceItem);
+        item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.switch_auto_focus, "Nút bật/tắt tự động lấy nét", "Here is the dfd button", "jkdjf", showcaseListener);
+        item.withRectangleShape();
+        sequence.addSequenceItem(item.build());
 
         IShowcaseListener showcaseListenerForBtnUseFlash = new IShowcaseListener() {
             @Override
@@ -154,8 +155,9 @@ public class HomeFragment extends Fragment {
             }
         };
 
-        sequenceItem = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.switch_use_flash, "Nút bật/tắt sử dụng flash", "Here is the rrrrr button", "kkk", showcaseListenerForBtnUseFlash).build();
-        sequence.addSequenceItem(sequenceItem);
+        item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.switch_use_flash, "Nút bật/tắt sử dụng flash", "Here is the rrrrr button", "kkk", showcaseListenerForBtnUseFlash);
+        item.withRectangleShape();
+        sequence.addSequenceItem(item.build());
 
         sequence.start();
     }

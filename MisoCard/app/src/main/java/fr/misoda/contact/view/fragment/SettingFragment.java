@@ -6,7 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Switch;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -18,7 +20,6 @@ import fr.misoda.contact.common.AppConfig;
 import fr.misoda.contact.common.Constant;
 import fr.misoda.contact.common.GraphicUtil;
 import fr.misoda.contact.common.TooltipTourGuideHelper;
-import fr.misoda.contact.view.component.GraphicOverlay;
 import uk.co.deanwild.materialshowcaseview.IShowcaseListener;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
@@ -27,6 +28,22 @@ import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 public class SettingFragment extends Fragment {
     private static final String SHOWCASE_ID = "Showcase of SettingFragment";
     private Switch switchDarkTheme;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (!AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false)) {
+            return;
+        }
+        // This callback will only be called when MyFragment is at least Started.
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                // do nothing if in tour guide
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -56,7 +73,7 @@ public class SettingFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if (!AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false)) {
+        if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false)) {
             presentShowcaseSequence();
             return;
         }
@@ -84,43 +101,57 @@ public class SettingFragment extends Fragment {
         final MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(mainAct, SHOWCASE_ID);
         sequence.setConfig(config);
 
-        IShowcaseListener showcaseListener = new IShowcaseListener() {
-            @Override
-            public void onShowcaseDisplayed(MaterialShowcaseView showcaseView) {
-                //Toast.makeText(getApplicationContext(), "Showcase displayed", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onShowcaseDismissed(MaterialShowcaseView showcaseView) {
-                /*AppConfig.getInstance().setBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false);
-                NavController navController = NavHostFragment.findNavController(SettingFragment.this);
-                navController.navigate(R.id.toHomeFragment);*/
-            }
-        };
-
         String contentOpenCameraBtn = "Bạn nhấp nút này để mở danh bạ, tạo mới hoặc sửa rồi lưu contact" + Constant.DOT;
-        MaterialShowcaseView.Builder item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.layout_dark_theme, "Nút mở camera", "Here is the open camera button", contentOpenCameraBtn, showcaseListener);
+        MaterialShowcaseView.Builder item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.layout_dark_theme, "Nút mở camera", "Here is the open camera button", contentOpenCameraBtn, new MyIShowcaseListener(R.id.layout_dark_theme));
         item.withRectangleShape();
         item.setPaddingLayoutBtnsDismissSkip(0, 0, 0, 0);
         sequence.addSequenceItem(item.build());
 
-        item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.layout_tour_guide, "Nút mở camera", "Here is the open camera button", contentOpenCameraBtn, showcaseListener);
+        item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.layout_tour_guide, "Nút mở camera", "Here is the open camera button", contentOpenCameraBtn, new MyIShowcaseListener(R.id.layout_tour_guide));
         item.withRectangleShape();
         item.setPaddingLayoutBtnsDismissSkip(0, 0, 0, 0);
         sequence.addSequenceItem(item.build());
 
-        item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.layout_device_app_infos, "Nút mở camera", "Here is the open camera button", contentOpenCameraBtn, showcaseListener);
+        item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.layout_device_app_infos, "Nút mở camera", "Here is the open camera button", contentOpenCameraBtn, new MyIShowcaseListener(R.id.layout_device_app_infos));
         item.withRectangleShape();
         item.setPaddingLayoutBtnsDismissSkip(0, 0, 0, 0);
         item.setMarginsTitle(GraphicUtil.dpToPx(0, activity), GraphicUtil.dpToPx(40, activity), 0, 0);
         sequence.addSequenceItem(item.build());
 
-        item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.layout_quit_app, "Nút mở camera", "Here is the open camera button", contentOpenCameraBtn, showcaseListener);
+        item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.layout_quit_app, "Nút mở camera", "Here is the open camera button", contentOpenCameraBtn, new MyIShowcaseListener(R.id.layout_quit_app));
         item.withRectangleShape();
         item.setMarginsTitle(GraphicUtil.dpToPx(0, activity), GraphicUtil.dpToPx(0, activity), 0, 0);
-        item.setPaddingLayoutBtnsDismissSkip(0, 0, 0, GraphicUtil.dpToPx(40, activity));
+        item.setPaddingLayoutBtnsDismissSkip(0, 0, 0, GraphicUtil.dpToPx(56, activity));
         sequence.addSequenceItem(item.build());
 
         sequence.start();
+    }
+
+    private class MyIShowcaseListener implements IShowcaseListener {
+        private int idTargetView;
+
+        public MyIShowcaseListener(int idTargetView) {
+            this.idTargetView = idTargetView;
+        }
+
+        @Override
+        public void onShowcaseDisplayed(MaterialShowcaseView showcaseView) {
+            //Toast.makeText(getApplicationContext(), "Showcase displayed", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onShowcaseDismissed(MaterialShowcaseView showcaseView) {
+            if (showcaseView.isWasSkipped()) {
+                AppConfig.getInstance().setBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false);
+                NavController navController = NavHostFragment.findNavController(SettingFragment.this);
+                navController.navigate(R.id.toHomeFragment);
+            } else {
+                if (idTargetView == R.id.layout_quit_app) {
+                    AppConfig.getInstance().setBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false);
+                    NavController navController = NavHostFragment.findNavController(SettingFragment.this);
+                    navController.navigate(R.id.toHomeFragment);
+                }
+            }
+        }
     }
 }

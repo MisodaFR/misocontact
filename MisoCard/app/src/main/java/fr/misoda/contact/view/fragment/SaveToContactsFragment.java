@@ -112,9 +112,13 @@ public class SaveToContactsFragment extends Fragment {
 
             @Override
             public void onShowcaseDismissed(MaterialShowcaseView showcaseView) {
-                AppConfig.getInstance().setBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false);
                 NavController navController = NavHostFragment.findNavController(SaveToContactsFragment.this);
-                navController.navigate(R.id.toHomeFragment);
+                if (showcaseView.isWasSkipped()) {
+                    AppConfig.getInstance().setBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false);
+                    navController.navigate(R.id.toHomeFragment);
+                } else {
+                    navController.navigate(R.id.action_setting_fragment);
+                }
             }
         };
 
