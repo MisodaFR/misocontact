@@ -70,4 +70,32 @@
     <string name="xem_huongdan_sudung">Xem hướng dẫn sử dụng</string>
     <string name="tieptuc">Tiếp tục</string>
     <string name="nguoidung_se_tat_hoantoan_ungdung">người dùng sẽ tắt hoàn toàn ứng dụng</string>
+    <string name="button">Nút</string>
+    <string name="open_camera">mở camera</string>
+    <string name="below_is_button">Dưới đây là nút</string>
+    <string name="when_you_click_this_button">Khi bạn nhấp nút này</string>
+
+    <string name="camera_will_be_opened_next_window">camera sẽ được mở ở cửa sổ tiếp theo để quét văn bản</string>
+    <string name="turn_on_off_auto_focus">bật/tắt tự động lấy nét</string>
+    <string name="auto_focus_will_be_on_or_off">chế độ lấy nét tự động sẽ được bật (xanh) hoặc tắt (xám)</string>
+    <string name="when_the_mode_is_on">Khi chế độ được bật</string>
+    <string name="camera_will_be_auto_focus">camera sẽ tự động lấy nét khi quét văn bản ở cửa sổ thứ hai</string>
+    <string name="on_off_use_flash">bật/tắt sử dụng đèn flash</string>
+    <string name="mode_use_flash_will_be_on_or_off">chế độ sử dụng đèn flash sẽ được bật (xanh) hoặc tắt (xám)</string>
+    <string name="flash_is_on_when_scan_text">đèn flash sẽ được bật khi quét văn bản ở cửa sổ thứ hai</string>
+    <string name="button_to_open_window">Nút mở cửa sổ</string>
+    <string name="function_setting_info">Chức năng, cài đặt, thông tin</string>
+    <string name="above_is_button_open_window">Trên đây là nút mở cửa sổ</string>
+    <string name="so_you_can_change_theme_view_tourguide_info_quit_app">để bạn có thể thay đổi chế độ sáng, tối, xem hướng dẫn sử dụng, xem thông tin về thiết bị và ứng dụng hoặc thoát ứng dụng</string>
+    <string name="window">Cửa sổ</string>
+    <string name="scan_text">Quét văn bản</string>
+    <string name="you_are_on_window">Bạn đang ở cửa sổ</string>
+    <string name="this_window_openned_after_click_open_camera_btn">Cửa sổ này được mở sau khi bạn nhấp nút \'Mở camera\' ở cửa sổ trước</string>
+    <string name="text_result_displayed_on_screen_when_scan">kết quả văn bản sẽ được hiển thị trên màn hình khi bạn quét bằng camera</string>
+    <string name="you_click_a_point_on_screen">Bạn nhấp vào một ví trí bất kì trên màn hình để chọn kết quả và chuyển sang cửa sổ \'Lưu vào danh bạ\'</string>
+    <string name="you_click_this_btn_to_open_contacts_create_or_edit">Bạn nhấp nút này để mở danh bạ, tạo mới hoặc sửa rồi lưu liên lạc</string>
+    <string name="open_contacts">mở danh bạ</string>
+    <string name="app_theme_will_transformed_between_2_themes">giao diện của ứng dụng sẽ được chuyển đổi giữa hai chế độ giao diện sáng và tối</string>
+    <string name="turn_on_off_dark_theme">Bật/tắt chế độ tối</string>
+    <string name="above_is_button">Trên đây là nút</string>
 </resources>

@@ -121,8 +121,9 @@ public class SaveToContactsFragment extends Fragment {
             }
         };
 
-        String content = "Bạn nhấp nút này để mở danh bạ, tạo mới hoặc sửa rồi lưu liên lạc" + Constant.DOT;
-        MaterialShowcaseView sequenceItem = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.btn_save_to_contacts, "Nút" + " " + "mở danh bạ", "Dưới đây là nút" + " " + "mở danh bạ", content, showcaseListener).build();
+        String content = getString(R.string.you_click_this_btn_to_open_contacts_create_or_edit) + Constant.DOT;
+        MaterialShowcaseView sequenceItem = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.btn_save_to_contacts, getString(R.string.button) + " "
+                + getString(R.string.open_contacts), getString(R.string.below_is_button) + " " + getString(R.string.open_contacts), content, showcaseListener).build();
         sequence.addSequenceItem(sequenceItem);
 
         sequence.start();

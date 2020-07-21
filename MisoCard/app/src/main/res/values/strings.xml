@@ -70,4 +70,32 @@
     <string name="xem_huongdan_sudung">Follow application tour guide</string>
     <string name="tieptuc">Next</string>
     <string name="nguoidung_se_tat_hoantoan_ungdung">user will turn off the application completely</string>
+    <string name="below_is_button">Here is the button</string>
+    <string name="when_you_click_this_button">When you click this button</string>
+
+    <string name="camera_will_be_opened_next_window">the camera will be opened in the next window to scan the text</string>
+    <string name="turn_on_off_auto_focus">turn on / off auto focus</string>
+    <string name="auto_focus_will_be_on_or_off">auto focus mode will be turned on (green) or off (gray)</string>
+    <string name="when_the_mode_is_on">When the mode is on</string>
+    <string name="camera_will_be_auto_focus">the camera will automatically focus when scanning text in the second window</string>
+    <string name="on_off_use_flash">turn on / off using flash</string>
+    <string name="flash_is_on_when_scan_text">the flash will be turned on when scanning text in the second window</string>
+    <string name="button_to_open_window">Button to open the window</string>
+    <string name="function_setting_info">Function, settings, information</string>
+    <string name="above_is_button_open_window">Above is the button to open the window</string>
+    <string name="so_you_can_change_theme_view_tourguide_info_quit_app">so you can change the light and dark theme, see the user guide, view information about the device and application, or exit the application</string>
+    <string name="scan_text">Scan the text</string>
+    <string name="you_are_on_window">You are at the window</string>
+    <string name="this_window_openned_after_click_open_camera_btn">This window is opened after you click the \'Open camera\' button in the previous window</string>
+    <string name="text_result_displayed_on_screen_when_scan">text results will be displayed on the screen when you scan with the camera</string>
+    <string name="you_click_a_point_on_screen">You click on any location on the screen to select the result and switch to the \'Save to contacts\' window</string>
+    <string name="you_click_this_btn_to_open_contacts_create_or_edit">You click this button to open contacts, create a new contact or edit and then save the contact</string>
+    <string name="open_contacts">open contacts</string>
+    <string name="app_theme_will_transformed_between_2_themes">the application theme will be switched between light and dark modes</string>
+    <string name="turn_on_off_dark_theme">Turn on / off the dark theme</string>
+    <string name="above_is_button">Above is the button</string>
+    <string name="window">Window</string>
+    <string name="open_camera">open camera</string>
+    <string name="button">Button</string>
+    <string name="mode_use_flash_will_be_on_or_off">flash mode will be turned on (green) or off (gray)</string>
 </resources>

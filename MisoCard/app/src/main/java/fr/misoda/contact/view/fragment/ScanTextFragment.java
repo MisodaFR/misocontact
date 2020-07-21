@@ -130,7 +130,7 @@ public class ScanTextFragment extends Fragment {
         gestureDetector = new GestureDetector(getActivity(), new CaptureGestureListener());
         scaleGestureDetector = new ScaleGestureDetector(getActivity(), new ScaleListener());
 
-        Snackbar.make(mGraphicOverlay, "Tap to capture. Pinch/Stretch to zoom", Snackbar.LENGTH_LONG).show();
+        //Snackbar.make(mGraphicOverlay, "Tap to capture. Pinch/Stretch to zoom", Snackbar.LENGTH_LONG).show();
     }
 
     /**
@@ -294,28 +294,7 @@ public class ScanTextFragment extends Fragment {
      * @return true if the activity is ending.
      */
     private boolean onTap(float rawX, float rawY) {
-        /*OcrGraphic graphic = mGraphicOverlay.getGraphicAtLocation(rawX, rawY);
-        TextBlock text = null;
-        if (graphic != null) {
-            text = graphic.getTextBlock();
-            if (text != null && text.getValue() != null) {
-                Intent data = new Intent();
-                data.putExtra(TextBlockObject, text.getValue());
-                setResult(CommonStatusCodes.SUCCESS, data);
-                finish();
-            } else {
-                Log.d(TAG, "text data is null");
-            }
-        } else {
-            Log.d(TAG, "no text detected");
-        }
-        return text != null;*/
-
         String detectedTexts = ocrDetectorProcessor.getDetectedTexts();
-        /*Intent data = new Intent();
-        data.putExtra(TextBlockObject, detectedTexts);
-        setResult(CommonStatusCodes.SUCCESS, data);
-        finish();*/
         Log.d(Constant.LOG_TAG_SCAN_TEXT, "detectedTexts : " + detectedTexts);
 
         ScanTextFragmentDirections.ActionScanTextFragmentToSaveToContactsFragment action = ScanTextFragmentDirections.actionScanTextFragmentToSaveToContactsFragment();
@@ -392,16 +371,16 @@ public class ScanTextFragment extends Fragment {
         int blackOrange = mainAct.getResources().getColor(R.color.black_orange);
         int darkGreen = mainAct.getResources().getColor(R.color.dark_green);
         new MaterialShowcaseView.Builder(mainAct)
-                .setTitleText("Cửa sổ" + " '" + "Quét văn bản" + "'")
+                .setTitleText(getString(R.string.window) + " '" + getString(R.string.scan_text) + "'")
                 .setTarget(view)
                 .setSkipText(R.string.cancel_tourguide)
                 .setDismissText(getString(R.string.tieptuc))
                 .setDismissBtnBackground(darkGreen, Color.BLACK)
                 .setSkipBtnBackground(darkGreen, Color.BLACK)
-                .setContentText("Bạn đang ở cửa sổ" + " " + "'Quét văn bản'" + ". " +
-                        "Cửa sổ này được mở sau khi bạn nhấp nút 'Mở camera' ở cửa sổ trước" + ". " +
-                        "Khi ứng dụng hoạt động" + ", " + "kết quả văn bản sẽ được hiển thị trên màn hình khi bạn quét bằng camera" + ". " +
-                        "Bạn nhấp vào một ví trí bất kì trên màn hình để chọn kết quả và chuyển sang cửa sổ 'Lưu vào danh bạ'" + ".")
+                .setContentText(getString(R.string.you_are_on_window) + " '" + getString(R.string.scan_text) + "'. " +
+                        getString(R.string.this_window_openned_after_click_open_camera_btn) + ". " +
+                        getString(R.string.khi_ungdung_hoatdong) + ", " + getString(R.string.text_result_displayed_on_screen_when_scan) + ". " +
+                        getString(R.string.you_click_a_point_on_screen) + ".")
                 .setContentTextColor(mainAct.getResources().getColor(R.color.green))
                 .setListener(new IShowcaseListener() {
                     @Override

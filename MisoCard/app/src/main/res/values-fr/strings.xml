@@ -70,4 +70,32 @@
     <string name="xem_huongdan_sudung">Suivre le guide de visite d\'application</string>
     <string name="tieptuc">Continuer</string>
     <string name="nguoidung_se_tat_hoantoan_ungdung">l\'utilisateur éteindra complètement l\'application</string>
+    <string name="below_is_button">Voici le bouton</string>
+    <string name="when_you_click_this_button">Lorsque vous cliquez sur ce bouton</string>
+
+    <string name="camera_will_be_opened_next_window">la caméra s\'ouvrira dans la fenêtre suivante pour scanner le texte</string>
+    <string name="turn_on_off_auto_focus">activer / désactiver le centrage auto</string>
+    <string name="auto_focus_will_be_on_or_off">le mode de centrage auto sera activé (vert) ou désactivé (gris)</string>
+    <string name="when_the_mode_is_on">Lorsque le mode est activé</string>
+    <string name="camera_will_be_auto_focus">L\'appareil photo fera automatiquement la centrage lors de le scan de texte dans la deuxième fenêtre</string>
+    <string name="on_off_use_flash">activer / désactiver l\'usage du flash</string>
+    <string name="mode_use_flash_will_be_on_or_off">le mode flash sera activé (vert) ou désactivé (gris)</string>
+    <string name="flash_is_on_when_scan_text">le flash sera activé lors du scan de texte dans la deuxième fenêtre</string>
+    <string name="button_to_open_window">Bouton pour ouvrir la fenêtre</string>
+    <string name="function_setting_info">Fonction, paramètres, informations</string>
+    <string name="above_is_button_open_window">Ci-dessus se trouve le bouton pour ouvrir la fenêtre</string>
+    <string name="so_you_can_change_theme_view_tourguide_info_quit_app">afin que vous puissiez changer le thème clair et sombre, consulter le guide de l\'utilisateur, afficher des informations sur l\'appareil et l\'application, ou quitter l\'application</string>
+    <string name="scan_text">Scanner le texte</string>
+    <string name="you_are_on_window">Tu es à la fenêtre</string>
+    <string name="this_window_openned_after_click_open_camera_btn">Cette fenêtre s\'ouvre après avoir cliqué sur le bouton \'Ouvrir la caméra\' dans la fenêtre précédente</string>
+    <string name="text_result_displayed_on_screen_when_scan">les résultats textuels seront affichés à l\'écran lorsque vous scannez avec la caméra</string>
+    <string name="you_click_a_point_on_screen">Vous cliquez sur n\'importe quel emplacement de l\'écran pour sélectionner le résultat et passez à la fenêtre \'Enregistrer dans les contacts\'</string>
+    <string name="you_click_this_btn_to_open_contacts_create_or_edit">Vous cliquez sur ce bouton pour ouvrir des contacts, en créer ou modifier, puis enregistrer le contact</string>
+    <string name="open_contacts">ouvrir des contacts</string>
+    <string name="app_theme_will_transformed_between_2_themes">le thème de l\'application basculera entre les modes clair et sombre</string>
+    <string name="turn_on_off_dark_theme">Activer / désactiver le thème sombre</string>
+    <string name="above_is_button">Au-dessus se trouve le bouton</string>
+    <string name="window">Fenêtre</string>
+    <string name="open_camera">ouvrir la caméra</string>
+    <string name="button">Bouton</string>
 </resources>

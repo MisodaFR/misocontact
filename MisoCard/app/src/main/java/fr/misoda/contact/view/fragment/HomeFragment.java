@@ -127,17 +127,17 @@ public class HomeFragment extends Fragment {
             }
         };
 
-        String tooltipText = "Nút" + " " + "mở camera";
-        String title = "Dưới đây là nút" + " " + "mở camera";
-        String content = "Khi bạn nhấp nút này" + ", " + "camera sẽ được mở ở cửa sổ tiếp theo để quét văn bản" + Constant.DOT;
+        String tooltipText = getString(R.string.button) + " " + getString(R.string.open_camera);
+        String title = getString(R.string.below_is_button) + " " + getString(R.string.open_camera);
+        String content = getString(R.string.when_you_click_this_button) + ", " + getString(R.string.camera_will_be_opened_next_window) + Constant.DOT;
         MaterialShowcaseView.Builder item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.img_btn_scan_text, tooltipText, title, content, showcaseListener);
         sequence.addSequenceItem(item.build());
 
-        tooltipText = "Nút" + " " + "bật/tắt tự động lấy nét";
-        title = "Dưới đây là nút" + " " + "bật/tắt tự động lấy nét";
-        content = "Khi bạn nhấp nút này" + ", " + "chế độ lấy nét tự động sẽ được bật (xanh) hoặc tắt (xám)" +
+        tooltipText = getString(R.string.button) + " " + getString(R.string.turn_on_off_auto_focus);
+        title = getString(R.string.below_is_button) + " " + getString(R.string.turn_on_off_auto_focus);
+        content = getString(R.string.when_you_click_this_button) + ", " + getString(R.string.auto_focus_will_be_on_or_off) +
                 ". " +
-                "Khi chế độ được bật" + ", " + "camera sẽ tự động lấy nét khi quét văn bản ở cửa sổ thứ hai" +
+                getString(R.string.when_the_mode_is_on) + ", " + getString(R.string.camera_will_be_auto_focus) +
                 ".";
         item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.switch_auto_focus, tooltipText, title, content, showcaseListener);
         item.withRectangleShape();
@@ -161,11 +161,11 @@ public class HomeFragment extends Fragment {
             }
         };
 
-        tooltipText = "Nút" + " " + "bật/tắt sử dụng đèn flash";
-        title = "Dưới đây là nút" + " " + "bật/tắt sử dụng đèn flash";
-        content = "Khi bạn nhấp nút này" + ", " + "chế độ sử dụng đèn flash sẽ được bật (xanh) hoặc tắt (xám)" +
+        tooltipText = getString(R.string.button) + " " + getString(R.string.on_off_use_flash);
+        title = getString(R.string.below_is_button) + " " + getString(R.string.on_off_use_flash);
+        content = getString(R.string.when_you_click_this_button) + ", " + getString(R.string.mode_use_flash_will_be_on_or_off) +
                 ". " +
-                "Khi chế độ được bật" + ", " + "đèn flash sẽ được bật khi quét văn bản ở cửa sổ thứ hai" +
+                getString(R.string.when_the_mode_is_on) + ", " + getString(R.string.flash_is_on_when_scan_text) +
                 ".";
         item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.switch_use_flash, tooltipText, title, content, showcaseListenerForBtnUseFlash);
         item.withRectangleShape();
@@ -184,17 +184,17 @@ public class HomeFragment extends Fragment {
                 .corner(30)
                 .textColor(Color.parseColor("#007686"))
                 .textSize(TypedValue.COMPLEX_UNIT_SP, 16)
-                .text("<b>" + "Nút mở cửa sổ" + " '" + "Chức năng, cài đặt, thông tin" + "'" + "</b>");
+                .text("<b>" + getString(R.string.button_to_open_window) + " '" + getString(R.string.function_setting_info) + "'" + "</b>");
 
         new MaterialShowcaseView.Builder(mainAct)
-                .setTitleText("Trên đây là nút mở cửa sổ" + " '" + "Chức năng, cài đặt, thông tin" + "'")
+                .setTitleText(getString(R.string.above_is_button_open_window) + " '" + getString(R.string.function_setting_info) + "'")
                 .setTarget(view)
                 .setSkipText(R.string.cancel_tourguide)
                 .setDismissText(getString(R.string.tieptuc))
                 .setSkipBtnBackground(darkGreen, foregroundWhiteOrBlackOfDarkGreen)
                 .setDismissBtnBackground(darkGreen, foregroundWhiteOrBlackOfDarkGreen)
-                .setContentText("Khi bạn nhấp nút này" + ", " + "ứng dụng sẽ mở cửa sổ" + " '" + "Chức năng, cài đặt, thông tin" + "' " +
-                        "để bạn có thể thay đổi chế độ sáng, tối, xem hướng dẫn sử dụng, xem thông tin về thiết bị và ứng dụng hoặc thoát ứng dụng" + ".")
+                .setContentText(getString(R.string.when_you_click_this_button) + ", " + getString(R.string.ungdung_se_mocuaso) + " '" + getString(R.string.function_setting_info) + "' " +
+                        getString(R.string.so_you_can_change_theme_view_tourguide_info_quit_app) + ".")
                 .setContentTextColor(mainAct.getResources().getColor(R.color.green))
                 .setListener(new IShowcaseListener() {
                     @Override

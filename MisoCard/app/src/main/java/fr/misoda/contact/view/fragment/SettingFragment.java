@@ -103,9 +103,9 @@ public class SettingFragment extends Fragment {
         final MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(mainAct, SHOWCASE_ID);
         sequence.setConfig(config);
 
-        String content = getString(R.string.khi_ungdung_hoatdong) + ", " + getString(R.string.saukhi_nhapvao_dongnay) + ", " + "giao diện của ứng dụng sẽ được chuyển đổi giữa hai chế độ giao diện sáng và tối" + Constant.DOT;
-        String tooltipText = "Nút" + " '" + "Bật/tắt chế độ tối" + "'";
-        String title = "Trên đây là nút" + " '" + "Bật/tắt chế độ tối" + "'";
+        String content = getString(R.string.khi_ungdung_hoatdong) + ", " + getString(R.string.saukhi_nhapvao_dongnay) + ", " + getString(R.string.app_theme_will_transformed_between_2_themes) + Constant.DOT;
+        String tooltipText = getString(R.string.button) + " '" + getString(R.string.turn_on_off_dark_theme) + "'";
+        String title = getString(R.string.above_is_button) + " '" + getString(R.string.turn_on_off_dark_theme) + "'";
         title = StringUtils.EMPTY;
         MaterialShowcaseView.Builder item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.layout_dark_theme, tooltipText, title, content, new MyIShowcaseListener(R.id.layout_dark_theme));
         item.withRectangleShape();
@@ -113,8 +113,8 @@ public class SettingFragment extends Fragment {
         sequence.addSequenceItem(item.build());
 
         content = getString(R.string.khi_ungdung_hoatdong) + ", " + getString(R.string.saukhi_nhapvao_dongnay) + ", " + getString(R.string.ungdung_se_huongdan_ban_cach_sudung_tungbuocmot) + Constant.DOT;
-        tooltipText = "Nút" + " '" + getString(R.string.huongdan_sudung) + "'";
-        title = "Trên đây là nút" + " '" + getString(R.string.huongdan_sudung) + "'";
+        tooltipText = getString(R.string.button) + " '" + getString(R.string.huongdan_sudung) + "'";
+        title = getString(R.string.above_is_button) + " '" + getString(R.string.huongdan_sudung) + "'";
         title = StringUtils.EMPTY;
         item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.layout_tour_guide, tooltipText, title, content, new MyIShowcaseListener(R.id.layout_tour_guide));
         item.withRectangleShape();
@@ -122,8 +122,8 @@ public class SettingFragment extends Fragment {
         sequence.addSequenceItem(item.build());
 
         content = getString(R.string.khi_ungdung_hoatdong) + ", " + getString(R.string.saukhi_nhapvao_dongnay) + ", " + getString(R.string.ungdung_se_mo_cuaso_hienthi_thongtin) + Constant.DOT;
-        tooltipText = "Nút" + " '" + getString(R.string.device_app_infos) + "'";
-        title = "Trên đây là nút" + " '" + getString(R.string.device_app_infos) + "'";
+        tooltipText = getString(R.string.button) + " '" + getString(R.string.device_app_infos) + "'";
+        title = getString(R.string.above_is_button) + " '" + getString(R.string.device_app_infos) + "'";
         title = StringUtils.EMPTY;
         item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.layout_device_app_infos, tooltipText, title, content, new MyIShowcaseListener(R.id.layout_device_app_infos));
         item.withRectangleShape();
@@ -132,8 +132,8 @@ public class SettingFragment extends Fragment {
         sequence.addSequenceItem(item.build());
 
         content = getString(R.string.khi_ungdung_hoatdong) + ", " + getString(R.string.saukhi_nhapvao_dongnay) + ", " + getString(R.string.nguoidung_se_tat_hoantoan_ungdung) + Constant.DOT;
-        tooltipText = "Nút" + " '" + getString(R.string.quit_app) + "'";
-        title = "Trên đây là nút" + " '" + getString(R.string.quit_app) + "'";
+        tooltipText = getString(R.string.button) + " '" + getString(R.string.quit_app) + "'";
+        title = getString(R.string.above_is_button) + " '" + getString(R.string.quit_app) + "'";
         title = StringUtils.EMPTY;
         item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.layout_quit_app, tooltipText, title, content, new MyIShowcaseListener(R.id.layout_quit_app));
         item.withRectangleShape();
