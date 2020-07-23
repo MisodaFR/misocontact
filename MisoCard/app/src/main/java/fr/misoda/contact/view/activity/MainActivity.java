@@ -1,6 +1,7 @@
 package fr.misoda.contact.view.activity;
 
 import android.os.Bundle;
+import android.text.Html;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -25,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setSubtitle(getString(R.string.version) + StringUtils.SPACE + BuildConfig.VERSION_NAME);
+        String subtitle = getString(R.string.version) + StringUtils.SPACE + BuildConfig.VERSION_NAME;
+        toolbar.setSubtitle(Html.fromHtml("<small>" + subtitle + "</small>"));
     }
 
     /*@Override
