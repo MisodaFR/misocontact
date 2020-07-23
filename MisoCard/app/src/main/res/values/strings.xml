@@ -6,7 +6,7 @@
     <string name="ok">OK</string>
     <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
     <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
-    <string name="low_storage_error">Ocr dependencies cannot be downloaded due to low device storage</string>
+    <string name="low_storage_error">Optical character recognition dependencies cannot be downloaded due to low device storage</string>
     <string name="auto_focus">Auto focus</string>
     <string name="use_flash">Use flash</string>
 
@@ -68,5 +68,5 @@
     <string name="open_camera">open camera</string>
     <string name="button">Button</string>
     <string name="mode_use_flash_will_be_on_or_off">flash mode will be turned on (green) or off (gray)</string>
-    <string name="no_use_camera_permission">Không có quyền sử dụng camera</string>
+    <string name="no_use_camera_permission">No permission to use the camera</string>
 </resources>

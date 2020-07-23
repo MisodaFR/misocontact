@@ -1,12 +1,11 @@
 <resources>
     <string name="app_name">Miso contact</string>
-    <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
 
     <string name="ok">OK</string>
-    <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
-    <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
-    <string name="low_storage_error">Ocr dependencies cannot be downloaded due to low device storage</string>
+    <string name="permission_camera_rationale">Cần có quyền truy cập vào camera để quét văn bản</string>
+    <string name="no_camera_permission">Ứng dụng không thể hoạt động vì không có quyền dùng camera. Ứng dụng sẽ đóng ngay bây giờ.</string>
+    <string name="low_storage_error">Công cụ nhận dạng văn bản không thể được tải xuống do dung lượng lưu trữ thiết bị thấp</string>
     <string name="auto_focus">Tự động lấy nét</string>
     <string name="use_flash">Sử dụng flash</string>
 
@@ -69,4 +68,5 @@
     <string name="turn_on_off_dark_theme">Bật/tắt chế độ tối</string>
     <string name="above_is_button">Trên đây là nút</string>
     <string name="no_use_camera_permission">Không có quyền sử dụng camera</string>
+    <string name="action_settings">Cài đặt</string>
 </resources>
