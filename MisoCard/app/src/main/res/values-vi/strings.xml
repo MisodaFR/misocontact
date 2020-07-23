@@ -98,4 +98,5 @@
     <string name="app_theme_will_transformed_between_2_themes">giao diện của ứng dụng sẽ được chuyển đổi giữa hai chế độ giao diện sáng và tối</string>
     <string name="turn_on_off_dark_theme">Bật/tắt chế độ tối</string>
     <string name="above_is_button">Trên đây là nút</string>
+    <string name="no_use_camera_permission">Không có quyền sử dụng camera</string>
 </resources>

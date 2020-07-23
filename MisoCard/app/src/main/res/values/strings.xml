@@ -98,4 +98,5 @@
     <string name="open_camera">open camera</string>
     <string name="button">Button</string>
     <string name="mode_use_flash_will_be_on_or_off">flash mode will be turned on (green) or off (gray)</string>
+    <string name="no_use_camera_permission">Không có quyền sử dụng camera</string>
 </resources>

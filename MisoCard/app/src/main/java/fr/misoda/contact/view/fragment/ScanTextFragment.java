@@ -3,8 +3,10 @@ package fr.misoda.contact.view.fragment;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
@@ -49,7 +51,7 @@ import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 public class ScanTextFragment extends Fragment {
-    private static final String TAG = "OcrCaptureActivity";
+    private static final String TAG = ScanTextFragment.class.getSimpleName();
     private static final String SHOWCASE_ID = "Showcase of ScanTextFragment";
 
     // Intent request code to handle updating play services if needed.
@@ -57,11 +59,6 @@ public class ScanTextFragment extends Fragment {
 
     // Permission request codes need to be < 256
     private static final int RC_HANDLE_CAMERA_PERM = 2;
-
-    // Constants used to pass extra data in the intent
-    public static final String AutoFocus = "AutoFocus";
-    public static final String UseFlash = "UseFlash";
-    public static final String TextBlockObject = "String";
 
     private CameraSource mCameraSource;
     private CameraSourcePreview mPreview;
@@ -261,15 +258,12 @@ public class ScanTextFragment extends Fragment {
 
         final String[] permissions = new String[]{Manifest.permission.CAMERA};
 
-        if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
-                Manifest.permission.CAMERA)) {
-            ActivityCompat.requestPermissions(getActivity(), permissions, RC_HANDLE_CAMERA_PERM);
+        if (!shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
+            requestPermissions(permissions, RC_HANDLE_CAMERA_PERM);
             return;
         }
 
-        final Activity thisActivity = getActivity();
-
-        View.OnClickListener listener = view -> ActivityCompat.requestPermissions(thisActivity, permissions, RC_HANDLE_CAMERA_PERM);
+        View.OnClickListener listener = view -> requestPermissions(permissions, RC_HANDLE_CAMERA_PERM);
 
         Snackbar.make(mGraphicOverlay, R.string.permission_camera_rationale,
                 Snackbar.LENGTH_INDEFINITE)
@@ -401,5 +395,31 @@ public class ScanTextFragment extends Fragment {
                 })
                 .show();
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode != RC_HANDLE_CAMERA_PERM) {
+            Log.d(TAG, "Got unexpected permission result: " + requestCode);
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+            return;
+        }
+
+        if (grantResults.length != 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            Log.d(TAG, "Camera permission granted - initialize the camera source");
+            // We have permission, so create the camerasource
+            ScanTextFragmentArgs args = ScanTextFragmentArgs.fromBundle(getArguments());
+            boolean autoFocus = args.getAutoFocus();
+            boolean useFlash = args.getUseFlash();
+            createCameraSource(autoFocus, useFlash);
+            return;
+        }
+
+        Log.e(TAG, "Permission not granted: results len = " + grantResults.length + " Result code = " + (grantResults.length > 0 ? grantResults[0] : "(empty)"));
+
+        DialogInterface.OnClickListener listener = (dialog, id) -> getActivity().finish();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(R.string.no_use_camera_permission).setMessage(R.string.no_camera_permission).setPositiveButton(R.string.ok, listener).show();
     }
 }

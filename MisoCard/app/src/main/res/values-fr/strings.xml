@@ -98,4 +98,5 @@
     <string name="window">Fenêtre</string>
     <string name="open_camera">ouvrir la caméra</string>
     <string name="button">Bouton</string>
+    <string name="no_use_camera_permission">Không có quyền sử dụng camera</string>
 </resources>
