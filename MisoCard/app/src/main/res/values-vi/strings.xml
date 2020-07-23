@@ -2,32 +2,13 @@
     <string name="app_name">Miso contact</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <string name="ok">OK</string>
     <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
     <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
     <string name="low_storage_error">Ocr dependencies cannot be downloaded due to low device storage</string>
-    <string name="title_activity_main">Ocr Detector Sample</string>
-    <string name="ocr_header">Click &quot;Detect Text&quot; to detect text</string>
-    <string name="read_text">Detect Text</string>
     <string name="auto_focus">Tự động lấy nét</string>
     <string name="use_flash">Sử dụng flash</string>
-    <string name="ocr_success">Text read successfully</string>
-    <string name="ocr_failure">No text captured</string>
-    <string name="ocr_error">"Error reading text: %1$s"</string>
-
-    <string name="light_dark_theme">Chế độ sáng, tối, …</string>
-    <string name="light">Sáng</string>
-    <string name="dark">Tối</string>
-    <string name="set_by_battery_saver">Theo chế độ tiết kiệm pin</string>
-    <string name="system_default">Theo hệ thống</string>
 
     <string name="quit_app">Thoát ứng dụng</string>
     <string name="version">Phiên bản</string>
@@ -52,22 +33,11 @@
     <string name="huongdan_sudung">Hướng dẫn sử dụng</string>
 
     <string name="cancel_tourguide">Thoát</string>
-    <string name="ban_vua_nhap_vao_dong">Bạn vừa nhấp vào dòng</string>
     <string name="khi_ungdung_hoatdong">Khi ứng dụng hoạt động</string>
     <string name="saukhi_nhapvao_dongnay">sau khi nhấp vào dòng này</string>
-    <string name="chua_cac_sach_da_va_dang_duocdoc">ứng dụng sẽ mở cửa sổ chứa các sách hoặc tệp đã và đang được đọc gần thời điểm hiện tại nhất</string>
-    <string name="tieptuc_xemhuondan_nhapvao_menu_benphai">Để tiếp tục xem hướng dẫn, bạn hãy nhấp vào từng dòng ở menu hiện ra phía trên bên phải</string>
     <string name="ungdung_se_mocuaso">ứng dụng sẽ mở cửa sổ</string>
-    <string name="de_ban_thaydoi_tocdo_va_docao_cua_giongnoi">để bạn thay đổi tốc độ và độ cao của giọng nói</string>
-    <string name="de_ban_thaydoi_kieuchu_kichthuoc_phongchu">để bạn thay đổi kiểu chữ, kích thước chữ và phông hiển thị nội dung được đọc ở phần văn bản</string>
-    <string name="chedo_manhinh_giup_ungdung">Chế độ toàn màn hình giúp ứng dụng có nhiều không gian hơn trên màn hình để hiển thị nội dung trang sách</string>
-    <string name="o_chedo_nay_phia_duoi_day_man_hinh_co">Ở chế độ này, phía dưới đáy màn hình về bên phải sẽ có nút màu hồng, bạn có thể nhấp nút này và nút thu nhỏ để trở về chế độ màn hình thông thường</string>
-    <string name="ban_cothe_hengio_tudong_doc">bạn có thể hẹn giờ tự động đọc</string>
-    <string name="chucnang_nay_giongnhu_chucnang_baothuc">Chức năng này giống như chức năng báo thức</string>
-    <string name="ban_cothe_hengio_tudong_dungdoc">bạn có thể hẹn giờ tự động dừng đọc</string>
     <string name="ungdung_se_mo_cuaso_hienthi_thongtin">ứng dụng sẽ mở cửa sổ hiển thị thông tin thiết bị của bạn và thông tin về ứng dụng</string>
     <string name="ungdung_se_huongdan_ban_cach_sudung_tungbuocmot">ứng dụng sẽ hướng dẫn bạn cách sử dụng từng bước một</string>
-    <string name="xem_huongdan_sudung">Xem hướng dẫn sử dụng</string>
     <string name="tieptuc">Tiếp tục</string>
     <string name="nguoidung_se_tat_hoantoan_ungdung">người dùng sẽ tắt hoàn toàn ứng dụng</string>
     <string name="button">Nút</string>

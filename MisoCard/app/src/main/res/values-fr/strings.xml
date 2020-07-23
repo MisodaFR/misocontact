@@ -2,32 +2,13 @@
     <string name="app_name">Miso contact</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <string name="ok">OK</string>
     <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
     <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
     <string name="low_storage_error">Ocr dependencies cannot be downloaded due to low device storage</string>
-    <string name="title_activity_main">Ocr Detector Sample</string>
-    <string name="ocr_header">Click &quot;Detect Text&quot; to detect text</string>
-    <string name="read_text">Detect Text</string>
     <string name="auto_focus">Concentrage auto</string>
     <string name="use_flash">Utiliser le flash</string>
-    <string name="ocr_success">Text read successfully</string>
-    <string name="ocr_failure">No text captured</string>
-    <string name="ocr_error">"Error reading text: %1$s"</string>
-
-    <string name="light_dark_theme">Thèmes (clair, sombre, etc.)</string>
-    <string name="light">Clair</string>
-    <string name="dark">Sombre</string>
-    <string name="set_by_battery_saver">Défini par l\'économiseur de batterie</string>
-    <string name="system_default">Défaut du système</string>
 
     <string name="quit_app">Quitter l\'application</string>
     <string name="version">Version</string>
@@ -52,22 +33,11 @@
     <string name="huongdan_sudung">Guide de visite d\'application</string>
 
     <string name="cancel_tourguide">Quitter</string>
-    <string name="ban_vua_nhap_vao_dong">Vous venez de cliquer sur la ligne</string>
     <string name="khi_ungdung_hoatdong">Quand l\'application fonctionne</string>
     <string name="saukhi_nhapvao_dongnay">après avoir cliqué sur cette ligne</string>
-    <string name="chua_cac_sach_da_va_dang_duocdoc">l\'application ouvrira une fenêtre contenant les livres ou fichiers qui ont été et sont actuellement lues</string>
-    <string name="tieptuc_xemhuondan_nhapvao_menu_benphai">Pour continuer à suivre le guide de visite d\'application, cliquez sur chaque ligne du menu qui apparaît à droite</string>
     <string name="ungdung_se_mocuaso">l\'application ouvrira la fenêtre</string>
-    <string name="de_ban_thaydoi_tocdo_va_docao_cua_giongnoi">vous permet de changer la vitesse et la hauteur de la voix</string>
-    <string name="de_ban_thaydoi_kieuchu_kichthuoc_phongchu">vous permet de modifier le style, la taille et la police du contenu dans le texte</string>
-    <string name="chedo_manhinh_giup_ungdung">Le mode plein écran donne à l\'application plus d\'espace à l\'écran pour afficher le contenu de la page de livre</string>
-    <string name="o_chedo_nay_phia_duoi_day_man_hinh_co">Dans ce mode, le bas de l\'écran à droite aura un bouton rose, vous pouvez cliquer sur ce bouton et le bouton de réduction pour revenir au mode d\'écran normal</string>
-    <string name="ban_cothe_hengio_tudong_doc">vous pouvez établir la minuterie pour lire automatiquement</string>
-    <string name="chucnang_nay_giongnhu_chucnang_baothuc">Cette fonction est similaire à la fonction d\'alarme</string>
-    <string name="ban_cothe_hengio_tudong_dungdoc">vous pouvez établir la minuterie pour arrêter automatiquement la lecture</string>
     <string name="ungdung_se_mo_cuaso_hienthi_thongtin">l\'application ouvrira une fenêtre pour afficher les informations de votre appareil et les informations de l\'application</string>
     <string name="ungdung_se_huongdan_ban_cach_sudung_tungbuocmot">l\'application vous montrera comment l\'utiliser étape par étape</string>
-    <string name="xem_huongdan_sudung">Suivre le guide de visite d\'application</string>
     <string name="tieptuc">Continuer</string>
     <string name="nguoidung_se_tat_hoantoan_ungdung">l\'utilisateur éteindra complètement l\'application</string>
     <string name="below_is_button">Voici le bouton</string>

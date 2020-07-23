@@ -123,7 +123,6 @@
                     android:src="@drawable/ic_x_white_24_2" />
 
                 <TextView
-                    android:id="@+id/quit_app"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"

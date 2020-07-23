@@ -29,7 +29,6 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_device_infos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/device_info"
@@ -65,7 +64,6 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tv_app_infos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -111,7 +109,6 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tv_remark_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -121,7 +118,6 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_remark_content_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -130,7 +126,6 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tv_remark_content_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
