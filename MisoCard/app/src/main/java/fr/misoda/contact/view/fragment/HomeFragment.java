@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import androidx.activity.OnBackPressedCallback;
@@ -32,7 +33,6 @@ import uk.co.deanwild.materialshowcaseview.ShowcaseTooltip;
 public class HomeFragment extends Fragment {
     public static final String LOG_TAG = HomeFragment.class.getSimpleName();
     private static final String SHOWCASE_ID = "Showcase of HomeFragment";
-    // Use a compound button so either checkbox or switch widgets work.
     private Switch switchAutoFocus;
     private Switch switchUseFlash;
     private Menu menu;
@@ -69,6 +69,9 @@ public class HomeFragment extends Fragment {
 
         setHasOptionsMenu(true);
 
+        switchAutoFocus.setOnCheckedChangeListener((buttonView, isChecked) -> AppConfig.getInstance().setBoolean(Constant.AUTO_FOCUS, isChecked));
+        switchUseFlash.setOnCheckedChangeListener((buttonView, isChecked) -> AppConfig.getInstance().setBoolean(Constant.USE_FLASH, isChecked));
+
         return view;
     }
 
@@ -77,7 +80,11 @@ public class HomeFragment extends Fragment {
 
         if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false)) {
             presentShowcaseSequence();
+            return;
         }
+
+        switchAutoFocus.setChecked(AppConfig.getInstance().getBoolean(Constant.AUTO_FOCUS, true));
+        switchUseFlash.setChecked(AppConfig.getInstance().getBoolean(Constant.USE_FLASH, false));
     }
 
     @Override

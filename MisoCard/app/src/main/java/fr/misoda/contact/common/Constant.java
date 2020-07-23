@@ -9,6 +9,8 @@ public class Constant {
     public static final String KEY_THEME = APP_NAME + " -> Theme";
     public static final String SHOULD_DISPLAY_TOUR_GUIDE_KEY = APP_NAME + "Should display tour guide ?";
     public static final String DOT = ".";
+    public static final String AUTO_FOCUS = "AUTO_FOCUS";
+    public static final String USE_FLASH = "USE_FLASH";
 
     // Changer ces valeurs ci-dessous chaque release
     public static final int UPDATE_YEAR = 2020;
