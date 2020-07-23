@@ -6,7 +6,7 @@ import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -28,8 +28,7 @@ import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 public class SaveToContactsFragment extends Fragment {
     private static final String SHOWCASE_ID = "Showcase of SaveToContactsFragment";
-    // Use a compound button so either checkbox or switch widgets work.
-    private TextView tvTextValue;
+    private EditText etTextValue;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,15 +48,13 @@ public class SaveToContactsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_save_to_contacts, container, false);
 
-        tvTextValue = view.findViewById(R.id.tv_text_value);
+        etTextValue = view.findViewById(R.id.et_text_value);
 
         view.findViewById(R.id.btn_save_to_contacts).setOnClickListener(view1 -> {
             // save to contact
-            String textResult = SaveToContactsFragmentArgs.fromBundle(getArguments()).getScannedText();
-            createOrEditAContact(textResult);
+            createOrEditAContact(etTextValue.getText().toString());
         });
 
         return view;
@@ -70,7 +67,7 @@ public class SaveToContactsFragment extends Fragment {
             return;
         }
         String textResult = SaveToContactsFragmentArgs.fromBundle(getArguments()).getScannedText();
-        tvTextValue.setText(textResult);
+        etTextValue.setText(textResult);
     }
 
     public void createOrEditAContact(String text) {
