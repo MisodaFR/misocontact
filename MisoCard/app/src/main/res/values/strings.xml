@@ -69,4 +69,15 @@
     <string name="button">Button</string>
     <string name="mode_use_flash_will_be_on_or_off">flash mode will be turned on (green) or off (gray)</string>
     <string name="no_use_camera_permission">No permission to use the camera</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="no_accept">No</string>
+    <string name="accept">Yes</string>
+    <string name="xem_huongdan_sudung">Follow application tour guide</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="ban_comuon_xem_huongdan_sudung_ngaybaygio_khong">Would you like to follow application tour guide now?</string>
+    <string name="huongdan_se_lanluot_gioithieu">The tour guide will in turn introduce the components of the application and their respective functions</string>
+    <string name="de_chuyensang_phan_gioithieu_tieptheo">To move on to the next introduction, click on the text</string>
+    <string name="de_thoat_huongdan_ban_hay_nhapvao_dongchu">To exit the tour guide and start the application, click on the text</string>
+    <string name="ban_luonluon_cothe_xem_huongdansudung_bangcach">You can always follow the tour guide by clicking on the upper right menu and clicking on the line</string>
 </resources>

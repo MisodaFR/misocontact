@@ -29,9 +29,9 @@ public class TooltipTourGuideHelper {
 
         MaterialShowcaseView.Builder builder = new MaterialShowcaseView.Builder(mainAct)
                 .setTitleText(title)
-                .setSkipText("Exit")
+                .setSkipText(mainAct.getString(R.string.cancel_tourguide))
                 .setTarget(mainAct.findViewById(idTargetView))
-                .setDismissText("Next")
+                .setDismissText(mainAct.getString(R.string.tieptuc))
                 .setSkipBtnBackground(darkGreen, Color.BLACK)
                 .setDismissBtnBackground(darkGreen, Color.BLACK)
                 .setContentText(content)

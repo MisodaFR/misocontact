@@ -9,7 +9,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import androidx.activity.OnBackPressedCallback;
@@ -17,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (!AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false)) {
+        if (!AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, true)) {
             return;
         }
         // This callback will only be called when MyFragment is at least Started.
@@ -78,13 +78,15 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false)) {
-            presentShowcaseSequence();
-            return;
-        }
-
         switchAutoFocus.setChecked(AppConfig.getInstance().getBoolean(Constant.AUTO_FOCUS, true));
         switchUseFlash.setChecked(AppConfig.getInstance().getBoolean(Constant.USE_FLASH, false));
+
+        if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_PROMPT_DIALOG, true)) {
+            displayTourGuidePromptDialog();
+        } else if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, true)) {
+            presentShowcaseSequence();
+        }
+
     }
 
     @Override
@@ -98,7 +100,7 @@ public class HomeFragment extends Fragment {
         int id = item.getItemId();
         switch (id) {
             case R.id.action_settings:
-                if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false)) {
+                if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, true)) {
                     presentTooltipTourguideOfMenuItemSetting();
                 } else {
                     NavHostFragment.findNavController(this).navigate(R.id.action_setting_fragment);
@@ -226,5 +228,31 @@ public class HomeFragment extends Fragment {
                 })
                 .setToolTip(tooltip)
                 .show();
+    }
+
+    private void displayTourGuidePromptDialog() {
+        FragmentActivity activity = getActivity();
+        if (activity == null || activity.isFinishing() || activity.isDestroyed()) {
+            return;
+        }
+
+        OpenTourguidePromptDialog dialog = OpenTourguidePromptDialog.newInstance();
+        FragmentManager fragmentManager = activity.getSupportFragmentManager();
+        dialog.setDialogBtnClickListener(new OpenTourguidePromptDialog.IBtnClickListener() {
+            @Override
+            public void onOkBtnClicked() {
+                // Open tour guide
+                AppConfig.getInstance().setBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_PROMPT_DIALOG, false);
+                AppConfig.getInstance().setBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, true);
+                presentShowcaseSequence();
+            }
+
+            @Override
+            public void onCancelBtnClicked() {// Ng dùng đã hiểu, ko cần xem hướng dẫn
+                AppConfig.getInstance().setBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_PROMPT_DIALOG, false);
+                AppConfig.getInstance().setBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false);
+            }
+        });
+        dialog.show(fragmentManager, OpenTourguidePromptDialog.LOG_TAG);
     }
 }

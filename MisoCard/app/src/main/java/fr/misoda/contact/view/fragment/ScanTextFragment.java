@@ -73,7 +73,7 @@ public class ScanTextFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (!AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false)) {
+        if (!AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, true)) {
             return;
         }
         // This callback will only be called when MyFragment is at least Started.
@@ -106,7 +106,7 @@ public class ScanTextFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false)) {
+        if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, true)) {
             presentTourguide();
             return;
         }
@@ -136,7 +136,7 @@ public class ScanTextFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false)) {
+        if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, true)) {
             return;
         }
         startCameraSource();
@@ -148,7 +148,7 @@ public class ScanTextFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false)) {
+        if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, true)) {
             return;
         }
         if (mPreview != null) {
@@ -163,7 +163,7 @@ public class ScanTextFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false)) {
+        if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, true)) {
             return;
         }
         if (mPreview != null) {
