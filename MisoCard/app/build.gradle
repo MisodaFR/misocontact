@@ -2,58 +2,82 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 29
+    def versionPropsFile = file('version.properties')
+    Properties versionProps = new Properties()
 
-    defaultConfig {
-        applicationId "fr.misoda.contact"
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+    if (versionPropsFile.canRead()) {
+        versionProps.load(new FileInputStream(versionPropsFile))
+        // Lecture valeur de code de version depuis le fichier : version.properties
+        def codeOfVersion = versionProps['VERSION_CODE'].toInteger()
 
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        List<String> runTasks = gradle.startParameter.getTaskNames()
 
-        multiDexEnabled true
-    }
-
-    compileOptions {
-        sourceCompatibility = 1.8
-        targetCompatibility = 1.8
-    }
-
-
-    dexOptions {
-        incremental true
-        javaMaxHeapSize "4g"
-    }
-
-    dexOptions {
-        // Comment the following in order to see actual errors, not unhelpful "too many errors"!
-        // preDexLibraries = false
-        additionalParameters = ['--core-library']
-
-    }
-
-    packagingOptions {
-        exclude 'META-INF/DEPENDENCIES.txt'
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/NOTICE.txt'
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/DEPENDENCIES'
-        exclude 'META-INF/notice.txt'
-        exclude 'META-INF/license.txt'
-        exclude 'META-INF/dependencies.txt'
-        exclude 'META-INF/LGPL2.1'
-        exclude 'readme.html'
-        exclude 'license.html'
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        // Only increase if on release (Chi tang khi release bundle)
+        if (runTasks.contains(":app:bundleRelease")) {
+            codeOfVersion++
         }
+
+        def first = codeOfVersion.intdiv(100)
+        def second = codeOfVersion.intdiv(10) % 10
+        def third = codeOfVersion.intdiv(1) % 10
+
+        def nameOfVersion = first + "." + second + "." + third
+
+        defaultConfig {
+            applicationId "fr.misoda.contact"
+            minSdkVersion 21
+            targetSdkVersion 29
+            versionCode codeOfVersion
+            versionName nameOfVersion
+            testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+            // The following argument makes the Android Test Orchestrator run its
+            // "pm clear" command after each test invocation. This command ensures
+            // that the app's state is completely cleared between tests.
+            testInstrumentationRunnerArguments clearPackageData: 'true'
+            multiDexEnabled true
+
+            setProperty("archivesBaseName", "MisoContact" + "_" + versionName)
+        }
+
+        // Sauvergarder le code de version dans le fichier : version.properties
+        versionProps['VERSION_CODE'] = codeOfVersion.toString()
+        versionProps.store(versionPropsFile.newWriter(), null)
+
+        dexOptions {
+            incremental true
+            javaMaxHeapSize "4g"
+        }
+
+        dexOptions {
+            // Comment the following in order to see actual errors, not unhelpful "too many errors"!
+            // preDexLibraries = false
+            additionalParameters = ['--core-library']
+        }
+
+        packagingOptions {
+            exclude 'META-INF/DEPENDENCIES.txt'
+            exclude 'META-INF/LICENSE.txt'
+            exclude 'META-INF/NOTICE.txt'
+            exclude 'META-INF/NOTICE'
+            exclude 'META-INF/LICENSE'
+            exclude 'META-INF/DEPENDENCIES'
+            exclude 'META-INF/notice.txt'
+            exclude 'META-INF/license.txt'
+            exclude 'META-INF/dependencies.txt'
+            exclude 'META-INF/LGPL2.1'
+            exclude 'readme.html'
+            exclude 'license.html'
+        }
+
+        compileOptions {
+            sourceCompatibility = 1.8
+            targetCompatibility = 1.8
+        }
+
+    } else {
+        throw new GradleException("Could not read version.properties!")
     }
+
 }
 
 dependencies {
