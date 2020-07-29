@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/black</color>
+    <color name="colorPrimaryDark">@color/grey_recommended</color>
+    <color name="colorAccent">@color/green</color>
+    <color name="white_grey">@color/grey_recommended</color>
+    <color name="blue_white">@color/white</color>
+    <color name="blue_dark_black">@color/black</color>
+    <color name="black_white">@color/white</color>
+    <color name="black_grey">@color/grey_dark</color>
+    <color name="grey_light_grey_dark">@color/grey_dark</color>
+    <color name="blue_green">@color/green</color>
+    <color name="white_black">#000</color>
+    <color name="black_orange">#ff9100</color>
+
+</resources>

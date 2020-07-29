@@ -1,0 +1,7 @@
+/build
+**/app/release
+
+*.apk
+*.aab
+
+.DS_Store

@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="180dp"
+    android:layout_height="wrap_content"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentBottom="true"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/layout_cancel_btn"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_36"
+        android:layout_marginEnd="@dimen/margin_8"
+        android:layout_weight="50"
+        android:background="@drawable/bacground_border_black_white"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_0_5">
+
+        <Button
+            android:id="@+id/cancel_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bacground_border_black_white"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            android:textColor="@color/white_black"
+            android:textSize="@dimen/text_size_16" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_ok_btn"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_36"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_weight="50"
+        android:background="@drawable/bacground_border_black_white"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_0_5">
+
+        <Button
+            android:id="@+id/ok_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bacground_border_black_white"
+            android:text="@string/ok"
+            android:textAllCaps="false"
+            android:textColor="@color/white_black"
+            android:textSize="@dimen/text_size_16" />
+    </LinearLayout>
+</LinearLayout>

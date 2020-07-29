@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">Miso contact</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+
+    <string name="ok">OK</string>
+    <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
+    <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
+    <string name="low_storage_error">Optical character recognition dependencies cannot be downloaded due to low device storage</string>
+    <string name="auto_focus">Auto focus</string>
+    <string name="use_flash">Use flash</string>
+
+    <string name="quit_app">Quit app</string>
+    <string name="version">Version</string>
+    <string name="dark_theme">Dark theme</string>
+
+    <string name="app_infos">Application informations</string>
+    <string name="manufacturer">Manufacturer</string>
+    <string name="model">Model</string>
+    <string name="android_version_off_device">Android OS version on device</string>
+    <string name="app_name_label">Application name</string>
+    <string name="app_type">Application type</string>
+    <string name="free_contain_no_ads">Free, containts no ads</string>
+    <string name="app_version">Application version</string>
+    <string name="update_date">Update date</string>
+    <string name="device_info">Device informations</string>
+    <string name="device_app_infos">Device and application informations</string>
+    <string name="compare_app_version">You can compare this application version here and its version on Play Store to see if this application has been updated to the latest version.</string>
+    <string name="guide_update_app">This application will be usually updated automatically. If not, you can open Play Store, search for this application and update it manually.</string>
+
+    <string name="two_points">:</string>
+    <string name="chu_y">Remark</string>
+    <string name="huongdan_sudung">Application tour guide</string>
+
+    <string name="cancel_tourguide">Exit</string>
+    <string name="khi_ungdung_hoatdong">When the application works</string>
+    <string name="saukhi_nhapvao_dongnay">after clicking on this line</string>
+    <string name="ungdung_se_mocuaso">the application will open the window</string>
+    <string name="ungdung_se_mo_cuaso_hienthi_thongtin">the application will open a window to display your device information and application information</string>
+    <string name="ungdung_se_huongdan_ban_cach_sudung_tungbuocmot">the application will show you how to use it step by step</string>
+    <string name="tieptuc">Next</string>
+    <string name="nguoidung_se_tat_hoantoan_ungdung">user will turn off the application completely</string>
+    <string name="below_is_button">Here is the button</string>
+    <string name="when_you_click_this_button">When you click this button</string>
+
+    <string name="camera_will_be_opened_next_window">the camera will be opened in the next window to scan the text</string>
+    <string name="turn_on_off_auto_focus">turn on / off auto focus</string>
+    <string name="auto_focus_will_be_on_or_off">auto focus mode will be turned on (green) or off (gray)</string>
+    <string name="when_the_mode_is_on">When the mode is on</string>
+    <string name="camera_will_be_auto_focus">the camera will automatically focus when scanning text in the second window</string>
+    <string name="on_off_use_flash">turn on / off using flash</string>
+    <string name="flash_is_on_when_scan_text">the flash will be turned on when scanning text in the second window</string>
+    <string name="button_to_open_window">Button to open the window</string>
+    <string name="function_setting_info">Function, settings, information</string>
+    <string name="above_is_button_open_window">Above is the button to open the window</string>
+    <string name="so_you_can_change_theme_view_tourguide_info_quit_app">so you can change the light and dark theme, see the user guide, view information about the device and application, or exit the application</string>
+    <string name="scan_text">Scan the text</string>
+    <string name="you_are_on_window">You are at the window</string>
+    <string name="this_window_openned_after_click_open_camera_btn">This window is opened after you click the \'Open camera\' button in the previous window</string>
+    <string name="text_result_displayed_on_screen_when_scan">text results will be displayed on the screen when you scan with the camera</string>
+    <string name="you_click_a_point_on_screen">You click on any location on the screen to select the result and switch to the \'Save to contacts\' window</string>
+    <string name="you_click_this_btn_to_open_contacts_create_or_edit">You click this button to open contacts, create a new contact or edit and then save the contact</string>
+    <string name="open_contacts">open contacts</string>
+    <string name="app_theme_will_transformed_between_2_themes">the application theme will be switched between light and dark modes</string>
+    <string name="turn_on_off_dark_theme">Turn on / off the dark theme</string>
+    <string name="above_is_button">Above is the button</string>
+    <string name="window">Window</string>
+    <string name="open_camera">open camera</string>
+    <string name="button">Button</string>
+    <string name="mode_use_flash_will_be_on_or_off">flash mode will be turned on (green) or off (gray)</string>
+    <string name="no_use_camera_permission">No permission to use the camera</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="no_accept">No</string>
+    <string name="accept">Yes</string>
+    <string name="xem_huongdan_sudung">Follow application tour guide</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="ban_comuon_xem_huongdan_sudung_ngaybaygio_khong">Would you like to follow application tour guide now?</string>
+    <string name="huongdan_se_lanluot_gioithieu">The tour guide will in turn introduce the components of the application and their respective functions</string>
+    <string name="de_chuyensang_phan_gioithieu_tieptheo">To move on to the next introduction, click on the text</string>
+    <string name="de_thoat_huongdan_ban_hay_nhapvao_dongchu">To exit the tour guide and start the application, click on the text</string>
+    <string name="ban_luonluon_cothe_xem_huongdansudung_bangcach">You can always follow the tour guide by clicking on the upper right menu and clicking on the line</string>
+</resources>

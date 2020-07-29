@@ -1,0 +1,42 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="fr.misoda.contact.view.activity.MainActivity">
+    <item
+        android:icon="@drawable/ic_action_settings_white"
+        android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        app:showAsAction="always" />
+
+    <!--<group>
+        <item
+            android:title="@string/light_dark_theme"
+            app:showAsAction="never">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/action_light_theme"
+                        android:title="@string/light" />
+                    <item
+                        android:id="@+id/action_dark_theme"
+                        android:title="@string/dark" />
+                    &lt;!&ndash;<item
+                        android:id="@+id/action_battery_saver_theme"
+                        android:title="@string/set_by_battery_saver" />
+                    <item
+                        android:id="@+id/action_system_theme"
+                        android:title="@string/system_default" />
+                    <item
+                        android:id="@+id/action_custom_theme"
+                        android:title="@string/custom" />&ndash;&gt;
+                </group>
+            </menu>
+        </item>
+
+    </group>
+
+    <item
+        android:id="@+id/action_quit_app"
+        android:title="@string/quit_app"
+        app:showAsAction="never" />-->
+</menu>

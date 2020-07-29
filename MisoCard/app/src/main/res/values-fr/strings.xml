@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">Miso contact</string>
+    <!-- Strings used for fragments for navigation -->
+
+    <string name="ok">OK</string>
+    <string name="permission_camera_rationale">L\'accès à la caméra est nécessaire pour la détection</string>
+    <string name="no_camera_permission">Cette application ne peut pas fonctionner car elle ne dispose pas de l\'autorisation de caméra. L\'application va maintenant se fermer.</string>
+    <string name="low_storage_error">Les dépendances de Reconnaissance optique de caractères ne peuvent pas être téléchargées en raison du faible stockage de l\'appareil</string>
+    <string name="auto_focus">Concentrage auto</string>
+    <string name="use_flash">Utiliser le flash</string>
+
+    <string name="quit_app">Quitter l\'application</string>
+    <string name="version">Version</string>
+    <string name="dark_theme">Thème sombre</string>
+
+    <string name="app_infos">Infos de l\'application</string>
+    <string name="manufacturer">Frabricant</string>
+    <string name="model">Modèle</string>
+    <string name="android_version_off_device">Version d\'Android OS sur le dispositif</string>
+    <string name="app_name_label">Nom de l\'application</string>
+    <string name="app_type">Type de l\'application</string>
+    <string name="free_contain_no_ads">Gratuit, contenant aucun pub</string>
+    <string name="app_version">Verstion de l\'application</string>
+    <string name="update_date">Date de mise à jour</string>
+    <string name="device_info">Infos du dispositif</string>
+    <string name="device_app_infos">Infos du dispositif et de l\'application</string>
+    <string name="compare_app_version">Vous pouvez comparer la version de l\'application ici et celle sur Play Store pour voir si l\'application a été mise à jour à la dernière version.</string>
+    <string name="guide_update_app">Habituellement, cette application sera mise à jour automatiquement. Sinon, vous pouvez ouvrir Play Store, chercher l\'application et la mettre à jour manuellement.</string>
+
+    <string name="two_points">" :"</string>
+    <string name="chu_y">Remarque</string>
+    <string name="huongdan_sudung">Guide de visite d\'application</string>
+
+    <string name="cancel_tourguide">Quitter</string>
+    <string name="khi_ungdung_hoatdong">Quand l\'application fonctionne</string>
+    <string name="saukhi_nhapvao_dongnay">après avoir cliqué sur cette ligne</string>
+    <string name="ungdung_se_mocuaso">l\'application ouvrira la fenêtre</string>
+    <string name="ungdung_se_mo_cuaso_hienthi_thongtin">l\'application ouvrira une fenêtre pour afficher les informations de votre appareil et les informations de l\'application</string>
+    <string name="ungdung_se_huongdan_ban_cach_sudung_tungbuocmot">l\'application vous montrera comment l\'utiliser étape par étape</string>
+    <string name="tieptuc">Continuer</string>
+    <string name="nguoidung_se_tat_hoantoan_ungdung">l\'utilisateur éteindra complètement l\'application</string>
+    <string name="below_is_button">Voici le bouton</string>
+    <string name="when_you_click_this_button">Lorsque vous cliquez sur ce bouton</string>
+
+    <string name="camera_will_be_opened_next_window">la caméra s\'ouvrira dans la fenêtre suivante pour scanner le texte</string>
+    <string name="turn_on_off_auto_focus">activer / désactiver le centrage auto</string>
+    <string name="auto_focus_will_be_on_or_off">le mode de centrage auto sera activé (vert) ou désactivé (gris)</string>
+    <string name="when_the_mode_is_on">Lorsque le mode est activé</string>
+    <string name="camera_will_be_auto_focus">L\'appareil photo fera automatiquement la centrage lors de le scan de texte dans la deuxième fenêtre</string>
+    <string name="on_off_use_flash">activer / désactiver l\'usage du flash</string>
+    <string name="mode_use_flash_will_be_on_or_off">le mode flash sera activé (vert) ou désactivé (gris)</string>
+    <string name="flash_is_on_when_scan_text">le flash sera activé lors du scan de texte dans la deuxième fenêtre</string>
+    <string name="button_to_open_window">Bouton pour ouvrir la fenêtre</string>
+    <string name="function_setting_info">Fonction, paramètres, informations</string>
+    <string name="above_is_button_open_window">Ci-dessus se trouve le bouton pour ouvrir la fenêtre</string>
+    <string name="so_you_can_change_theme_view_tourguide_info_quit_app">afin que vous puissiez changer le thème clair et sombre, consulter le guide de l\'utilisateur, afficher des informations sur l\'appareil et l\'application, ou quitter l\'application</string>
+    <string name="scan_text">Scanner le texte</string>
+    <string name="you_are_on_window">Tu es à la fenêtre</string>
+    <string name="this_window_openned_after_click_open_camera_btn">Cette fenêtre s\'ouvre après avoir cliqué sur le bouton \'Ouvrir la caméra\' dans la fenêtre précédente</string>
+    <string name="text_result_displayed_on_screen_when_scan">les résultats textuels seront affichés à l\'écran lorsque vous scannez avec la caméra</string>
+    <string name="you_click_a_point_on_screen">Vous cliquez sur n\'importe quel emplacement de l\'écran pour sélectionner le résultat et passez à la fenêtre \'Enregistrer dans les contacts\'</string>
+    <string name="you_click_this_btn_to_open_contacts_create_or_edit">Vous cliquez sur ce bouton pour ouvrir des contacts, en créer ou modifier, puis enregistrer le contact</string>
+    <string name="open_contacts">ouvrir des contacts</string>
+    <string name="app_theme_will_transformed_between_2_themes">le thème de l\'application basculera entre les modes clair et sombre</string>
+    <string name="turn_on_off_dark_theme">Activer / désactiver le thème sombre</string>
+    <string name="above_is_button">Au-dessus se trouve le bouton</string>
+    <string name="window">Fenêtre</string>
+    <string name="open_camera">ouvrir la caméra</string>
+    <string name="button">Bouton</string>
+    <string name="no_use_camera_permission">Aucun droit d\'utilisation de la caméra</string>
+    <string name="action_settings">Paramètres</string>
+
+    <string name="cancel">Annuler</string>
+    <string name="no_accept">Non</string>
+    <string name="accept">Oui</string>
+    <string name="xem_huongdan_sudung">Suivre le guide de visite d\'application</string>
+    <string name="welcome_to">Bienvenue à</string>
+    <string name="ban_comuon_xem_huongdan_sudung_ngaybaygio_khong">Souhaitez-vous suivre le guide de visite d\'application maintenant ?</string>
+    <string name="huongdan_se_lanluot_gioithieu">Le guide présentera à son tour les composants de l\'application et leurs fonctions respectives</string>
+    <string name="de_chuyensang_phan_gioithieu_tieptheo">Pour passer à la prochaine introduction, cliquez sur le texte</string>
+    <string name="de_thoat_huongdan_ban_hay_nhapvao_dongchu">Pour quitter le guide et commencer à utiliser l\'application, cliquez sur le texte</string>
+    <string name="ban_luonluon_cothe_xem_huongdansudung_bangcach">Vous pouvez toujours suivre le guide en cliquant sur le menu en haut à droite et en cliquant sur la ligne</string>
+</resources>

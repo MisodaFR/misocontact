@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">Miso contact</string>
+    <!-- Strings used for fragments for navigation -->
+
+    <string name="ok">OK</string>
+    <string name="permission_camera_rationale">Cần có quyền truy cập vào camera để quét văn bản</string>
+    <string name="no_camera_permission">Ứng dụng không thể hoạt động vì không có quyền dùng camera. Ứng dụng sẽ đóng ngay bây giờ.</string>
+    <string name="low_storage_error">Công cụ nhận dạng văn bản không thể được tải xuống do dung lượng lưu trữ thiết bị thấp</string>
+    <string name="auto_focus">Tự động lấy nét</string>
+    <string name="use_flash">Sử dụng flash</string>
+
+    <string name="quit_app">Thoát ứng dụng</string>
+    <string name="version">Phiên bản</string>
+    <string name="dark_theme">Chế độ tối</string>
+
+    <string name="app_infos">Thông tin ứng dụng</string>
+    <string name="manufacturer">Hãng sản xuất</string>
+    <string name="model">Mẫu thiết bị</string>
+    <string name="android_version_off_device">Phiên bản hệ điều hành Android trên thiết bị</string>
+    <string name="app_name_label">Tên ứng dụng</string>
+    <string name="app_type">Kiểu ứng dụng</string>
+    <string name="free_contain_no_ads">Miễn phí, không chứa quảng cáo</string>
+    <string name="app_version">Phiên bản ứng dụng</string>
+    <string name="update_date">Ngày cập nhật</string>
+    <string name="device_info">Thông tin thiết bị</string>
+    <string name="device_app_infos">Thông tin thiết bị và ứng dụng</string>
+    <string name="compare_app_version">Bạn có thể so sánh phiên bản ứng dụng ở đây và phiên bản ứng dụng trên CH Play để biết ứng dụng đã được cập nhật lên phiên bản mới nhất hay chưa.</string>
+    <string name="guide_update_app">Thông thường ứng dụng sẽ được cập nhật tự động. Nếu không, bạn có thể mở CH Play, tìm ứng dụng và cập nhật bằng tay.</string>
+
+    <string name="two_points">:</string>
+    <string name="chu_y">Chú ý</string>
+    <string name="huongdan_sudung">Hướng dẫn sử dụng</string>
+
+    <string name="cancel_tourguide">Thoát</string>
+    <string name="khi_ungdung_hoatdong">Khi ứng dụng hoạt động</string>
+    <string name="saukhi_nhapvao_dongnay">sau khi nhấp vào dòng này</string>
+    <string name="ungdung_se_mocuaso">ứng dụng sẽ mở cửa sổ</string>
+    <string name="ungdung_se_mo_cuaso_hienthi_thongtin">ứng dụng sẽ mở cửa sổ hiển thị thông tin thiết bị của bạn và thông tin về ứng dụng</string>
+    <string name="ungdung_se_huongdan_ban_cach_sudung_tungbuocmot">ứng dụng sẽ hướng dẫn bạn cách sử dụng từng bước một</string>
+    <string name="tieptuc">Tiếp tục</string>
+    <string name="nguoidung_se_tat_hoantoan_ungdung">người dùng sẽ tắt hoàn toàn ứng dụng</string>
+    <string name="button">Nút</string>
+    <string name="open_camera">mở camera</string>
+    <string name="below_is_button">Dưới đây là nút</string>
+    <string name="when_you_click_this_button">Khi bạn nhấp nút này</string>
+
+    <string name="camera_will_be_opened_next_window">camera sẽ được mở ở cửa sổ tiếp theo để quét văn bản</string>
+    <string name="turn_on_off_auto_focus">bật/tắt tự động lấy nét</string>
+    <string name="auto_focus_will_be_on_or_off">chế độ lấy nét tự động sẽ được bật (xanh) hoặc tắt (xám)</string>
+    <string name="when_the_mode_is_on">Khi chế độ được bật</string>
+    <string name="camera_will_be_auto_focus">camera sẽ tự động lấy nét khi quét văn bản ở cửa sổ thứ hai</string>
+    <string name="on_off_use_flash">bật/tắt sử dụng đèn flash</string>
+    <string name="mode_use_flash_will_be_on_or_off">chế độ sử dụng đèn flash sẽ được bật (xanh) hoặc tắt (xám)</string>
+    <string name="flash_is_on_when_scan_text">đèn flash sẽ được bật khi quét văn bản ở cửa sổ thứ hai</string>
+    <string name="button_to_open_window">Nút mở cửa sổ</string>
+    <string name="function_setting_info">Chức năng, cài đặt, thông tin</string>
+    <string name="above_is_button_open_window">Trên đây là nút mở cửa sổ</string>
+    <string name="so_you_can_change_theme_view_tourguide_info_quit_app">để bạn có thể thay đổi chế độ sáng, tối, xem hướng dẫn sử dụng, xem thông tin về thiết bị và ứng dụng hoặc thoát ứng dụng</string>
+    <string name="window">Cửa sổ</string>
+    <string name="scan_text">Quét văn bản</string>
+    <string name="you_are_on_window">Bạn đang ở cửa sổ</string>
+    <string name="this_window_openned_after_click_open_camera_btn">Cửa sổ này được mở sau khi bạn nhấp nút \'Mở camera\' ở cửa sổ trước</string>
+    <string name="text_result_displayed_on_screen_when_scan">kết quả văn bản sẽ được hiển thị trên màn hình khi bạn quét bằng camera</string>
+    <string name="you_click_a_point_on_screen">Bạn nhấp vào một ví trí bất kì trên màn hình để chọn kết quả và chuyển sang cửa sổ \'Lưu vào danh bạ\'</string>
+    <string name="you_click_this_btn_to_open_contacts_create_or_edit">Bạn nhấp nút này để mở danh bạ, tạo mới hoặc sửa rồi lưu liên lạc</string>
+    <string name="open_contacts">mở danh bạ</string>
+    <string name="app_theme_will_transformed_between_2_themes">giao diện của ứng dụng sẽ được chuyển đổi giữa hai chế độ giao diện sáng và tối</string>
+    <string name="turn_on_off_dark_theme">Bật/tắt chế độ tối</string>
+    <string name="above_is_button">Trên đây là nút</string>
+    <string name="no_use_camera_permission">Không có quyền sử dụng camera</string>
+    <string name="action_settings">Cài đặt</string>
+
+    <string name="cancel">Thoát</string>
+    <string name="no_accept">Không</string>
+    <string name="accept">Có</string>
+    <string name="xem_huongdan_sudung">Xem hướng dẫn sử dụng</string>
+    <string name="welcome_to">Chào mừng bạn đến với</string>
+    <string name="ban_comuon_xem_huongdan_sudung_ngaybaygio_khong">Bạn có muốn xem hướng dẫn sử dụng ứng dụng ngay bây giờ không?</string>
+    <string name="huongdan_se_lanluot_gioithieu">Hướng dẫn sẽ lần lượt giới thiệu các thành phần của ứng dụng và chức năng tương ứng</string>
+    <string name="de_chuyensang_phan_gioithieu_tieptheo">Để chuyển sang phần giới thiệu tiếp theo, bạn hãy nhấp vào dòng chữ</string>
+    <string name="de_thoat_huongdan_ban_hay_nhapvao_dongchu">Để thoát hướng dẫn và bắt đầu ứng dụng, bạn hãy nhấp vào dòng chữ</string>
+    <string name="ban_luonluon_cothe_xem_huongdansudung_bangcach">Bạn luôn luôn có thể xem hướng dẫn sử dụng bằng cách nhấp vào menu phía trên bên phải và nhấp vào dòng</string>
+</resources>

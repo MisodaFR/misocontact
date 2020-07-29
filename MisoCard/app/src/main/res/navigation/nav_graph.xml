@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/HomeFragment">
+
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="fr.misoda.contact.view.fragment.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+
+        <argument
+            android:name="autoFocus"
+            android:defaultValue="true"
+            app:argType="boolean" />
+
+        <argument
+            android:name="useFlash"
+            android:defaultValue="false"
+            app:argType="boolean" />
+
+        <action
+            android:id="@+id/action_HomeFragment_to_ScanTextFragment"
+            app:destination="@id/ScanTextFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ScanTextFragment"
+        android:name="fr.misoda.contact.view.fragment.ScanTextFragment"
+        android:label="ScanTextFragment"
+        tools:layout="@layout/fragment_scan_text">
+
+        <argument
+            android:name="autoFocus"
+            android:defaultValue="true"
+            app:argType="boolean" />
+
+        <argument
+            android:name="useFlash"
+            android:defaultValue="false"
+            app:argType="boolean" />
+
+        <argument
+            android:name="scannedText"
+            android:defaultValue=""
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_ScanTextFragment_to_SaveToContactsFragment"
+            app:destination="@id/SaveToContactsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SaveToContactsFragment"
+        android:name="fr.misoda.contact.view.fragment.SaveToContactsFragment"
+        android:label="SaveToContactsFragment"
+        tools:layout="@layout/fragment_save_to_contacts">
+        <argument
+            android:name="scannedText"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SettingFragment"
+        android:name="fr.misoda.contact.view.fragment.SettingFragment"
+        android:label="SettingFragment"
+        tools:layout="@layout/fragment_setting">
+
+        <action
+            android:id="@+id/action_SettingFragment_to_DeviceAndAppInfosFragment"
+            app:destination="@id/DeviceAndAppInfosFragment" />
+
+        <action
+            android:id="@+id/action_SettingFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+
+    </fragment>
+
+    <action
+        android:id="@+id/action_setting_fragment"
+        app:destination="@id/SettingFragment" />
+
+    <fragment
+        android:id="@+id/DeviceAndAppInfosFragment"
+        android:name="fr.misoda.contact.view.fragment.DeviceAndAppInfosFragment"
+        android:label="DeviceAndAppInfosFragment"
+        tools:layout="@layout/fragment_device_and_app_infos" />
+
+    <!--Tro ve HomeFragment va xoa het nhung fragment trong stack-->
+    <action
+        android:id="@+id/toHomeFragment"
+        app:destination="@id/HomeFragment"
+        app:popUpTo="@+id/HomeFragment"
+        app:popUpToInclusive="true" />
+
+</navigation>
