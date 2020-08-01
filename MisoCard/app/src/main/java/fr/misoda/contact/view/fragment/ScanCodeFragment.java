@@ -32,7 +32,10 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.vision.text.TextRecognizer;
+import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.gms.vision.MultiProcessor;
+import com.google.android.gms.vision.barcode.Barcode;
+import com.google.android.gms.vision.barcode.BarcodeDetector;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
@@ -40,34 +43,42 @@ import java.io.IOException;
 import fr.misoda.contact.R;
 import fr.misoda.contact.common.AppConfig;
 import fr.misoda.contact.common.Constant;
-import fr.misoda.contact.view.component.orc.CameraSource;
-import fr.misoda.contact.view.component.orc.CameraSourcePreview;
-import fr.misoda.contact.view.component.orc.GraphicOverlay;
-import fr.misoda.contact.view.component.orc.OcrGraphic;
-import fr.misoda.contact.worker.OcrDetectorProcessor;
+import fr.misoda.contact.view.component.barcode.BarcodeGraphic;
+import fr.misoda.contact.view.component.barcode.BarcodeGraphicTracker;
+import fr.misoda.contact.view.component.barcode.BarcodeTrackerFactory;
+import fr.misoda.contact.view.component.barcode.CameraSource;
+import fr.misoda.contact.view.component.barcode.CameraSourcePreview;
+import fr.misoda.contact.view.component.barcode.GraphicOverlay;
 import uk.co.deanwild.materialshowcaseview.IShowcaseListener;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
-public class ScanCodeFragment extends Fragment {
+public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.BarcodeUpdateListener {
     private static final String TAG = ScanCodeFragment.class.getSimpleName();
-    private static final String SHOWCASE_ID = "Showcase of ScanTextFragment";
+    private static final String SHOWCASE_ID = "Showcase of ScanCodeFragment";
 
-    // Intent request code to handle updating play services if needed.
+    // intent request code to handle updating play services if needed.
     private static final int RC_HANDLE_GMS = 9001;
 
-    // Permission request codes need to be < 256
+    // permission request codes need to be < 256
     private static final int RC_HANDLE_CAMERA_PERM = 2;
 
-    private CameraSource mCameraSource;
-    private CameraSourcePreview mPreview;
-    private GraphicOverlay<OcrGraphic> mGraphicOverlay;
+    // constants used to pass extra data in the intent
+    public static final String AutoFocus = "AutoFocus";
+    public static final String UseFlash = "UseFlash";
+    public static final String BarcodeObject = "Barcode";
 
-    // Helper objects for detecting taps and pinches.
+    private fr.misoda.contact.view.component.barcode.CameraSource mCameraSource;
+    private CameraSourcePreview mPreview;
+    private GraphicOverlay<BarcodeGraphic> mGraphicOverlay;
+
+    // helper objects for detecting taps and pinches.
     private ScaleGestureDetector scaleGestureDetector;
     private GestureDetector gestureDetector;
 
-    private OcrDetectorProcessor ocrDetectorProcessor;
+    /**
+     * Initializes the UI and creates the detector pipeline.
+     */
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -176,7 +187,7 @@ public class ScanCodeFragment extends Fragment {
      * again when the camera source is created.
      */
     private void startCameraSource() throws SecurityException {
-        // Check that the device has play services available.
+        // check that the device has play services available.
         int code = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(getActivity());
         if (code != ConnectionResult.SUCCESS) {
             Dialog dlg = GoogleApiAvailability.getInstance().getErrorDialog(getActivity(), code, RC_HANDLE_GMS);
@@ -196,7 +207,7 @@ public class ScanCodeFragment extends Fragment {
 
     /**
      * Creates and starts the camera.  Note that this uses a higher resolution in comparison
-     * to other detection examples to enable the ocr detector to detect small text samples
+     * to other detection examples to enable the barcode detector to detect small barcodes
      * at long distances.
      * <p>
      * Suppressing InlinedApi since there is a check that the minimum version is met before using
@@ -206,19 +217,21 @@ public class ScanCodeFragment extends Fragment {
     private void createCameraSource(boolean autoFocus, boolean useFlash) {
         Context context = getActivity();
 
-        // A text recognizer is created to find text.  An associated processor instance
-        // is set to receive the text recognition results and display graphics for each text block
-        // on screen.
-        TextRecognizer textRecognizer = new TextRecognizer.Builder(context).build();
-        ocrDetectorProcessor = new OcrDetectorProcessor(mGraphicOverlay);
-        textRecognizer.setProcessor(ocrDetectorProcessor);
+        // A barcode detector is created to track barcodes.  An associated multi-processor instance
+        // is set to receive the barcode detection results, track the barcodes, and maintain
+        // graphics for each barcode on screen.  The factory is used by the multi-processor to
+        // create a separate tracker instance for each barcode.
+        BarcodeDetector barcodeDetector = new BarcodeDetector.Builder(context).build();
+        BarcodeTrackerFactory barcodeFactory = new BarcodeTrackerFactory(mGraphicOverlay, context);
+        barcodeDetector.setProcessor(
+                new MultiProcessor.Builder<>(barcodeFactory).build());
 
-        if (!textRecognizer.isOperational()) {
-            // Note: The first time that an app using a Vision API is installed on a
+        if (!barcodeDetector.isOperational()) {
+            // Note: The first time that an app using the barcode or face API is installed on a
             // device, GMS will download a native libraries to the device in order to do detection.
             // Usually this completes before the app is run for the first time.  But if that
-            // download has not yet completed, then the above call will not detect any text,
-            // barcodes, or faces.
+            // download has not yet completed, then the above call will not detect any barcodes
+            // and/or faces.
             //
             // isOperational() can be used to check if the required native libraries are currently
             // available.  The detectors will automatically become operational once the library
@@ -228,23 +241,26 @@ public class ScanCodeFragment extends Fragment {
             // Check for low storage.  If there is low storage, the native library will not be
             // downloaded, so detection will not become operational.
             IntentFilter lowstorageFilter = new IntentFilter(Intent.ACTION_DEVICE_STORAGE_LOW);
-            boolean hasLowStorage = getActivity().registerReceiver(null, lowstorageFilter) != null;
+            boolean hasLowStorage = context.registerReceiver(null, lowstorageFilter) != null;
 
             if (hasLowStorage) {
-                Toast.makeText(getActivity(), R.string.low_storage_error, Toast.LENGTH_LONG).show();
+                Toast.makeText(context, R.string.low_storage_error, Toast.LENGTH_LONG).show();
                 Log.w(TAG, getString(R.string.low_storage_error));
             }
         }
 
         // Creates and starts the camera.  Note that this uses a higher resolution in comparison
-        // to other detection examples to enable the text recognizer to detect small pieces of text.
-        mCameraSource = new CameraSource.Builder(getActivity(), textRecognizer)
+        // to other detection examples to enable the barcode detector to detect small barcodes
+        // at long distances.
+        CameraSource.Builder builder = new CameraSource.Builder(context, barcodeDetector)
                 .setFacing(CameraSource.CAMERA_FACING_BACK)
-                .setRequestedPreviewSize(1280, 1024)
-                .setRequestedFps(2.0f)
-                .setFlashMode(useFlash ? Camera.Parameters.FLASH_MODE_TORCH : null)
-                .setFocusMode(autoFocus ? Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE : null)
-                .build();
+                .setRequestedPreviewSize(1600, 1024)
+                .setRequestedFps(15.0f);
+
+        // make sure that auto focus is an available option
+        builder = builder.setFocusMode(autoFocus ? Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE : null);
+
+        mCameraSource = builder.setFlashMode(useFlash ? Camera.Parameters.FLASH_MODE_TORCH : null).build();
     }
 
     /**
@@ -279,22 +295,46 @@ public class ScanCodeFragment extends Fragment {
     }
 
     /**
-     * onTap is called to capture the first TextBlock under the tap location and return it to
-     * the Initializing Activity.
+     * onTap returns the tapped barcode result to the calling Activity.
      *
      * @param rawX - the raw position of the tap
      * @param rawY - the raw position of the tap.
      * @return true if the activity is ending.
      */
     private boolean onTap(float rawX, float rawY) {
-        String detectedTexts = ocrDetectorProcessor.getDetectedTexts();
-        Log.d(Constant.LOG_TAG_SCAN_TEXT, "detectedTexts : " + detectedTexts);
+        // Find tap point in preview frame coordinates.
+        int[] location = new int[2];
+        mGraphicOverlay.getLocationOnScreen(location);
+        float x = (rawX - location[0]) / mGraphicOverlay.getWidthScaleFactor();
+        float y = (rawY - location[1]) / mGraphicOverlay.getHeightScaleFactor();
 
-        ScanTextFragmentDirections.ActionScanTextFragmentToSaveToContactsFragment action = ScanTextFragmentDirections.actionScanTextFragmentToSaveToContactsFragment();
-        action.setScannedText(detectedTexts);
-        NavHostFragment.findNavController(ScanCodeFragment.this).navigate(action);
+        // Find the barcode whose center is closest to the tapped point.
+        Barcode best = null;
+        float bestDistance = Float.MAX_VALUE;
+        for (BarcodeGraphic graphic : mGraphicOverlay.getGraphics()) {
+            Barcode barcode = graphic.getBarcode();
+            if (barcode.getBoundingBox().contains((int) x, (int) y)) {
+                // Exact hit, no need to keep looking.
+                best = barcode;
+                break;
+            }
+            float dx = x - barcode.getBoundingBox().centerX();
+            float dy = y - barcode.getBoundingBox().centerY();
+            float distance = (dx * dx) + (dy * dy);  // actually squared distance
+            if (distance < bestDistance) {
+                best = barcode;
+                bestDistance = distance;
+            }
+        }
 
-        return !detectedTexts.equals("");
+        if (best != null) {
+            Intent data = new Intent();
+            data.putExtra(BarcodeObject, best);
+            //setResult(CommonStatusCodes.SUCCESS, data);
+            //finish();
+            return true;
+        }
+        return false;
     }
 
     private class ScaleListener implements ScaleGestureDetector.OnScaleGestureListener {
@@ -420,5 +460,10 @@ public class ScanCodeFragment extends Fragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.no_use_camera_permission).setMessage(R.string.no_camera_permission).setPositiveButton(R.string.ok, listener).show();
+    }
+
+    @Override
+    public void onBarcodeDetected(Barcode barcode) {
+        //do something with barcode data returned
     }
 }
