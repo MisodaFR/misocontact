@@ -22,8 +22,8 @@ import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
 
 import fr.misoda.contact.common.Constant;
-import fr.misoda.contact.view.component.GraphicOverlay;
-import fr.misoda.contact.view.component.OcrGraphic;
+import fr.misoda.contact.view.component.orc.GraphicOverlay;
+import fr.misoda.contact.view.component.orc.OcrGraphic;
 
 /**
  * A very simple Processor which receives detected TextBlocks and adds them to the overlay

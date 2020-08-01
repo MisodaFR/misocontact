@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package fr.misoda.contact.view.component;
+package fr.misoda.contact.view.component.orc;
 
 import android.Manifest;
 import android.content.Context;
