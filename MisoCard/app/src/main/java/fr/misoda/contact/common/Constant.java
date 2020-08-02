@@ -13,6 +13,7 @@ public class Constant {
     public static final String AUTO_FOCUS = "AUTO_FOCUS";
     public static final String USE_FLASH = "USE_FLASH";
     public static final String SCAN_TEXT = "SCAN_TEXT";
+    public static final String CURRENT_COLOR_OF_LIGHT_THEME = "CURRENT_COLOR_OF_LIGHT_THEME";
 
     // Changer ces valeurs ci-dessous chaque release
     public static final int UPDATE_YEAR = 2020;

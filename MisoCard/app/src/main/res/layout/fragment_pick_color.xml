@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/dp_8">
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:text="@string/selecting_a_color"
+        android:textAlignment="center"
+        android:textColor="@color/blue_white"
+        android:textSize="@dimen/text_size_23"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dialog_title"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:layout_marginBottom="@dimen/margin_8"
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_rgb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:checked="true"
+                android:padding="@dimen/dp_4"
+                android:text="RGB"
+                android:textSize="@dimen/text_size_16" />
+
+            <RadioButton
+                android:id="@+id/radio_hsl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_4"
+                android:text="HSL"
+                android:textSize="@dimen/text_size_16" />
+
+            <RadioButton
+                android:id="@+id/radio_hex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_16"
+                android:padding="@dimen/dp_4"
+                android:text="HEX"
+                android:textSize="@dimen/text_size_16" />
+        </RadioGroup>
+
+        <include
+            android:id="@+id/rela_layout_rgb_picker_color"
+            layout="@layout/zone_rgb_picker_color" />
+
+        <include
+            android:id="@+id/linear_layout_hsl"
+            layout="@layout/zone_hsl_picker_color"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/linear_layout_hex"
+            layout="@layout/zone_hex_picker_color"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</RelativeLayout>
