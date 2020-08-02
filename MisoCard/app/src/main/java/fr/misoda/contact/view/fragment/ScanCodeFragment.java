@@ -32,7 +32,6 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.MultiProcessor;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
@@ -68,7 +67,7 @@ public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.
     public static final String UseFlash = "UseFlash";
     public static final String BarcodeObject = "Barcode";
 
-    private fr.misoda.contact.view.component.barcode.CameraSource mCameraSource;
+    private CameraSource mCameraSource;
     private CameraSourcePreview mPreview;
     private GraphicOverlay<BarcodeGraphic> mGraphicOverlay;
 
@@ -99,7 +98,7 @@ public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_scan_text, container, false);
+        View view = inflater.inflate(R.layout.fragment_scan_code, container, false);
 
         mPreview = view.findViewById(R.id.preview);
         mGraphicOverlay = view.findViewById(R.id.graphicOverlay);
@@ -121,7 +120,7 @@ public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.
             return;
         }
 
-        ScanTextFragmentArgs args = ScanTextFragmentArgs.fromBundle(getArguments());
+        ScanCodeFragmentArgs args = ScanCodeFragmentArgs.fromBundle(getArguments());
         boolean autoFocus = args.getAutoFocus();
         boolean useFlash = args.getUseFlash();
 
@@ -428,7 +427,7 @@ public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.
                             AppConfig.getInstance().setBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, false);
                             navController.navigate(R.id.toHomeFragment);
                         } else { // Next btn is clicked
-                            navController.navigate(R.id.action_ScanTextFragment_to_SaveToContactsFragment);
+                            navController.navigate(R.id.action_ScanCodeFragment_to_SaveToContactsFragment);
                         }
                     }
                 })
@@ -447,7 +446,7 @@ public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.
         if (grantResults.length != 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             Log.d(TAG, "Camera permission granted - initialize the camera source");
             // We have permission, so create the camerasource
-            ScanTextFragmentArgs args = ScanTextFragmentArgs.fromBundle(getArguments());
+            ScanCodeFragmentArgs args = ScanCodeFragmentArgs.fromBundle(getArguments());
             boolean autoFocus = args.getAutoFocus();
             boolean useFlash = args.getUseFlash();
             createCameraSource(autoFocus, useFlash);

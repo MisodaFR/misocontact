@@ -44,8 +44,7 @@ public class BarcodeGraphicTracker extends Tracker<Barcode> {
         void onBarcodeDetected(Barcode barcode);
     }
 
-    BarcodeGraphicTracker(GraphicOverlay<BarcodeGraphic> mOverlay, BarcodeGraphic mGraphic,
-                          Context context) {
+    BarcodeGraphicTracker(GraphicOverlay<BarcodeGraphic> mOverlay, BarcodeGraphic mGraphic, Context context) {
         this.mOverlay = mOverlay;
         this.mGraphic = mGraphic;
         if (context instanceof BarcodeUpdateListener) {

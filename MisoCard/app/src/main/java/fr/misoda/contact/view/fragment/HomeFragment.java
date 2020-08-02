@@ -2,6 +2,7 @@ package fr.misoda.contact.view.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -9,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 import android.widget.Switch;
 
 import androidx.activity.OnBackPressedCallback;
@@ -36,6 +38,8 @@ public class HomeFragment extends Fragment {
     private Switch switchAutoFocus;
     private Switch switchUseFlash;
     private Menu menu;
+    private RadioButton radioText;
+    private RadioButton radioCode;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,12 +63,23 @@ public class HomeFragment extends Fragment {
 
         switchAutoFocus = view.findViewById(R.id.switch_auto_focus);
         switchUseFlash = view.findViewById(R.id.switch_use_flash);
+        radioText = view.findViewById(R.id.radio_text);
+        radioCode = view.findViewById(R.id.radio_code);
 
         view.findViewById(R.id.img_btn_scan_text).setOnClickListener(view1 -> {
-            HomeFragmentDirections.ActionHomeFragmentToScanTextFragment action = HomeFragmentDirections.actionHomeFragmentToScanTextFragment();
-            action.setAutoFocus(switchAutoFocus.isChecked());
-            action.setUseFlash(switchUseFlash.isChecked());
-            NavHostFragment.findNavController(HomeFragment.this).navigate(action);
+            Log.d(LOG_TAG, "radioText : " + radioText.isChecked() + ", radioCode : " + radioCode.isChecked());
+
+            if (radioText.isChecked()) {
+                HomeFragmentDirections.ActionHomeFragmentToScanTextFragment action = HomeFragmentDirections.actionHomeFragmentToScanTextFragment();
+                action.setAutoFocus(switchAutoFocus.isChecked());
+                action.setUseFlash(switchUseFlash.isChecked());
+                NavHostFragment.findNavController(HomeFragment.this).navigate(action);
+            } else {
+                HomeFragmentDirections.ActionHomeFragmentToScanCodeFragment action = HomeFragmentDirections.actionHomeFragmentToScanCodeFragment();
+                action.setAutoFocus(switchAutoFocus.isChecked());
+                action.setUseFlash(switchUseFlash.isChecked());
+                NavHostFragment.findNavController(HomeFragment.this).navigate(action);
+            }
         });
 
         setHasOptionsMenu(true);

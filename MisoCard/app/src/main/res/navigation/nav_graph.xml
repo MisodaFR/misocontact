@@ -24,6 +24,11 @@
         <action
             android:id="@+id/action_HomeFragment_to_ScanTextFragment"
             app:destination="@id/ScanTextFragment" />
+
+        <action
+            android:id="@+id/action_HomeFragment_to_ScanCodeFragment"
+            app:destination="@id/ScanCodeFragment" />
+
     </fragment>
 
     <fragment
@@ -49,6 +54,32 @@
 
         <action
             android:id="@+id/action_ScanTextFragment_to_SaveToContactsFragment"
+            app:destination="@id/SaveToContactsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ScanCodeFragment"
+        android:name="fr.misoda.contact.view.fragment.ScanCodeFragment"
+        android:label="ScanCodeFragment"
+        tools:layout="@layout/fragment_scan_text">
+
+        <argument
+            android:name="autoFocus"
+            android:defaultValue="true"
+            app:argType="boolean" />
+
+        <argument
+            android:name="useFlash"
+            android:defaultValue="false"
+            app:argType="boolean" />
+
+        <argument
+            android:name="scannedText"
+            android:defaultValue=""
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_ScanCodeFragment_to_SaveToContactsFragment"
             app:destination="@id/SaveToContactsFragment" />
     </fragment>
 
