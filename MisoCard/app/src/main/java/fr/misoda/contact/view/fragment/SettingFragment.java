@@ -30,6 +30,7 @@ import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 public class SettingFragment extends Fragment {
     private static final String SHOWCASE_ID = "Showcase of SettingFragment";
     private Switch switchDarkTheme;
+    private View layoutCustomColor;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,14 +51,17 @@ public class SettingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
+        layoutCustomColor = view.findViewById(R.id.layout_custom_color);
         switchDarkTheme = view.findViewById(R.id.switch_dark_theme);
         switchDarkTheme.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 AppConfig.getInstance().setInt(Constant.KEY_THEME, AppCompatDelegate.MODE_NIGHT_YES);
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                layoutCustomColor.setVisibility(View.VISIBLE);
             } else {
                 AppConfig.getInstance().setInt(Constant.KEY_THEME, AppCompatDelegate.MODE_NIGHT_NO);
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                layoutCustomColor.setVisibility(View.GONE);
             }
         });
 
@@ -85,9 +89,11 @@ public class SettingFragment extends Fragment {
         switch (theme) {
             case AppCompatDelegate.MODE_NIGHT_NO:
                 switchDarkTheme.setChecked(false);
+                layoutCustomColor.setVisibility(View.VISIBLE);
                 break;
             case AppCompatDelegate.MODE_NIGHT_YES:
                 switchDarkTheme.setChecked(true);
+                layoutCustomColor.setVisibility(View.GONE);
                 break;
             default:
         }

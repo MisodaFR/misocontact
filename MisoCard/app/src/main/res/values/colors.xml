@@ -16,6 +16,8 @@
 
     <color name="orange">#F06D2F</color>
 
+    <color name="blue_light">#64b5f6</color>
+
     <color name="white_grey">@color/white</color>
     <color name="blue_white">@color/colorPrimary</color>
     <color name="blue_dark_black">@color/colorPrimaryDark</color>

@@ -68,15 +68,26 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="2">
 
-                <Switch
-                    android:id="@+id/switch_auto_focus"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_margin="@dimen/dp_8"
-                    android:checked="true"
-                    android:text="@string/auto_focus"
-                    android:textAlignment="center" />
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_focus_32_2" />
+
+                    <Switch
+                        android:id="@+id/switch_auto_focus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
 
             </RelativeLayout>
 
@@ -103,15 +114,26 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="2">
 
-                <Switch
-                    android:id="@+id/switch_use_flash"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_margin="@dimen/dp_8"
-                    android:checked="false"
-                    android:text="@string/use_flash"
-                    android:textAlignment="center" />
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_flash_on_32_2" />
+
+                    <Switch
+                        android:id="@+id/switch_use_flash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
 
             </RelativeLayout>
 

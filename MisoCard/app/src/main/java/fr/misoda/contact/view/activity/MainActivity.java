@@ -1,5 +1,6 @@
 package fr.misoda.contact.view.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
 
@@ -31,6 +32,11 @@ public class MainActivity extends AppCompatActivity implements BarcodeGraphicTra
         setSupportActionBar(toolbar);
         String subtitle = getString(R.string.version) + StringUtils.SPACE + BuildConfig.VERSION_NAME;
         toolbar.setSubtitle(Html.fromHtml("<small>" + subtitle + "</small>"));
+
+        /*int appBackgroundColor = Color.MAGENTA;
+        toolbar.setBackgroundColor(appBackgroundColor);
+        getWindow().setStatusBarColor(appBackgroundColor);
+        getWindow().setNavigationBarColor(appBackgroundColor);*/
     }
 
     /*@Override
