@@ -12,6 +12,7 @@ public class Constant {
     public static final String DOT = ".";
     public static final String AUTO_FOCUS = "AUTO_FOCUS";
     public static final String USE_FLASH = "USE_FLASH";
+    public static final String SCAN_TEXT = "SCAN_TEXT";
 
     // Changer ces valeurs ci-dessous chaque release
     public static final int UPDATE_YEAR = 2020;

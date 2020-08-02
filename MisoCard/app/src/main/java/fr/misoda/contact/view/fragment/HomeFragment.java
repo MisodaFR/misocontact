@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.Switch;
 
@@ -86,6 +87,7 @@ public class HomeFragment extends Fragment {
 
         switchAutoFocus.setOnCheckedChangeListener((buttonView, isChecked) -> AppConfig.getInstance().setBoolean(Constant.AUTO_FOCUS, isChecked));
         switchUseFlash.setOnCheckedChangeListener((buttonView, isChecked) -> AppConfig.getInstance().setBoolean(Constant.USE_FLASH, isChecked));
+        radioText.setOnCheckedChangeListener((buttonView, isChecked) -> AppConfig.getInstance().setBoolean(Constant.SCAN_TEXT, isChecked));
 
         return view;
     }
@@ -95,6 +97,9 @@ public class HomeFragment extends Fragment {
 
         switchAutoFocus.setChecked(AppConfig.getInstance().getBoolean(Constant.AUTO_FOCUS, true));
         switchUseFlash.setChecked(AppConfig.getInstance().getBoolean(Constant.USE_FLASH, false));
+        boolean willScanText = AppConfig.getInstance().getBoolean(Constant.SCAN_TEXT, false);
+        radioText.setChecked(willScanText);
+        radioCode.setChecked(!willScanText);
 
         if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_PROMPT_DIALOG, true)) {
             displayTourGuidePromptDialog();

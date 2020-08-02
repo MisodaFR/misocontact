@@ -53,7 +53,7 @@ import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.BarcodeUpdateListener {
-    private static final String TAG = ScanCodeFragment.class.getSimpleName();
+    private static final String LOG_TAG = ScanCodeFragment.class.getSimpleName();
     private static final String SHOWCASE_ID = "Showcase of ScanCodeFragment";
 
     // intent request code to handle updating play services if needed.
@@ -197,7 +197,7 @@ public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.
             try {
                 mPreview.start(mCameraSource, mGraphicOverlay);
             } catch (IOException e) {
-                Log.e(TAG, "Unable to start camera source.", e);
+                Log.e(LOG_TAG, "Unable to start camera source.", e);
                 mCameraSource.release();
                 mCameraSource = null;
             }
@@ -235,7 +235,7 @@ public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.
             // isOperational() can be used to check if the required native libraries are currently
             // available.  The detectors will automatically become operational once the library
             // downloads complete on device.
-            Log.w(TAG, "Detector dependencies are not yet available.");
+            Log.w(LOG_TAG, "Detector dependencies are not yet available.");
 
             // Check for low storage.  If there is low storage, the native library will not be
             // downloaded, so detection will not become operational.
@@ -244,7 +244,7 @@ public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.
 
             if (hasLowStorage) {
                 Toast.makeText(context, R.string.low_storage_error, Toast.LENGTH_LONG).show();
-                Log.w(TAG, getString(R.string.low_storage_error));
+                Log.w(LOG_TAG, getString(R.string.low_storage_error));
             }
         }
 
@@ -268,7 +268,7 @@ public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.
      * sending the request.
      */
     private void requestCameraPermission() {
-        Log.w(TAG, "Camera permission is not granted. Requesting permission");
+        Log.w(LOG_TAG, "Camera permission is not granted. Requesting permission");
 
         final String[] permissions = new String[]{Manifest.permission.CAMERA};
 
@@ -327,10 +327,13 @@ public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.
         }
 
         if (best != null) {
-            Intent data = new Intent();
-            data.putExtra(BarcodeObject, best);
-            //setResult(CommonStatusCodes.SUCCESS, data);
-            //finish();
+            String detectedTexts = best.displayValue;
+            Log.d(LOG_TAG, "detectedTexts : " + detectedTexts);
+
+            ScanCodeFragmentDirections.ActionScanCodeFragmentToSaveToContactsFragment action = ScanCodeFragmentDirections.actionScanCodeFragmentToSaveToContactsFragment();
+            action.setScannedText(detectedTexts);
+            NavHostFragment.findNavController(ScanCodeFragment.this).navigate(action);
+
             return true;
         }
         return false;
@@ -438,13 +441,13 @@ public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode != RC_HANDLE_CAMERA_PERM) {
-            Log.d(TAG, "Got unexpected permission result: " + requestCode);
+            Log.d(LOG_TAG, "Got unexpected permission result: " + requestCode);
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
             return;
         }
 
         if (grantResults.length != 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            Log.d(TAG, "Camera permission granted - initialize the camera source");
+            Log.d(LOG_TAG, "Camera permission granted - initialize the camera source");
             // We have permission, so create the camerasource
             ScanCodeFragmentArgs args = ScanCodeFragmentArgs.fromBundle(getArguments());
             boolean autoFocus = args.getAutoFocus();
@@ -453,7 +456,7 @@ public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.
             return;
         }
 
-        Log.e(TAG, "Permission not granted: results len = " + grantResults.length + " Result code = " + (grantResults.length > 0 ? grantResults[0] : "(empty)"));
+        Log.e(LOG_TAG, "Permission not granted: results len = " + grantResults.length + " Result code = " + (grantResults.length > 0 ? grantResults[0] : "(empty)"));
 
         DialogInterface.OnClickListener listener = (dialog, id) -> getActivity().finish();
 
