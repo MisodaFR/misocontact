@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package fr.misoda.contact.view.component;
+package fr.misoda.contact.view.component.barcode;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -54,7 +54,7 @@ import java.util.Map;
 
 /**
  * Manages the camera in conjunction with an underlying
- * {@link Detector}.  This receives preview frames from the camera at
+ * {@link com.google.android.gms.vision.Detector}.  This receives preview frames from the camera at
  * a specified rate, sending those frames to the detector as fast as it is able to process those
  * frames.
  * <p/>
@@ -417,10 +417,9 @@ public class CameraSource {
                 mCamera.setPreviewCallbackWithBuffer(null);
                 try {
                     // We want to be compatible back to Gingerbread, but SurfaceTexture
-                    // wasn't introduced until Honeycomb.  Since the interface cannot use a
-                    // SurfaceTexture, if the developer wants to display a preview we must use a
-                    // SurfaceHolder.  If the developer doesn't want to display a preview we use a
-                    // SurfaceTexture if we are running at least Honeycomb.
+                    // wasn't introduced until Honeycomb.  Since the interface cannot use a SurfaceTexture, if the
+                    // developer wants to display a preview we must use a SurfaceHolder.  If the developer doesn't
+                    // want to display a preview we use a SurfaceTexture if we are running at least Honeycomb.
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                         mCamera.setPreviewTexture(null);
@@ -509,8 +508,8 @@ public class CameraSource {
     /**
      * Gets the current focus mode setting.
      *
-     * @return current focus mode. This value is null if the camera is not yet created.
-     * Applications should call {@link #autoFocus(AutoFocusCallback)} to start the focus if focus
+     * @return current focus mode. This value is null if the camera is not yet created. Applications should call {@link
+     * #autoFocus(AutoFocusCallback)} to start the focus if focus
      * mode is FOCUS_MODE_AUTO or FOCUS_MODE_MACRO.
      * @see Camera.Parameters#FOCUS_MODE_AUTO
      * @see Camera.Parameters#FOCUS_MODE_INFINITY
@@ -592,8 +591,7 @@ public class CameraSource {
     /**
      * Starts camera auto-focus and registers a callback function to run when
      * the camera is focused.  This method is only valid when preview is active
-     * (between {@link #start()} or {@link #start(SurfaceHolder)} and before {@link #stop()}
-     * or {@link #release()}).
+     * (between {@link #start()} or {@link #start(SurfaceHolder)} and before {@link #stop()} or {@link #release()}).
      * <p/>
      * <p>Callers should check
      * {@link #getFocusMode()} to determine if
@@ -641,8 +639,7 @@ public class CameraSource {
      * Sets camera auto-focus move callback.
      *
      * @param cb the callback to run
-     * @return {@code true} if the operation is supported (i.e. from Jelly Bean), {@code false}
-     * otherwise
+     * @return {@code true} if the operation is supported (i.e. from Jelly Bean), {@code false} otherwise
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public boolean setAutoFocusMoveCallback(@Nullable AutoFocusMoveCallback cb) {
@@ -781,8 +778,7 @@ public class CameraSource {
                     mFocusMode)) {
                 parameters.setFocusMode(mFocusMode);
             } else {
-                Log.i(TAG, "Camera focus mode: " + mFocusMode +
-                    " is not supported on this device.");
+                Log.i(TAG, "Camera focus mode: " + mFocusMode + " is not supported on this device.");
             }
         }
 
@@ -790,12 +786,13 @@ public class CameraSource {
         mFocusMode = parameters.getFocusMode();
 
         if (mFlashMode != null) {
-            if (parameters.getSupportedFlashModes().contains(
-                    mFlashMode)) {
-                parameters.setFlashMode(mFlashMode);
-            } else {
-                Log.i(TAG, "Camera flash mode: " + mFlashMode +
-                    " is not supported on this device.");
+            if (parameters.getSupportedFlashModes() != null) {
+                if (parameters.getSupportedFlashModes().contains(
+                        mFlashMode)) {
+                    parameters.setFlashMode(mFlashMode);
+                } else {
+                    Log.i(TAG, "Camera flash mode: " + mFlashMode + " is not supported on this device.");
+                }
             }
         }
 
@@ -1012,7 +1009,7 @@ public class CameraSource {
         int displayAngle;
         if (cameraInfo.facing == CameraInfo.CAMERA_FACING_FRONT) {
             angle = (cameraInfo.orientation + degrees) % 360;
-            displayAngle = (360 - angle); // compensate for it being mirrored
+            displayAngle = (360 - angle) % 360; // compensate for it being mirrored
         } else {  // back-facing
             angle = (cameraInfo.orientation - degrees + 360) % 360;
             displayAngle = angle;

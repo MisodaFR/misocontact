@@ -7,14 +7,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.gms.vision.barcode.Barcode;
+
 import org.apache.commons.lang3.StringUtils;
 
 import fr.misoda.contact.BuildConfig;
 import fr.misoda.contact.R;
 import fr.misoda.contact.common.AppConfig;
 import fr.misoda.contact.common.Constant;
+import fr.misoda.contact.view.component.barcode.BarcodeGraphicTracker;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BarcodeGraphicTracker.BarcodeUpdateListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,4 +86,9 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }*/
+
+    @Override
+    public void onBarcodeDetected(Barcode barcode) {
+        //do something with barcode data returned
+    }
 }
