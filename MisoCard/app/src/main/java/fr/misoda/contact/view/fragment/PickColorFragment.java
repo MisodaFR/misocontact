@@ -1,6 +1,5 @@
 package fr.misoda.contact.view.fragment;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
@@ -11,10 +10,11 @@ import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
@@ -292,6 +292,8 @@ public class PickColorFragment extends Fragment {
         tvPickedColorValueRGB.setText(intColorToHexRGB(selectedColorValue));
         tvPickedColorValueRGB.setTextColor(GraphicUtil.getForegroundWhiteOrBlack(selectedColorValue));
         tvMsgColorValueInvalid.setVisibility(View.GONE);
+
+        setHasOptionsMenu(true);
     }
 
     private String intColorToHexARGB(int color) {
@@ -307,5 +309,10 @@ public class PickColorFragment extends Fragment {
         int g = Color.green(color);
         int b = Color.blue(color);
         return String.format(Locale.getDefault(), "%02X%02X%02X", r, g, b);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        getActivity().getMenuInflater().inflate(R.menu.menu_setting_fragment, menu);
     }
 }
