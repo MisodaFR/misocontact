@@ -136,11 +136,6 @@ public class PickColorFragment extends Fragment {
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(pickColorSize, pickColorSize);
         params.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
         colorPickerRGB.setLayoutParams(params);
-        colorPickerRGB.setColor(selectedColorValue);
-        tvPickedColorValueRGB.getBackground().setColorFilter(selectedColorValue, PorterDuff.Mode.SRC_ATOP);
-        tvPickedColorValueRGB.setText(intColorToHexRGB(selectedColorValue));
-        tvPickedColorValueRGB.setTextColor(GraphicUtil.getForegroundWhiteOrBlack(selectedColorValue));
-        tvMsgColorValueInvalid.setVisibility(View.GONE);
         colorPickerRGB.setColorSelectionListener(new SimpleColorSelectionListener() {
             @Override
             public void onColorSelected(int color) {
@@ -151,6 +146,7 @@ public class PickColorFragment extends Fragment {
                 colorValueValid = true;
             }
         });
+
     }
 
     private void buildHSLView(Window window, View rootView) {
@@ -290,6 +286,12 @@ public class PickColorFragment extends Fragment {
         ((TextView) view.findViewById(R.id.tv_argb_title)).setTextColor(Color.BLACK);
         etColorValueRBG.setTextColor(Color.BLACK);
         etColorValueHSL.setTextColor(Color.BLACK);
+
+        colorPickerRGB.setColor(selectedColorValue);
+        tvPickedColorValueRGB.getBackground().setColorFilter(selectedColorValue, PorterDuff.Mode.SRC_ATOP);
+        tvPickedColorValueRGB.setText(intColorToHexRGB(selectedColorValue));
+        tvPickedColorValueRGB.setTextColor(GraphicUtil.getForegroundWhiteOrBlack(selectedColorValue));
+        tvMsgColorValueInvalid.setVisibility(View.GONE);
     }
 
     private String intColorToHexARGB(int color) {
