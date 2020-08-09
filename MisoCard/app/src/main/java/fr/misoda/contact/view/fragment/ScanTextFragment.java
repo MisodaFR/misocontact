@@ -19,6 +19,7 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
@@ -35,11 +36,17 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.vision.text.TextRecognizer;
 import com.google.android.material.snackbar.Snackbar;
 
+import org.apache.commons.lang3.StringUtils;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.io.IOException;
 
 import fr.misoda.contact.R;
 import fr.misoda.contact.common.AppConfig;
 import fr.misoda.contact.common.Constant;
+import fr.misoda.contact.model.event.EventReceiveDetection;
 import fr.misoda.contact.view.component.orc.CameraSource;
 import fr.misoda.contact.view.component.orc.CameraSourcePreview;
 import fr.misoda.contact.view.component.orc.GraphicOverlay;
@@ -68,6 +75,10 @@ public class ScanTextFragment extends Fragment {
     private GestureDetector gestureDetector;
 
     private OcrDetectorProcessor ocrDetectorProcessor;
+
+    private EventBus bus = EventBus.getDefault();
+
+    private ImageButton btnAccept;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -99,6 +110,18 @@ public class ScanTextFragment extends Fragment {
             return b || c;
         });
 
+        btnAccept = view.findViewById(R.id.img_btn_accept);
+        btnAccept.setOnClickListener(v -> {
+            String detectedTexts = ocrDetectorProcessor.getDetectedTexts();
+            Log.d(Constant.LOG_TAG_SCAN_TEXT, "detectedTexts : " + detectedTexts);
+            if (StringUtils.isBlank(detectedTexts)) {
+                return;
+            }
+            ScanTextFragmentDirections.ActionScanTextFragmentToSaveToContactsFragment action = ScanTextFragmentDirections.actionScanTextFragmentToSaveToContactsFragment();
+            action.setScannedText(detectedTexts);
+            NavHostFragment.findNavController(ScanTextFragment.this).navigate(action);
+        });
+
         return view;
     }
 
@@ -125,8 +148,6 @@ public class ScanTextFragment extends Fragment {
 
         gestureDetector = new GestureDetector(getActivity(), new CaptureGestureListener());
         scaleGestureDetector = new ScaleGestureDetector(getActivity(), new ScaleListener());
-
-        //Snackbar.make(mGraphicOverlay, "Tap to capture. Pinch/Stretch to zoom", Snackbar.LENGTH_LONG).show();
     }
 
     /**
@@ -290,11 +311,7 @@ public class ScanTextFragment extends Fragment {
         String detectedTexts = ocrDetectorProcessor.getDetectedTexts();
         Log.d(Constant.LOG_TAG_SCAN_TEXT, "detectedTexts : " + detectedTexts);
 
-        ScanTextFragmentDirections.ActionScanTextFragmentToSaveToContactsFragment action = ScanTextFragmentDirections.actionScanTextFragmentToSaveToContactsFragment();
-        action.setScannedText(detectedTexts);
-        NavHostFragment.findNavController(ScanTextFragment.this).navigate(action);
-
-        return !detectedTexts.equals("");
+        return !detectedTexts.equals(StringUtils.EMPTY);
     }
 
     private class ScaleListener implements ScaleGestureDetector.OnScaleGestureListener {
@@ -420,5 +437,29 @@ public class ScanTextFragment extends Fragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.no_use_camera_permission).setMessage(R.string.no_camera_permission).setPositiveButton(R.string.ok, listener).show();
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        bus.register(this);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        bus.unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(EventReceiveDetection event) {
+        String detectedText = event.getDetectedText();
+        if (StringUtils.isBlank(detectedText)) {
+            btnAccept.setEnabled(false);
+            btnAccept.setImageResource(R.drawable.ic_close_red_32_2);
+        } else {
+            btnAccept.setEnabled(true);
+            btnAccept.setImageResource(R.drawable.ic_done_green_32_2);
+        }
     }
 }

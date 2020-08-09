@@ -21,7 +21,10 @@ import android.util.SparseArray;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
 
+import org.greenrobot.eventbus.EventBus;
+
 import fr.misoda.contact.common.Constant;
+import fr.misoda.contact.model.event.EventReceiveDetection;
 import fr.misoda.contact.view.component.orc.GraphicOverlay;
 import fr.misoda.contact.view.component.orc.OcrGraphic;
 
@@ -33,6 +36,7 @@ public class OcrDetectorProcessor implements Detector.Processor<TextBlock> {
 
     private GraphicOverlay<OcrGraphic> mGraphicOverlay;
     private String detectedTexts = "";
+    private EventBus bus = EventBus.getDefault();
 
     public OcrDetectorProcessor(GraphicOverlay<OcrGraphic> ocrGraphicOverlay) {
         mGraphicOverlay = ocrGraphicOverlay;
@@ -61,14 +65,11 @@ public class OcrDetectorProcessor implements Detector.Processor<TextBlock> {
         Log.d(Constant.LOG_TAG_SCAN_TEXT, texts.toString());
 
         detectedTexts = texts.toString();
+        bus.post(new EventReceiveDetection(detectedTexts));
     }
 
     public String getDetectedTexts() {
         return detectedTexts;
-    }
-
-    public void setDetectedTexts(String detectedTexts) {
-        this.detectedTexts = detectedTexts;
     }
 
     /**
