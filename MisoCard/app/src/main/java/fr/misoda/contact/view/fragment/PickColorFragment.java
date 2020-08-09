@@ -69,7 +69,7 @@ public class PickColorFragment extends Fragment {
                     linearLayoutHEX.setVisibility(View.GONE);
                     colorPickerRGB.setColor(selectedColorValue);
                     tvPickedColorValueRGB.getBackground().setColorFilter(selectedColorValue, PorterDuff.Mode.SRC_ATOP);
-                    tvPickedColorValueRGB.setText(intColorToHexRGB(selectedColorValue));
+                    tvPickedColorValueRGB.setText(GraphicUtil.intColorToHexRGB(selectedColorValue));
                     tvPickedColorValueRGB.setTextColor(GraphicUtil.getForegroundWhiteOrBlack(selectedColorValue));
                     //imm.hideSoftInputFromWindow(window.getDecorView().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                     colorValueValid = true;
@@ -81,7 +81,7 @@ public class PickColorFragment extends Fragment {
                     colorPickerHSL.setInitialColor(selectedColorValue);
                     tvColorValueHSL.setBackgroundColor(selectedColorValue);
                     tvColorValueHSL.setTextColor(GraphicUtil.getForegroundWhiteOrBlack(selectedColorValue));
-                    tvColorValueHSL.setText(intColorToHexARGB(selectedColorValue));
+                    tvColorValueHSL.setText(GraphicUtil.intColorToHexARGB(selectedColorValue));
                     //imm.hideSoftInputFromWindow(window.getDecorView().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                     colorValueValid = true;
                     break;
@@ -91,10 +91,10 @@ public class PickColorFragment extends Fragment {
                     linearLayoutHEX.setVisibility(View.VISIBLE);
                     view.findViewById(R.id.view_picked_color_hex).setBackgroundColor(selectedColorValue);
                     etColorValueRBG.setTag(HEX_COLOR_VALUE_RGB);
-                    etColorValueRBG.setText(intColorToHexRGB(selectedColorValue));
+                    etColorValueRBG.setText(GraphicUtil.intColorToHexRGB(selectedColorValue));
                     etColorValueRBG.setTag(null);
                     etColorValueHSL.setTag(HEX_COLOR_VALUE_HSL);
-                    etColorValueHSL.setText(intColorToHexARGB(selectedColorValue));
+                    etColorValueHSL.setText(GraphicUtil.intColorToHexARGB(selectedColorValue));
                     etColorValueHSL.setTag(null);
                     colorValueValid = true;
                     tvMsgColorValueInvalid.setVisibility(View.GONE);
@@ -141,7 +141,7 @@ public class PickColorFragment extends Fragment {
             public void onColorSelected(int color) {
                 selectedColorValue = color;
                 tvPickedColorValueRGB.getBackground().setColorFilter(selectedColorValue, PorterDuff.Mode.SRC_ATOP);
-                tvPickedColorValueRGB.setText(intColorToHexRGB(selectedColorValue));
+                tvPickedColorValueRGB.setText(GraphicUtil.intColorToHexRGB(selectedColorValue));
                 tvPickedColorValueRGB.setTextColor(GraphicUtil.getForegroundWhiteOrBlack(selectedColorValue));
                 colorValueValid = true;
             }
@@ -174,7 +174,7 @@ public class PickColorFragment extends Fragment {
 
         tvColorValueHSL.setBackgroundColor(selectedColorValue);
         tvColorValueHSL.setTextColor(GraphicUtil.getForegroundWhiteOrBlack(selectedColorValue));
-        tvColorValueHSL.setText(intColorToHexARGB(selectedColorValue));
+        tvColorValueHSL.setText(GraphicUtil.intColorToHexARGB(selectedColorValue));
         colorPickerHSL.subscribe((color, fromUser, shouldPropagate) -> {
             if (!fromUser) {
                 return;
@@ -182,17 +182,17 @@ public class PickColorFragment extends Fragment {
             selectedColorValue = color;
             tvColorValueHSL.setBackgroundColor(selectedColorValue);
             tvColorValueHSL.setTextColor(GraphicUtil.getForegroundWhiteOrBlack(selectedColorValue));
-            tvColorValueHSL.setText(intColorToHexARGB(selectedColorValue));
+            tvColorValueHSL.setText(GraphicUtil.intColorToHexARGB(selectedColorValue));
         });
     }
 
     private void buildHEXView(View rootView) {
         rootView.findViewById(R.id.view_picked_color_hex).setBackgroundColor(selectedColorValue);
         etColorValueRBG.setTag(HEX_COLOR_VALUE_RGB);
-        etColorValueRBG.setText(intColorToHexRGB(selectedColorValue));
+        etColorValueRBG.setText(GraphicUtil.intColorToHexRGB(selectedColorValue));
         etColorValueRBG.setTag(null);
         etColorValueHSL.setTag(HEX_COLOR_VALUE_HSL);
-        etColorValueHSL.setText(intColorToHexARGB(selectedColorValue));
+        etColorValueHSL.setText(GraphicUtil.intColorToHexARGB(selectedColorValue));
         etColorValueHSL.setTag(null);
 
         etColorValueRBG.addTextChangedListener(new TextWatcher() {
@@ -218,7 +218,7 @@ public class PickColorFragment extends Fragment {
                         colorValueValid = true;
                         tvMsgColorValueInvalid.setVisibility(View.GONE);
                         etColorValueHSL.setTag(HEX_COLOR_VALUE_HSL);
-                        etColorValueHSL.setText(intColorToHexARGB(selectedColorValue));
+                        etColorValueHSL.setText(GraphicUtil.intColorToHexARGB(selectedColorValue));
                         etColorValueHSL.setTag(null);
                     } catch (IllegalArgumentException e) {
                         Log.d(LOG_TAG, "Error: " + e.getMessage());
@@ -255,7 +255,7 @@ public class PickColorFragment extends Fragment {
                         colorValueValid = true;
                         tvMsgColorValueInvalid.setVisibility(View.GONE);
                         etColorValueRBG.setTag(HEX_COLOR_VALUE_RGB);
-                        etColorValueRBG.setText(intColorToHexRGB(selectedColorValue));
+                        etColorValueRBG.setText(GraphicUtil.intColorToHexRGB(selectedColorValue));
                         etColorValueRBG.setTag(null);
                     } catch (IllegalArgumentException e) {
                         Log.d(LOG_TAG, "Error: " + e.getMessage());
@@ -289,26 +289,11 @@ public class PickColorFragment extends Fragment {
 
         colorPickerRGB.setColor(selectedColorValue);
         tvPickedColorValueRGB.getBackground().setColorFilter(selectedColorValue, PorterDuff.Mode.SRC_ATOP);
-        tvPickedColorValueRGB.setText(intColorToHexRGB(selectedColorValue));
+        tvPickedColorValueRGB.setText(GraphicUtil.intColorToHexRGB(selectedColorValue));
         tvPickedColorValueRGB.setTextColor(GraphicUtil.getForegroundWhiteOrBlack(selectedColorValue));
         tvMsgColorValueInvalid.setVisibility(View.GONE);
 
         setHasOptionsMenu(true);
-    }
-
-    private String intColorToHexARGB(int color) {
-        int a = Color.alpha(color);
-        int r = Color.red(color);
-        int g = Color.green(color);
-        int b = Color.blue(color);
-        return String.format(Locale.getDefault(), "%02X%02X%02X%02X", a, r, g, b);
-    }
-
-    private String intColorToHexRGB(int color) {
-        int r = Color.red(color);
-        int g = Color.green(color);
-        int b = Color.blue(color);
-        return String.format(Locale.getDefault(), "%02X%02X%02X", r, g, b);
     }
 
     @Override

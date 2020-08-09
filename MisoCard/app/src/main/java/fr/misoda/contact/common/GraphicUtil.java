@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Locale;
+
 public class GraphicUtil {
 
     private GraphicUtil() {
@@ -114,9 +116,21 @@ public class GraphicUtil {
         if (c >= 'A' && c <= 'F') {
             return true;
         }
-        if (c >= 'a' && c <= 'f') {
-            return true;
-        }
-        return false;
+        return c >= 'a' && c <= 'f';
+    }
+
+    public static String intColorToHexARGB(int color) {
+        int a = Color.alpha(color);
+        int r = Color.red(color);
+        int g = Color.green(color);
+        int b = Color.blue(color);
+        return String.format(Locale.getDefault(), "%02X%02X%02X%02X", a, r, g, b);
+    }
+
+    public static String intColorToHexRGB(int color) {
+        int r = Color.red(color);
+        int g = Color.green(color);
+        int b = Color.blue(color);
+        return String.format(Locale.getDefault(), "%02X%02X%02X", r, g, b);
     }
 }
