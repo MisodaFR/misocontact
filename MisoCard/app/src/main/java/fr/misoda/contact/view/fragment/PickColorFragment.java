@@ -183,9 +183,14 @@ public class PickColorFragment extends Fragment {
                 return;
             }
             selectedColorValue = color;
+            Log.d("TempTag", "selectedColorValue : " + selectedColorValue);
             tvColorValueHSL.setBackgroundColor(selectedColorValue);
-            tvColorValueHSL.setTextColor(GraphicUtil.getForegroundWhiteOrBlack(selectedColorValue));
-            tvColorValueHSL.setText(GraphicUtil.intColorToHexARGB(selectedColorValue));
+            int foregroundWhiteOrBlack = GraphicUtil.getForegroundWhiteOrBlack(selectedColorValue);
+            Log.d("TempTag", "foregroundWhiteOrBlack : " + foregroundWhiteOrBlack);
+            tvColorValueHSL.setTextColor(foregroundWhiteOrBlack);
+            String text = GraphicUtil.intColorToHexARGB(selectedColorValue);
+            Log.d("TempTag", "text : " + text);
+            tvColorValueHSL.setText(text);
         });
     }
 
@@ -321,8 +326,10 @@ public class PickColorFragment extends Fragment {
                 if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, true)) {
                     //presentTooltipTourguideOfMenuItemSetting();
                 } else {
-                    AppConfig.getInstance().setInt(Constant.CURRENT_COLOR_OF_LIGHT_THEME, selectedColorValue);
-                    NavHostFragment.findNavController(this).navigate(R.id.action_setting_fragment);
+                    if (colorValueValid) {
+                        AppConfig.getInstance().setInt(Constant.CURRENT_COLOR_OF_LIGHT_THEME, selectedColorValue);
+                        NavHostFragment.findNavController(this).navigate(R.id.action_setting_fragment);
+                    }
                 }
                 return true;
             default:

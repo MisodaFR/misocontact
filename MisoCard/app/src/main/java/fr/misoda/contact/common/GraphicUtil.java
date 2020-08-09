@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,14 @@ public class GraphicUtil {
     }
 
     public static int getForegroundWhiteOrBlack(int backgroundColor) {
+        int alpha = Color.alpha(backgroundColor);
+        Log.d("TempTag", "alpha : " + alpha);
+        /*if (alpha < 128) {
+            return Color.WHITE;
+        } else if (alpha < 255) {
+            return Color.BLACK;
+        }*/
+
         int blue = Color.blue(backgroundColor);
         int green = Color.green(backgroundColor);
         int red = Color.red(backgroundColor);

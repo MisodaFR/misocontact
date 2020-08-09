@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:pikolo="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal">
+
+    <com.madrapps.pikolo.RGBColorPicker
+        android:id="@+id/color_picker_rgb"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:padding="0dp"
+        pikolo:arc_length="110"
+        pikolo:blue_indicator_stroke_width="1dp"
+        pikolo:blue_start_angle="270"
+        pikolo:green_indicator_stroke_width="1dp"
+        pikolo:green_start_angle="150"
+        pikolo:radius_offset="10dp"
+        pikolo:red_indicator_stroke_width="1dp"
+        pikolo:red_start_angle="30"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+    <LinearLayout
+        android:id="@+id/linear_layout_for_picked_color_value_rgb"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg_circle"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_1">
+
+        <TextView
+            android:id="@+id/img_picked_color_value_rgb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_circle"
+            android:gravity="center"
+            android:text="FFFFFF"
+            android:textAlignment="center"
+            android:textSize="@dimen/sp_14" />
+
+    </LinearLayout>
+
+</RelativeLayout>
