@@ -99,7 +99,7 @@ public class SettingFragment extends Fragment {
                 layoutCustomColor.setVisibility(View.VISIBLE);
 
                 MainActivity activity = (MainActivity) getActivity();
-                activity.setupLightThemeColors();
+                activity.setupLightThemeColors(AppConfig.getInstance().getInt(Constant.CURRENT_COLOR_OF_LIGHT_THEME, Color.BLUE));
                 break;
             case AppCompatDelegate.MODE_NIGHT_YES:
                 switchDarkTheme.setChecked(true);

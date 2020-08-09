@@ -37,15 +37,15 @@ public class MainActivity extends AppCompatActivity implements BarcodeGraphicTra
 
         switch (theme) {
             case AppCompatDelegate.MODE_NIGHT_NO:
-                setupLightThemeColors();
+                setupLightThemeColors(AppConfig.getInstance().getInt(Constant.CURRENT_COLOR_OF_LIGHT_THEME, Color.BLUE));
                 break;
             case AppCompatDelegate.MODE_NIGHT_YES:
             default:
         }
     }
 
-    public void setupLightThemeColors() {
-        int appBackgroundColor = AppConfig.getInstance().getInt(Constant.CURRENT_COLOR_OF_LIGHT_THEME, Color.BLUE);
+    public void setupLightThemeColors(int color) {
+        int appBackgroundColor = color;
         int foregroundColor = GraphicUtil.getForegroundWhiteOrBlack(appBackgroundColor); // black or white
         int lighterOrDarkerColor = GraphicUtil.getLighterOrDarkerColor(appBackgroundColor, 1.3f);
         int foregroundColorOfLighterOrDarker = GraphicUtil.getForegroundWhiteOrBlack(lighterOrDarkerColor); // black or white

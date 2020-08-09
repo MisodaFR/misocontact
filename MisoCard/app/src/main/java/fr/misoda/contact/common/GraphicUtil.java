@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
 
 import org.apache.commons.lang3.StringUtils;
@@ -189,12 +188,15 @@ public class GraphicUtil {
         return ColorUtils.HSLToColor(hsl);
     }
 
-    public static void setupMenuItemsColor(@NonNull Menu menu) {
+    public static void setupMenuItemsColor(Menu menu, int color) {
+        if (menu == null) {
+            return;
+        }
         for (int i = 0; i < menu.size(); i++) {
             Drawable drawable = menu.getItem(i).getIcon();
             if (drawable != null) {
                 drawable.mutate();
-                int appBackgroundColor = AppConfig.getInstance().getInt(Constant.CURRENT_COLOR_OF_LIGHT_THEME, Color.BLUE);
+                int appBackgroundColor = color;
                 drawable.setColorFilter(GraphicUtil.getForegroundWhiteOrBlack(appBackgroundColor), PorterDuff.Mode.SRC_ATOP);
             }
         }

@@ -3,14 +3,9 @@ package fr.misoda.contact.view.fragment;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
-import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
@@ -28,7 +23,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
@@ -325,51 +319,12 @@ public class PickColorFragment extends Fragment {
         int theme = AppConfig.getInstance().getInt(Constant.KEY_THEME, AppCompatDelegate.MODE_NIGHT_NO);
         switch (theme) {
             case AppCompatDelegate.MODE_NIGHT_NO:
-                setupColorLightTheme(color);
+                MainActivity activity = (MainActivity) getActivity();
+                activity.setupLightThemeColors(color);
+                GraphicUtil.setupMenuItemsColor(menu, color);
                 break;
             case AppCompatDelegate.MODE_NIGHT_YES:
             default:
-        }
-    }
-
-    private void setupColorLightTheme(int color) {
-        MainActivity activity = (MainActivity) getActivity();
-        int appBackgroundColor = color;
-        int foregroundColor = GraphicUtil.getForegroundWhiteOrBlack(appBackgroundColor); // black or white
-        int lighterOrDarkerColor = GraphicUtil.getLighterOrDarkerColor(appBackgroundColor, 1.3f);
-        int foregroundColorOfLighterOrDarker = GraphicUtil.getForegroundWhiteOrBlack(lighterOrDarkerColor); // black or white
-
-        Window window = activity.getWindow();
-        if (foregroundColorOfLighterOrDarker == Color.WHITE) {
-            window.setStatusBarColor(lighterOrDarkerColor);
-            window.setNavigationBarColor(lighterOrDarkerColor);
-        } else {
-            int moreDarker = GraphicUtil.toDarkerColor(appBackgroundColor, 1.5f);
-            window.setStatusBarColor(moreDarker);
-            window.setNavigationBarColor(moreDarker);
-        }
-
-        ActionBar actionBar = activity.getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setBackgroundDrawable(new ColorDrawable(color));
-
-            CharSequence title = actionBar.getTitle();
-            SpannableStringBuilder spannable = new SpannableStringBuilder(title);
-            spannable.setSpan(new ForegroundColorSpan(foregroundColor), 0, title.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
-            actionBar.setTitle(spannable);
-
-            CharSequence subtitle = actionBar.getSubtitle();
-            spannable = new SpannableStringBuilder(subtitle);
-            spannable.setSpan(new ForegroundColorSpan(foregroundColor), 0, subtitle.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
-            actionBar.setSubtitle(spannable);
-        }
-
-        for (int i = 0; i < menu.size(); i++) {
-            Drawable drawable = menu.getItem(i).getIcon();
-            if (drawable != null) {
-                drawable.mutate();
-                drawable.setColorFilter(GraphicUtil.getForegroundWhiteOrBlack(color), PorterDuff.Mode.SRC_ATOP);
-            }
         }
     }
 
@@ -381,7 +336,7 @@ public class PickColorFragment extends Fragment {
         switch (theme) {
             case AppCompatDelegate.MODE_NIGHT_NO:
                 // Thay doi mau cua menu item (co the ap dung cho dark theme)
-                GraphicUtil.setupMenuItemsColor(menu);
+                GraphicUtil.setupMenuItemsColor(menu, AppConfig.getInstance().getInt(Constant.CURRENT_COLOR_OF_LIGHT_THEME, Color.BLUE));
                 break;
             case AppCompatDelegate.MODE_NIGHT_YES:
             default:

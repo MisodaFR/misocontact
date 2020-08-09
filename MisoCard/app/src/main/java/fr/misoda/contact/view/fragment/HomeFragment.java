@@ -119,7 +119,7 @@ public class HomeFragment extends Fragment {
         switch (theme) {
             case AppCompatDelegate.MODE_NIGHT_NO:
                 // Thay doi mau cua menu item (co the ap dung cho dark theme)
-                GraphicUtil.setupMenuItemsColor(menu);
+                GraphicUtil.setupMenuItemsColor(menu, AppConfig.getInstance().getInt(Constant.CURRENT_COLOR_OF_LIGHT_THEME, Color.BLUE));
                 break;
             case AppCompatDelegate.MODE_NIGHT_YES:
             default:
