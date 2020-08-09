@@ -80,4 +80,7 @@
     <string name="de_chuyensang_phan_gioithieu_tieptheo">Để chuyển sang phần giới thiệu tiếp theo, bạn hãy nhấp vào dòng chữ</string>
     <string name="de_thoat_huongdan_ban_hay_nhapvao_dongchu">Để thoát hướng dẫn và bắt đầu ứng dụng, bạn hãy nhấp vào dòng chữ</string>
     <string name="ban_luonluon_cothe_xem_huongdansudung_bangcach">Bạn luôn luôn có thể xem hướng dẫn sử dụng bằng cách nhấp vào menu phía trên bên phải và nhấp vào dòng</string>
+
+    <string name="color_value_is_invalid">Giá trị màu không hợp lệ (mỗi kí tự phải ở trong khoảng [0 -> 9], [a -> f] hoặc [A -> F])</string>
+    <string name="selecting_a_color">Chọn màu</string>
 </resources>

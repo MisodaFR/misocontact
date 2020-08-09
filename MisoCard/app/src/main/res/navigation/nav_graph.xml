@@ -105,6 +105,15 @@
             app:destination="@id/DeviceAndAppInfosFragment" />
 
         <action
+            android:id="@+id/action_SettingFragment_to_PickColorFragment"
+            app:destination="@id/PickColorFragment">
+            <argument
+                android:name="currentColorOfLightTheme"
+                android:defaultValue="0"
+                app:argType="integer" />
+        </action>
+
+        <action
             android:id="@+id/action_SettingFragment_to_HomeFragment"
             app:destination="@id/HomeFragment" />
 
@@ -112,13 +121,26 @@
 
     <action
         android:id="@+id/action_setting_fragment"
-        app:destination="@id/SettingFragment" />
+        app:destination="@id/SettingFragment"
+        app:popUpTo="@+id/SettingFragment"
+        app:popUpToInclusive="true"/>
 
     <fragment
         android:id="@+id/DeviceAndAppInfosFragment"
         android:name="fr.misoda.contact.view.fragment.DeviceAndAppInfosFragment"
         android:label="DeviceAndAppInfosFragment"
         tools:layout="@layout/fragment_device_and_app_infos" />
+
+    <fragment
+        android:id="@+id/PickColorFragment"
+        android:name="fr.misoda.contact.view.fragment.PickColorFragment"
+        android:label="PickColorFragment"
+        tools:layout="@layout/fragment_pick_color">
+        <argument
+            android:name="currentColorOfLightTheme"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
 
     <!--Tro ve HomeFragment va xoa het nhung fragment trong stack-->
     <action

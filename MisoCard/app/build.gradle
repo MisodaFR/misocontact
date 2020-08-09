@@ -92,6 +92,8 @@ dependencies {
     implementation 'org.apache.commons:commons-lang3:3.9'
     implementation "androidx.preference:preference:1.1.1"
     implementation project(':material_showcaseview_lib')
+    implementation 'com.github.madrapps:pikolo:2.0.1'
+    implementation 'com.github.duanhong169:colorpicker:1.1.6'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

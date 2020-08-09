@@ -80,4 +80,7 @@
     <string name="de_chuyensang_phan_gioithieu_tieptheo">Pour passer à la prochaine introduction, cliquez sur le texte</string>
     <string name="de_thoat_huongdan_ban_hay_nhapvao_dongchu">Pour quitter le guide et commencer à utiliser l\'application, cliquez sur le texte</string>
     <string name="ban_luonluon_cothe_xem_huongdansudung_bangcach">Vous pouvez toujours suivre le guide en cliquant sur le menu en haut à droite et en cliquant sur la ligne</string>
+
+    <string name="color_value_is_invalid">La valeur de la couleur n\'est pas valide (chaque caractère doit être compris entre [0 -> 9], [a -> f] ou [A -> F])</string>
+    <string name="selecting_a_color">Sélection d\'une couleur</string>
 </resources>

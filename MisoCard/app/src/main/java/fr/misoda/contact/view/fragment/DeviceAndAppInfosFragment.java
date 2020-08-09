@@ -23,10 +23,6 @@ import fr.misoda.contact.common.TextUtil;
 public class DeviceAndAppInfosFragment extends Fragment {
     public static final String LOG_TAG = DeviceAndAppInfosFragment.class.getSimpleName();
 
-    public DeviceAndAppInfosFragment() {
-
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_device_and_app_infos, container, false);
