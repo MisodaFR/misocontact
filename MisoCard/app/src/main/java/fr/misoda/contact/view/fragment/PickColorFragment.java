@@ -3,9 +3,14 @@ package fr.misoda.contact.view.fragment;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
@@ -23,6 +28,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
@@ -34,6 +40,7 @@ import fr.misoda.contact.R;
 import fr.misoda.contact.common.AppConfig;
 import fr.misoda.contact.common.Constant;
 import fr.misoda.contact.common.GraphicUtil;
+import fr.misoda.contact.view.activity.MainActivity;
 import top.defaults.colorpicker.ColorPickerView;
 
 public class PickColorFragment extends Fragment {
@@ -51,6 +58,8 @@ public class PickColorFragment extends Fragment {
     private ColorPickerView colorPickerHSL;
     private EditText etColorValueRBG;
     private EditText etColorValueHSL;
+
+    private Menu menu;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -119,6 +128,32 @@ public class PickColorFragment extends Fragment {
         return view;
     }
 
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        PickColorFragmentArgs args = PickColorFragmentArgs.fromBundle(getArguments());
+        int currentColorOfLightTheme = args.getCurrentColorOfLightTheme();
+        selectedColorValue = currentColorOfLightTheme;
+
+        view.findViewById(R.id.linear_layout_for_picked_color_value_rgb).getBackground().setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_ATOP);
+
+        view.findViewById(R.id.linear_layout_for_tv_color_hsl).setBackgroundColor(Color.BLACK);
+
+        view.findViewById(R.id.linear_layout_for_view_picked_color_hex).setBackgroundColor(Color.BLACK);
+        ((TextView) view.findViewById(R.id.tv_rgb_title)).setTextColor(Color.BLACK);
+        ((TextView) view.findViewById(R.id.tv_argb_title)).setTextColor(Color.BLACK);
+        etColorValueRBG.setTextColor(Color.BLACK);
+        etColorValueHSL.setTextColor(Color.BLACK);
+
+        colorPickerRGB.setColor(selectedColorValue);
+        tvPickedColorValueRGB.getBackground().setColorFilter(selectedColorValue, PorterDuff.Mode.SRC_ATOP);
+        tvPickedColorValueRGB.setText(GraphicUtil.intColorToHexRGB(selectedColorValue));
+        tvPickedColorValueRGB.setTextColor(GraphicUtil.getForegroundWhiteOrBlack(selectedColorValue));
+        tvMsgColorValueInvalid.setVisibility(View.GONE);
+
+        setHasOptionsMenu(true);
+    }
+
     private void buildViewRGB(Window window, View rootView) {
         tvPickedColorValueRGB = rootView.findViewById(R.id.img_picked_color_value_rgb);
         colorPickerRGB = rootView.findViewById(R.id.color_picker_rgb);
@@ -147,6 +182,8 @@ public class PickColorFragment extends Fragment {
                 tvPickedColorValueRGB.setText(GraphicUtil.intColorToHexRGB(selectedColorValue));
                 tvPickedColorValueRGB.setTextColor(GraphicUtil.getForegroundWhiteOrBlack(selectedColorValue));
                 colorValueValid = true;
+
+                setupColorIfLightTheme(color);
             }
         });
 
@@ -191,6 +228,8 @@ public class PickColorFragment extends Fragment {
             String text = GraphicUtil.intColorToHexARGB(selectedColorValue);
             Log.d("TempTag", "text : " + text);
             tvColorValueHSL.setText(text);
+
+            setupColorIfLightTheme(color);
         });
     }
 
@@ -228,6 +267,8 @@ public class PickColorFragment extends Fragment {
                         etColorValueHSL.setTag(HEX_COLOR_VALUE_HSL);
                         etColorValueHSL.setText(GraphicUtil.intColorToHexARGB(selectedColorValue));
                         etColorValueHSL.setTag(null);
+
+                        setupColorIfLightTheme(selectedColorValue);
                     } catch (IllegalArgumentException e) {
                         Log.d(LOG_TAG, "Error: " + e.getMessage());
                         e.printStackTrace();
@@ -265,6 +306,8 @@ public class PickColorFragment extends Fragment {
                         etColorValueRBG.setTag(HEX_COLOR_VALUE_RGB);
                         etColorValueRBG.setText(GraphicUtil.intColorToHexRGB(selectedColorValue));
                         etColorValueRBG.setTag(null);
+
+                        setupColorIfLightTheme(selectedColorValue);
                     } catch (IllegalArgumentException e) {
                         Log.d(LOG_TAG, "Error: " + e.getMessage());
                         e.printStackTrace();
@@ -278,35 +321,62 @@ public class PickColorFragment extends Fragment {
         });
     }
 
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    private void setupColorIfLightTheme(int color) {
+        int theme = AppConfig.getInstance().getInt(Constant.KEY_THEME, AppCompatDelegate.MODE_NIGHT_NO);
+        switch (theme) {
+            case AppCompatDelegate.MODE_NIGHT_NO:
+                setupColorLightTheme(color);
+                break;
+            case AppCompatDelegate.MODE_NIGHT_YES:
+            default:
+        }
+    }
 
-        PickColorFragmentArgs args = PickColorFragmentArgs.fromBundle(getArguments());
-        int currentColorOfLightTheme = args.getCurrentColorOfLightTheme();
-        selectedColorValue = currentColorOfLightTheme;
+    private void setupColorLightTheme(int color) {
+        MainActivity activity = (MainActivity) getActivity();
+        int appBackgroundColor = color;
+        int foregroundColor = GraphicUtil.getForegroundWhiteOrBlack(appBackgroundColor); // black or white
+        int lighterOrDarkerColor = GraphicUtil.getLighterOrDarkerColor(appBackgroundColor, 1.3f);
+        int foregroundColorOfLighterOrDarker = GraphicUtil.getForegroundWhiteOrBlack(lighterOrDarkerColor); // black or white
 
-        view.findViewById(R.id.linear_layout_for_picked_color_value_rgb).getBackground().setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_ATOP);
+        Window window = activity.getWindow();
+        if (foregroundColorOfLighterOrDarker == Color.WHITE) {
+            window.setStatusBarColor(lighterOrDarkerColor);
+            window.setNavigationBarColor(lighterOrDarkerColor);
+        } else {
+            int moreDarker = GraphicUtil.toDarkerColor(appBackgroundColor, 1.5f);
+            window.setStatusBarColor(moreDarker);
+            window.setNavigationBarColor(moreDarker);
+        }
 
-        view.findViewById(R.id.linear_layout_for_tv_color_hsl).setBackgroundColor(Color.BLACK);
+        ActionBar actionBar = activity.getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setBackgroundDrawable(new ColorDrawable(color));
 
-        view.findViewById(R.id.linear_layout_for_view_picked_color_hex).setBackgroundColor(Color.BLACK);
-        ((TextView) view.findViewById(R.id.tv_rgb_title)).setTextColor(Color.BLACK);
-        ((TextView) view.findViewById(R.id.tv_argb_title)).setTextColor(Color.BLACK);
-        etColorValueRBG.setTextColor(Color.BLACK);
-        etColorValueHSL.setTextColor(Color.BLACK);
+            CharSequence title = actionBar.getTitle();
+            SpannableStringBuilder spannable = new SpannableStringBuilder(title);
+            spannable.setSpan(new ForegroundColorSpan(foregroundColor), 0, title.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+            actionBar.setTitle(spannable);
 
-        colorPickerRGB.setColor(selectedColorValue);
-        tvPickedColorValueRGB.getBackground().setColorFilter(selectedColorValue, PorterDuff.Mode.SRC_ATOP);
-        tvPickedColorValueRGB.setText(GraphicUtil.intColorToHexRGB(selectedColorValue));
-        tvPickedColorValueRGB.setTextColor(GraphicUtil.getForegroundWhiteOrBlack(selectedColorValue));
-        tvMsgColorValueInvalid.setVisibility(View.GONE);
+            CharSequence subtitle = actionBar.getSubtitle();
+            spannable = new SpannableStringBuilder(subtitle);
+            spannable.setSpan(new ForegroundColorSpan(foregroundColor), 0, subtitle.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+            actionBar.setSubtitle(spannable);
+        }
 
-        setHasOptionsMenu(true);
+        for (int i = 0; i < menu.size(); i++) {
+            Drawable drawable = menu.getItem(i).getIcon();
+            if (drawable != null) {
+                drawable.mutate();
+                drawable.setColorFilter(GraphicUtil.getForegroundWhiteOrBlack(color), PorterDuff.Mode.SRC_ATOP);
+            }
+        }
     }
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         getActivity().getMenuInflater().inflate(R.menu.menu_setting_fragment, menu);
+        this.menu = menu;
         int theme = AppConfig.getInstance().getInt(Constant.KEY_THEME, AppCompatDelegate.MODE_NIGHT_NO);
         switch (theme) {
             case AppCompatDelegate.MODE_NIGHT_NO:
