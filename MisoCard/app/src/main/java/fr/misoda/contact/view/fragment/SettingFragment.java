@@ -23,6 +23,7 @@ import fr.misoda.contact.common.AppConfig;
 import fr.misoda.contact.common.Constant;
 import fr.misoda.contact.common.GraphicUtil;
 import fr.misoda.contact.common.TooltipTourGuideHelper;
+import fr.misoda.contact.view.activity.MainActivity;
 import uk.co.deanwild.materialshowcaseview.IShowcaseListener;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
@@ -96,6 +97,9 @@ public class SettingFragment extends Fragment {
             case AppCompatDelegate.MODE_NIGHT_NO:
                 switchDarkTheme.setChecked(false);
                 layoutCustomColor.setVisibility(View.VISIBLE);
+
+                MainActivity activity = (MainActivity) getActivity();
+                activity.setupLightThemeColors();
                 break;
             case AppCompatDelegate.MODE_NIGHT_YES:
                 switchDarkTheme.setChecked(true);

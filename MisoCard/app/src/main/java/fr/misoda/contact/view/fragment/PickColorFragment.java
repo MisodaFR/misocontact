@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -22,14 +23,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.madrapps.pikolo.ColorPicker;
 import com.madrapps.pikolo.listeners.SimpleColorSelectionListener;
 
-import java.util.Locale;
-
 import fr.misoda.contact.R;
+import fr.misoda.contact.common.AppConfig;
+import fr.misoda.contact.common.Constant;
 import fr.misoda.contact.common.GraphicUtil;
 import top.defaults.colorpicker.ColorPickerView;
 
@@ -299,5 +302,31 @@ public class PickColorFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         getActivity().getMenuInflater().inflate(R.menu.menu_setting_fragment, menu);
+        int theme = AppConfig.getInstance().getInt(Constant.KEY_THEME, AppCompatDelegate.MODE_NIGHT_NO);
+        switch (theme) {
+            case AppCompatDelegate.MODE_NIGHT_NO:
+                // Thay doi mau cua menu item (co the ap dung cho dark theme)
+                GraphicUtil.setupMenuItemsColor(menu);
+                break;
+            case AppCompatDelegate.MODE_NIGHT_YES:
+            default:
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.action_save:
+                if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, true)) {
+                    //presentTooltipTourguideOfMenuItemSetting();
+                } else {
+                    AppConfig.getInstance().setInt(Constant.CURRENT_COLOR_OF_LIGHT_THEME, selectedColorValue);
+                    NavHostFragment.findNavController(this).navigate(R.id.action_setting_fragment);
+                }
+                return true;
+            default:
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

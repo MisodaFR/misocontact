@@ -16,6 +16,7 @@ import android.widget.Switch;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -25,6 +26,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import fr.misoda.contact.R;
 import fr.misoda.contact.common.AppConfig;
 import fr.misoda.contact.common.Constant;
+import fr.misoda.contact.common.GraphicUtil;
 import fr.misoda.contact.common.TooltipTourGuideHelper;
 import uk.co.deanwild.materialshowcaseview.IShowcaseListener;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
@@ -112,6 +114,16 @@ public class HomeFragment extends Fragment {
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         getActivity().getMenuInflater().inflate(R.menu.menu_main, menu);
         this.menu = menu;
+
+        int theme = AppConfig.getInstance().getInt(Constant.KEY_THEME, AppCompatDelegate.MODE_NIGHT_NO);
+        switch (theme) {
+            case AppCompatDelegate.MODE_NIGHT_NO:
+                // Thay doi mau cua menu item (co the ap dung cho dark theme)
+                GraphicUtil.setupMenuItemsColor(menu);
+                break;
+            case AppCompatDelegate.MODE_NIGHT_YES:
+            default:
+        }
     }
 
     @Override

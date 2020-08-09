@@ -121,7 +121,9 @@
 
     <action
         android:id="@+id/action_setting_fragment"
-        app:destination="@id/SettingFragment" />
+        app:destination="@id/SettingFragment"
+        app:popUpTo="@+id/SettingFragment"
+        app:popUpToInclusive="true"/>
 
     <fragment
         android:id="@+id/DeviceAndAppInfosFragment"

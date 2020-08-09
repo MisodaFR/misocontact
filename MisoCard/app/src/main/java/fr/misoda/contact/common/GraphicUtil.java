@@ -2,9 +2,15 @@ package fr.misoda.contact.common;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.core.graphics.ColorUtils;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -132,5 +138,56 @@ public class GraphicUtil {
         int g = Color.green(color);
         int b = Color.blue(color);
         return String.format(Locale.getDefault(), "%02X%02X%02X", r, g, b);
+    }
+
+    // factor phai > 1
+    public static int getLighterOrDarkerColor(int color, float factor) {
+        if (getForegroundWhiteOrBlack(color) == Color.BLACK) {
+            return toDarkerColor(color, factor);
+        } else {
+            return toLighterColor(color, factor);
+        }
+    }
+
+    // factor phai > 1
+    public static int toLighterColor(int color, float factor) {
+        float[] hsl = new float[3];
+        ColorUtils.colorToHSL(color, hsl);
+        if (hsl[2] >= 1) {
+            return color; // vi ko the lighter hon duoc nua : do sang chi co gia tri tu 0 den 1
+        }
+        if (hsl[2] == 0) {
+            hsl[2] = 0.1f;
+        }
+        hsl[2] *= factor;
+        if (hsl[2] > 1) {
+            hsl[2] = 1;
+        }
+        return ColorUtils.HSLToColor(hsl);
+    }
+
+    // factor phai > 1
+    public static int toDarkerColor(int color, float factor) {
+        float[] hsl = new float[3];
+        ColorUtils.colorToHSL(color, hsl);
+        if (hsl[2] <= 0) {
+            return color; // vi ko the darker duoc nua
+        }
+        hsl[2] /= factor;
+        if (hsl[2] > 1) {
+            hsl[2] = 1;
+        }
+        return ColorUtils.HSLToColor(hsl);
+    }
+
+    public static void setupMenuItemsColor(@NonNull Menu menu) {
+        for (int i = 0; i < menu.size(); i++) {
+            Drawable drawable = menu.getItem(i).getIcon();
+            if (drawable != null) {
+                drawable.mutate();
+                int appBackgroundColor = AppConfig.getInstance().getInt(Constant.CURRENT_COLOR_OF_LIGHT_THEME, Color.BLUE);
+                drawable.setColorFilter(GraphicUtil.getForegroundWhiteOrBlack(appBackgroundColor), PorterDuff.Mode.SRC_ATOP);
+            }
+        }
     }
 }

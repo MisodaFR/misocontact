@@ -3,6 +3,7 @@ package fr.misoda.contact.view.activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.Window;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -16,9 +17,10 @@ import fr.misoda.contact.BuildConfig;
 import fr.misoda.contact.R;
 import fr.misoda.contact.common.AppConfig;
 import fr.misoda.contact.common.Constant;
+import fr.misoda.contact.common.GraphicUtil;
 import fr.misoda.contact.view.component.barcode.BarcodeGraphicTracker;
 
-public class MainActivity extends AppCompatActivity implements BarcodeGraphicTracker.BarcodeUpdateListener{
+public class MainActivity extends AppCompatActivity implements BarcodeGraphicTracker.BarcodeUpdateListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,65 +35,41 @@ public class MainActivity extends AppCompatActivity implements BarcodeGraphicTra
         String subtitle = getString(R.string.version) + StringUtils.SPACE + BuildConfig.VERSION_NAME;
         toolbar.setSubtitle(Html.fromHtml("<small>" + subtitle + "</small>"));
 
-        /*int appBackgroundColor = Color.MAGENTA;
-        toolbar.setBackgroundColor(appBackgroundColor);
-        getWindow().setStatusBarColor(appBackgroundColor);
-        getWindow().setNavigationBarColor(appBackgroundColor);*/
-    }
-
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-
-        int theme = AppConfig.getInstance().getInt(Constant.KEY_THEME, AppCompatDelegate.MODE_NIGHT_NO);
-
         switch (theme) {
             case AppCompatDelegate.MODE_NIGHT_NO:
-                //menu.findItem(R.id.action_light_theme).setChecked(true);
+                setupLightThemeColors();
                 break;
             case AppCompatDelegate.MODE_NIGHT_YES:
-                //menu.findItem(R.id.action_dark_theme).setChecked(true);
-                break;
             default:
         }
-
-        return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        switch (id) {
-            case R.id.action_settings:
-                Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.action_settings_fragment);
-                return true;
-            *//*case R.id.action_quit_app:
-                finish();
-                return true;
-            case R.id.action_light_theme:
-                item.setChecked(!item.isChecked());
-                if (item.isChecked()) {
-                    AppConfig.getInstance().setInt(Constant.KEY_THEME, AppCompatDelegate.MODE_NIGHT_NO);
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                }
-                return true;
-            case R.id.action_dark_theme:
-                item.setChecked(!item.isChecked());
-                if (item.isChecked()) {
-                    AppConfig.getInstance().setInt(Constant.KEY_THEME, AppCompatDelegate.MODE_NIGHT_YES);
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                }
-                return true;*//*
-            default:
+    public void setupLightThemeColors() {
+        int appBackgroundColor = AppConfig.getInstance().getInt(Constant.CURRENT_COLOR_OF_LIGHT_THEME, Color.BLUE);
+        int foregroundColor = GraphicUtil.getForegroundWhiteOrBlack(appBackgroundColor); // black or white
+        int lighterOrDarkerColor = GraphicUtil.getLighterOrDarkerColor(appBackgroundColor, 1.3f);
+        int foregroundColorOfLighterOrDarker = GraphicUtil.getForegroundWhiteOrBlack(lighterOrDarkerColor); // black or white
+        /*
+        Neu app background color đủ tối, tức là foregroundColorOfLighterOrDarker = white thi co the set color cho status va navigation bar
+        Con neu ko thi set more darker color
+        Hien tai chua the set cac icon tren status bar va 3 nut tren navigation co mau tuong phan voi mau nen
+        Nen tam dung cach nay
+        */
+        Window window = getWindow();
+        if (foregroundColorOfLighterOrDarker == Color.WHITE) {
+            window.setStatusBarColor(lighterOrDarkerColor);
+            window.setNavigationBarColor(lighterOrDarkerColor);
+        } else {
+            int moreDarker = GraphicUtil.toDarkerColor(appBackgroundColor, 1.5f);
+            window.setStatusBarColor(moreDarker);
+            window.setNavigationBarColor(moreDarker);
         }
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setBackgroundColor(appBackgroundColor);
+        toolbar.setTitleTextColor(foregroundColor);
+        toolbar.setSubtitleTextColor(foregroundColor);
 
-        return super.onOptionsItemSelected(item);
-    }*/
+    }
 
     @Override
     public void onBarcodeDetected(Barcode barcode) {
