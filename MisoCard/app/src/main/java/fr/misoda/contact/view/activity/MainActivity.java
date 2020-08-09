@@ -3,6 +3,7 @@ package fr.misoda.contact.view.activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.Window;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,15 +13,18 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.gms.vision.barcode.Barcode;
 
 import org.apache.commons.lang3.StringUtils;
+import org.greenrobot.eventbus.EventBus;
 
 import fr.misoda.contact.BuildConfig;
 import fr.misoda.contact.R;
 import fr.misoda.contact.common.AppConfig;
 import fr.misoda.contact.common.Constant;
 import fr.misoda.contact.common.GraphicUtil;
+import fr.misoda.contact.model.event.EventReceiveDetection;
 import fr.misoda.contact.view.component.barcode.BarcodeGraphicTracker;
 
 public class MainActivity extends AppCompatActivity implements BarcodeGraphicTracker.BarcodeUpdateListener {
+    private EventBus bus = EventBus.getDefault();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,5 +78,7 @@ public class MainActivity extends AppCompatActivity implements BarcodeGraphicTra
     @Override
     public void onBarcodeDetected(Barcode barcode) {
         //do something with barcode data returned
+        Log.d(Constant.LOG_TAG_SCAN_CODE, "On Main act : " + barcode.displayValue);
+        bus.post(new EventReceiveDetection(barcode.displayValue));
     }
 }

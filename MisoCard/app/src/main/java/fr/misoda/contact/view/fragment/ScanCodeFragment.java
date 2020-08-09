@@ -19,6 +19,7 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
@@ -37,13 +38,18 @@ import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 import com.google.android.material.snackbar.Snackbar;
 
+import org.apache.commons.lang3.StringUtils;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.io.IOException;
 
 import fr.misoda.contact.R;
 import fr.misoda.contact.common.AppConfig;
 import fr.misoda.contact.common.Constant;
+import fr.misoda.contact.model.event.EventReceiveDetection;
 import fr.misoda.contact.view.component.barcode.BarcodeGraphic;
-import fr.misoda.contact.view.component.barcode.BarcodeGraphicTracker;
 import fr.misoda.contact.view.component.barcode.BarcodeTrackerFactory;
 import fr.misoda.contact.view.component.barcode.CameraSource;
 import fr.misoda.contact.view.component.barcode.CameraSourcePreview;
@@ -52,7 +58,7 @@ import uk.co.deanwild.materialshowcaseview.IShowcaseListener;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
-public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.BarcodeUpdateListener {
+public class ScanCodeFragment extends Fragment {
     private static final String LOG_TAG = ScanCodeFragment.class.getSimpleName();
     private static final String SHOWCASE_ID = "Showcase of ScanCodeFragment";
 
@@ -62,11 +68,6 @@ public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.
     // permission request codes need to be < 256
     private static final int RC_HANDLE_CAMERA_PERM = 2;
 
-    // constants used to pass extra data in the intent
-    public static final String AutoFocus = "AutoFocus";
-    public static final String UseFlash = "UseFlash";
-    public static final String BarcodeObject = "Barcode";
-
     private CameraSource mCameraSource;
     private CameraSourcePreview mPreview;
     private GraphicOverlay<BarcodeGraphic> mGraphicOverlay;
@@ -74,6 +75,10 @@ public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.
     // helper objects for detecting taps and pinches.
     private ScaleGestureDetector scaleGestureDetector;
     private GestureDetector gestureDetector;
+
+    private EventBus bus = EventBus.getDefault();
+
+    private ImageButton btnAccept;
 
     /**
      * Initializes the UI and creates the detector pipeline.
@@ -109,6 +114,26 @@ public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.
             return b || c;
         });
 
+        btnAccept = view.findViewById(R.id.img_btn_accept);
+
+        btnAccept.setOnClickListener(v -> {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (BarcodeGraphic graphic : mGraphicOverlay.getGraphics()) {
+                Barcode barcode = graphic.getBarcode();
+                stringBuilder.append(barcode.displayValue).append(StringUtils.LF);
+            }
+
+            String detectedTexts = stringBuilder.toString();
+            Log.d(LOG_TAG, "detectedTexts : " + detectedTexts);
+            if (StringUtils.isBlank(detectedTexts)) {
+                return;
+            }
+
+            ScanCodeFragmentDirections.ActionScanCodeFragmentToSaveToContactsFragment action = ScanCodeFragmentDirections.actionScanCodeFragmentToSaveToContactsFragment();
+            action.setScannedText(detectedTexts);
+            NavHostFragment.findNavController(ScanCodeFragment.this).navigate(action);
+        });
+
         return view;
     }
 
@@ -135,8 +160,6 @@ public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.
 
         gestureDetector = new GestureDetector(getActivity(), new CaptureGestureListener());
         scaleGestureDetector = new ScaleGestureDetector(getActivity(), new ScaleListener());
-
-        //Snackbar.make(mGraphicOverlay, "Tap to capture. Pinch/Stretch to zoom", Snackbar.LENGTH_LONG).show();
     }
 
     /**
@@ -222,8 +245,7 @@ public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.
         // create a separate tracker instance for each barcode.
         BarcodeDetector barcodeDetector = new BarcodeDetector.Builder(context).build();
         BarcodeTrackerFactory barcodeFactory = new BarcodeTrackerFactory(mGraphicOverlay, context);
-        barcodeDetector.setProcessor(
-                new MultiProcessor.Builder<>(barcodeFactory).build());
+        barcodeDetector.setProcessor(new MultiProcessor.Builder<>(barcodeFactory).build());
 
         if (!barcodeDetector.isOperational()) {
             // Note: The first time that an app using the barcode or face API is installed on a
@@ -301,42 +323,8 @@ public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.
      * @return true if the activity is ending.
      */
     private boolean onTap(float rawX, float rawY) {
-        // Find tap point in preview frame coordinates.
-        int[] location = new int[2];
-        mGraphicOverlay.getLocationOnScreen(location);
-        float x = (rawX - location[0]) / mGraphicOverlay.getWidthScaleFactor();
-        float y = (rawY - location[1]) / mGraphicOverlay.getHeightScaleFactor();
-
-        // Find the barcode whose center is closest to the tapped point.
-        Barcode best = null;
-        float bestDistance = Float.MAX_VALUE;
-        for (BarcodeGraphic graphic : mGraphicOverlay.getGraphics()) {
-            Barcode barcode = graphic.getBarcode();
-            if (barcode.getBoundingBox().contains((int) x, (int) y)) {
-                // Exact hit, no need to keep looking.
-                best = barcode;
-                break;
-            }
-            float dx = x - barcode.getBoundingBox().centerX();
-            float dy = y - barcode.getBoundingBox().centerY();
-            float distance = (dx * dx) + (dy * dy);  // actually squared distance
-            if (distance < bestDistance) {
-                best = barcode;
-                bestDistance = distance;
-            }
-        }
-
-        if (best != null) {
-            String detectedTexts = best.displayValue;
-            Log.d(LOG_TAG, "detectedTexts : " + detectedTexts);
-
-            ScanCodeFragmentDirections.ActionScanCodeFragmentToSaveToContactsFragment action = ScanCodeFragmentDirections.actionScanCodeFragmentToSaveToContactsFragment();
-            action.setScannedText(detectedTexts);
-            NavHostFragment.findNavController(ScanCodeFragment.this).navigate(action);
-
-            return true;
-        }
-        return false;
+        // do nothing
+        return true;
     }
 
     private class ScaleListener implements ScaleGestureDetector.OnScaleGestureListener {
@@ -465,7 +453,26 @@ public class ScanCodeFragment extends Fragment implements BarcodeGraphicTracker.
     }
 
     @Override
-    public void onBarcodeDetected(Barcode barcode) {
-        //do something with barcode data returned
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        bus.register(this);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        bus.unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(EventReceiveDetection event) {
+        String detectedText = event.getDetectedText();
+        if (StringUtils.isBlank(detectedText)) {
+            btnAccept.setEnabled(false);
+            btnAccept.setImageResource(R.drawable.ic_close_red_32_2);
+        } else {
+            btnAccept.setEnabled(true);
+            btnAccept.setImageResource(R.drawable.ic_done_green_32_2);
+        }
     }
 }
