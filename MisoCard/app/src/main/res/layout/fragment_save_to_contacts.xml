@@ -31,6 +31,6 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/bg_circle"
         android:padding="@dimen/dp_12"
-        android:src="@drawable/ic_contacts_32_2" />
+        android:src="@drawable/ic_done_green_32_2" />
 
 </RelativeLayout>
