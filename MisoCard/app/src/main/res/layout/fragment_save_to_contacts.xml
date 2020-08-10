@@ -11,8 +11,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/btn_save_to_contacts"
-        android:layout_marginTop="16dp"
+        android:layout_above="@+id/linear_layout"
         android:layout_marginBottom="16dp">
 
         <EditText
@@ -23,14 +22,32 @@
             android:textSize="@dimen/sp_16" />
     </ScrollView>
 
-    <ImageButton
-        android:id="@+id/btn_save_to_contacts"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/bg_circle"
-        android:padding="@dimen/dp_12"
-        android:src="@drawable/ic_done_green_32_2" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_remark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:text="Bạn hãy nhấp vào văn bản phía trên để sửa và nhấp vào nút phía dưới để lưu vào danh bạ"
+            android:textAlignment="center"
+            android:textColor="@color/blue_green"
+            android:textSize="@dimen/sp_14" />
+
+        <ImageButton
+            android:id="@+id/btn_save_to_contacts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bg_circle"
+            android:padding="@dimen/dp_12"
+            android:src="@drawable/ic_done_green_32_2" />
+
+    </LinearLayout>
 
 </RelativeLayout>
