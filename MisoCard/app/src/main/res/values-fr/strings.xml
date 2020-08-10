@@ -83,4 +83,7 @@
 
     <string name="color_value_is_invalid">La valeur de la couleur n\'est pas valide (chaque caractère doit être compris entre [0 -> 9], [a -> f] ou [A -> F])</string>
     <string name="selecting_a_color">Sélection d\'une couleur</string>
+    <string name="text">Texte</string>
+    <string name="qr_code">QR</string>
+    <string name="press_text_above_and_btn_below">Cliquez sur le texte ci-dessus pour le modifier et cliquez sur le bouton ci-dessous pour l\'enregistrer dans votre liste de contacts</string>
 </resources>

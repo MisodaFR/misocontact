@@ -83,4 +83,7 @@
 
     <string name="color_value_is_invalid">Giá trị màu không hợp lệ (mỗi kí tự phải ở trong khoảng [0 -> 9], [a -> f] hoặc [A -> F])</string>
     <string name="selecting_a_color">Chọn màu</string>
+    <string name="text">Văn bản</string>
+    <string name="qr_code">Mã QR</string>
+    <string name="press_text_above_and_btn_below">Bạn hãy nhấp vào văn bản phía trên để sửa và nhấp vào nút phía dưới để lưu vào danh bạ</string>
 </resources>

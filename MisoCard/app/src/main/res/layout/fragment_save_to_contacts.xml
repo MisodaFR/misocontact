@@ -30,11 +30,10 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_remark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/dp_16"
-            android:text="Bạn hãy nhấp vào văn bản phía trên để sửa và nhấp vào nút phía dưới để lưu vào danh bạ"
+            android:text="@string/press_text_above_and_btn_below"
             android:textAlignment="center"
             android:textColor="@color/blue_green"
             android:textSize="@dimen/sp_14" />
