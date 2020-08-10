@@ -57,11 +57,11 @@
     <string name="above_is_button_open_window">Trên đây là nút mở cửa sổ</string>
     <string name="so_you_can_change_theme_view_tourguide_info_quit_app">để bạn có thể thay đổi chế độ sáng, tối, xem hướng dẫn sử dụng, xem thông tin về thiết bị và ứng dụng hoặc thoát ứng dụng</string>
     <string name="window">Cửa sổ</string>
-    <string name="scan_text">Quét văn bản</string>
+    <string name="scan_text_or_qr_code">Quét văn bản hoặc mã QR</string>
     <string name="you_are_on_window">Bạn đang ở cửa sổ</string>
     <string name="this_window_openned_after_click_open_camera_btn">Cửa sổ này được mở sau khi bạn nhấp nút \'Mở camera\' ở cửa sổ trước</string>
     <string name="text_result_displayed_on_screen_when_scan">kết quả văn bản sẽ được hiển thị trên màn hình khi bạn quét bằng camera</string>
-    <string name="you_click_a_point_on_screen">Bạn nhấp vào một ví trí bất kì trên màn hình để chọn kết quả và chuyển sang cửa sổ \'Lưu vào danh bạ\'</string>
+    <string name="you_click_the_btn_on_screen">Bạn nhấp vào nút trên màn hình để chọn kết quả và chuyển sang cửa sổ \'Lưu vào danh bạ\'</string>
     <string name="you_click_this_btn_to_open_contacts_create_or_edit">Bạn nhấp nút này để mở danh bạ, tạo mới hoặc sửa rồi lưu liên lạc</string>
     <string name="open_contacts">mở danh bạ</string>
     <string name="app_theme_will_transformed_between_2_themes">giao diện của ứng dụng sẽ được chuyển đổi giữa hai chế độ giao diện sáng và tối</string>
@@ -86,4 +86,12 @@
     <string name="text">Văn bản</string>
     <string name="qr_code">Mã QR</string>
     <string name="press_text_above_and_btn_below">Bạn hãy nhấp vào văn bản phía trên để sửa và nhấp vào nút phía dưới để lưu vào danh bạ</string>
+    <string name="turn_on_scan_text">bật chế độ quét văn bản</string>
+    <string name="turn_on_scan_qr_code">bật chế độ quét mã QR</string>
+    <string name="scan_text_mode_will_be_activated">chế độ quét văn bản sẽ được bật</string>
+    <string name="scan_qr_mode_will_be_activated">chế độ quét mã QR sẽ được bật</string>
+    <string name="camera_will_scan_text_on_second_window">camera sẽ quét văn bản ở cửa sổ thứ hai</string>
+    <string name="camera_will_scan_qr_on_second_window">camera sẽ quét mã QR ở cửa sổ thứ hai</string>
+    <string name="custom_color">Tuỳ chọn màu</string>
+    <string name="you_can_choose_app_bar_color">bạn có thể chọn màu cho thanh ứng dụng, màu của thanh trạng thái trên cùng và thanh điều hướng phía dưới sẽ được thay đổi phù hợp với màu được chọn</string>
 </resources>

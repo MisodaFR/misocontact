@@ -54,11 +54,11 @@
     <string name="function_setting_info">Fonction, paramètres, informations</string>
     <string name="above_is_button_open_window">Ci-dessus se trouve le bouton pour ouvrir la fenêtre</string>
     <string name="so_you_can_change_theme_view_tourguide_info_quit_app">afin que vous puissiez changer le thème clair et sombre, consulter le guide de l\'utilisateur, afficher des informations sur l\'appareil et l\'application, ou quitter l\'application</string>
-    <string name="scan_text">Scanner le texte</string>
-    <string name="you_are_on_window">Tu es à la fenêtre</string>
+    <string name="scan_text_or_qr_code">Scanner le texte ou le code QR</string>
+    <string name="you_are_on_window">Vous êtes à la fenêtre</string>
     <string name="this_window_openned_after_click_open_camera_btn">Cette fenêtre s\'ouvre après avoir cliqué sur le bouton \'Ouvrir la caméra\' dans la fenêtre précédente</string>
     <string name="text_result_displayed_on_screen_when_scan">les résultats textuels seront affichés à l\'écran lorsque vous scannez avec la caméra</string>
-    <string name="you_click_a_point_on_screen">Vous cliquez sur n\'importe quel emplacement de l\'écran pour sélectionner le résultat et passez à la fenêtre \'Enregistrer dans les contacts\'</string>
+    <string name="you_click_the_btn_on_screen">Vous cliquez sur le bouton de l\'écran pour sélectionner le résultat et passez à la fenêtre \'Enregistrer dans les contacts\'</string>
     <string name="you_click_this_btn_to_open_contacts_create_or_edit">Vous cliquez sur ce bouton pour ouvrir des contacts, en créer ou modifier, puis enregistrer le contact</string>
     <string name="open_contacts">ouvrir des contacts</string>
     <string name="app_theme_will_transformed_between_2_themes">le thème de l\'application basculera entre les modes clair et sombre</string>
@@ -86,4 +86,12 @@
     <string name="text">Texte</string>
     <string name="qr_code">QR</string>
     <string name="press_text_above_and_btn_below">Cliquez sur le texte ci-dessus pour le modifier et cliquez sur le bouton ci-dessous pour l\'enregistrer dans votre liste de contacts</string>
+    <string name="turn_on_scan_text">activer le mode de scan de texte</string>
+    <string name="turn_on_scan_qr_code">activer le mode de scan de code QR</string>
+    <string name="scan_text_mode_will_be_activated">le mode de scan de texte sera activé</string>
+    <string name="scan_qr_mode_will_be_activated">le mode de scan de code QR sera activé</string>
+    <string name="camera_will_scan_text_on_second_window">la caméra va scanner le texte dans la deuxième fenêtre</string>
+    <string name="camera_will_scan_qr_on_second_window">la caméra va scanner le code QR dans la deuxième fenêtre</string>
+    <string name="custom_color">Personnaliser la couleur</string>
+    <string name="you_can_choose_app_bar_color">vous pouvez choisir une couleur pour la barre d\'application, la couleur de la barre d\'état en haut et de la barre de navigation en bas sera modifiée pour correspondre à la couleur sélectionnée</string>
 </resources>

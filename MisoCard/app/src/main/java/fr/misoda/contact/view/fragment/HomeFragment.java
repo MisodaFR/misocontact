@@ -11,17 +11,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
-import android.widget.Switch;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+
+import org.apache.commons.lang3.StringUtils;
 
 import fr.misoda.contact.R;
 import fr.misoda.contact.common.AppConfig;
@@ -37,8 +39,8 @@ import uk.co.deanwild.materialshowcaseview.ShowcaseTooltip;
 public class HomeFragment extends Fragment {
     public static final String LOG_TAG = HomeFragment.class.getSimpleName();
     private static final String SHOWCASE_ID = "Showcase of HomeFragment";
-    private Switch switchAutoFocus;
-    private Switch switchUseFlash;
+    private SwitchCompat switchAutoFocus;
+    private SwitchCompat switchUseFlash;
     private Menu menu;
     private RadioButton radioText;
     private RadioButton radioCode;
@@ -167,12 +169,36 @@ public class HomeFragment extends Fragment {
             }
         };
 
+        // Btn open camera
         String tooltipText = getString(R.string.button) + " " + getString(R.string.open_camera);
         String title = getString(R.string.below_is_button) + " " + getString(R.string.open_camera);
         String content = getString(R.string.when_you_click_this_button) + ", " + getString(R.string.camera_will_be_opened_next_window) + Constant.DOT;
         MaterialShowcaseView.Builder item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.img_btn_scan_text, tooltipText, title, content, showcaseListener);
         sequence.addSequenceItem(item.build());
 
+        // Radio btn text
+        tooltipText = getString(R.string.button) + " " + getString(R.string.turn_on_scan_text);
+        title = getString(R.string.below_is_button) + " " + getString(R.string.turn_on_scan_text);
+        content = getString(R.string.when_you_click_this_button) + ", " + getString(R.string.scan_text_mode_will_be_activated) +
+                ". " +
+                getString(R.string.when_the_mode_is_on) + ", " + getString(R.string.camera_will_scan_text_on_second_window) +
+                ".";
+        item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.radio_text, tooltipText, title, content, showcaseListener);
+        item.withRectangleShape();
+        sequence.addSequenceItem(item.build());
+
+        // Radio btn qr code
+        tooltipText = getString(R.string.button) + " " + getString(R.string.turn_on_scan_qr_code);
+        title = getString(R.string.below_is_button) + " " + getString(R.string.turn_on_scan_qr_code);
+        content = getString(R.string.when_you_click_this_button) + ", " + getString(R.string.scan_qr_mode_will_be_activated) +
+                ". " +
+                getString(R.string.when_the_mode_is_on) + ", " + getString(R.string.camera_will_scan_qr_on_second_window) +
+                ".";
+        item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.radio_code, tooltipText, title, content, showcaseListener);
+        item.withRectangleShape();
+        sequence.addSequenceItem(item.build());
+
+        // Switch auto focus
         tooltipText = getString(R.string.button) + " " + getString(R.string.turn_on_off_auto_focus);
         title = getString(R.string.below_is_button) + " " + getString(R.string.turn_on_off_auto_focus);
         content = getString(R.string.when_you_click_this_button) + ", " + getString(R.string.auto_focus_will_be_on_or_off) +
@@ -226,8 +252,10 @@ public class HomeFragment extends Fragment {
                 .textSize(TypedValue.COMPLEX_UNIT_SP, 16)
                 .text("<b>" + getString(R.string.button_to_open_window) + " '" + getString(R.string.function_setting_info) + "'" + "</b>");
 
+        String titleText = getString(R.string.above_is_button_open_window) + " '" + getString(R.string.function_setting_info) + "'";
+        titleText = StringUtils.EMPTY;
         new MaterialShowcaseView.Builder(mainAct)
-                .setTitleText(getString(R.string.above_is_button_open_window) + " '" + getString(R.string.function_setting_info) + "'")
+                .setTitleText(titleText)
                 .setTarget(view)
                 .setSkipText(R.string.cancel_tourguide)
                 .setDismissText(getString(R.string.tieptuc))

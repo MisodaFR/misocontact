@@ -54,11 +54,11 @@
     <string name="function_setting_info">Function, settings, information</string>
     <string name="above_is_button_open_window">Above is the button to open the window</string>
     <string name="so_you_can_change_theme_view_tourguide_info_quit_app">so you can change the light and dark theme, see the user guide, view information about the device and application, or exit the application</string>
-    <string name="scan_text">Scan the text</string>
+    <string name="scan_text_or_qr_code">Scan the text or qr code</string>
     <string name="you_are_on_window">You are at the window</string>
     <string name="this_window_openned_after_click_open_camera_btn">This window is opened after you click the \'Open camera\' button in the previous window</string>
     <string name="text_result_displayed_on_screen_when_scan">text results will be displayed on the screen when you scan with the camera</string>
-    <string name="you_click_a_point_on_screen">You click on any location on the screen to select the result and switch to the \'Save to contacts\' window</string>
+    <string name="you_click_the_btn_on_screen">You click on the button on the screen to select the result and switch to the \'Save to contacts\' window</string>
     <string name="you_click_this_btn_to_open_contacts_create_or_edit">You click this button to open contacts, create a new contact or edit and then save the contact</string>
     <string name="open_contacts">open contacts</string>
     <string name="app_theme_will_transformed_between_2_themes">the application theme will be switched between light and dark modes</string>
@@ -86,4 +86,12 @@
     <string name="text">Text</string>
     <string name="qr_code">QR</string>
     <string name="press_text_above_and_btn_below">Click the text above to edit it and click the button below to save it to your contacts list</string>
+    <string name="turn_on_scan_text">turn on text scan mode</string>
+    <string name="turn_on_scan_qr_code">turn on QR code scan mode</string>
+    <string name="scan_text_mode_will_be_activated">text scan mode will be turned on</string>
+    <string name="scan_qr_mode_will_be_activated">QR code scan mode will be turned on</string>
+    <string name="camera_will_scan_text_on_second_window">the camera will scan the text in the second window</string>
+    <string name="camera_will_scan_qr_on_second_window">the camera will scan the QR code in the second window</string>
+    <string name="custom_color">Custom color</string>
+    <string name="you_can_choose_app_bar_color">you can choose a color for the app bar, the color of the top status bar and the bottom navigation bar will be changed to match the selected color</string>
 </resources>

@@ -68,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/dp_16"
-                    android:text="Custom color"
+                    android:text="@string/custom_color"
                     android:textColor="@color/black_white"
                     android:textSize="@dimen/sp_16" />
 

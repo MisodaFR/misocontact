@@ -381,16 +381,16 @@ public class ScanTextFragment extends Fragment {
         int blackOrange = mainAct.getResources().getColor(R.color.black_orange);
         int darkGreen = mainAct.getResources().getColor(R.color.dark_green);
         new MaterialShowcaseView.Builder(mainAct)
-                .setTitleText(getString(R.string.window) + " '" + getString(R.string.scan_text) + "'")
+                .setTitleText(getString(R.string.window) + " '" + getString(R.string.scan_text_or_qr_code) + "'")
                 .setTarget(view)
                 .setSkipText(R.string.cancel_tourguide)
                 .setDismissText(getString(R.string.tieptuc))
                 .setDismissBtnBackground(darkGreen, Color.BLACK)
                 .setSkipBtnBackground(darkGreen, Color.BLACK)
-                .setContentText(getString(R.string.you_are_on_window) + " '" + getString(R.string.scan_text) + "'. " +
+                .setContentText(getString(R.string.you_are_on_window) + " '" + getString(R.string.scan_text_or_qr_code) + "'. " +
                         getString(R.string.this_window_openned_after_click_open_camera_btn) + ". " +
                         getString(R.string.khi_ungdung_hoatdong) + ", " + getString(R.string.text_result_displayed_on_screen_when_scan) + ". " +
-                        getString(R.string.you_click_a_point_on_screen) + ".")
+                        getString(R.string.you_click_the_btn_on_screen) + ".")
                 .setContentTextColor(mainAct.getResources().getColor(R.color.green))
                 .setListener(new IShowcaseListener() {
                     @Override

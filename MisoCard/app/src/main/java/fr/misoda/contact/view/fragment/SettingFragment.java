@@ -86,11 +86,6 @@ public class SettingFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, true)) {
-            presentShowcaseSequence();
-            return;
-        }
-
         int theme = AppConfig.getInstance().getInt(Constant.KEY_THEME, AppCompatDelegate.MODE_NIGHT_NO);
 
         switch (theme) {
@@ -107,54 +102,74 @@ public class SettingFragment extends Fragment {
                 break;
             default:
         }
+
+        if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, true)) {
+            presentShowcaseSequence();
+        }
     }
 
     public void presentShowcaseSequence() {
         FragmentActivity activity = getActivity();
-        FragmentActivity mainAct = activity;
-        MaterialShowcaseView.resetSingleUse(mainAct, SHOWCASE_ID);
+        MaterialShowcaseView.resetSingleUse(activity, SHOWCASE_ID);
         ShowcaseConfig config = new ShowcaseConfig();
         config.setDelay(500); // half second between each showcase view
 
-        final MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(mainAct, SHOWCASE_ID);
+        final MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(activity, SHOWCASE_ID);
         sequence.setConfig(config);
 
+        // Dark theme
         String content = getString(R.string.khi_ungdung_hoatdong) + ", " + getString(R.string.saukhi_nhapvao_dongnay) + ", " + getString(R.string.app_theme_will_transformed_between_2_themes) + Constant.DOT;
         String tooltipText = getString(R.string.button) + " '" + getString(R.string.turn_on_off_dark_theme) + "'";
         String title = getString(R.string.above_is_button) + " '" + getString(R.string.turn_on_off_dark_theme) + "'";
         title = StringUtils.EMPTY;
-        MaterialShowcaseView.Builder item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.layout_dark_theme, tooltipText, title, content, new MyIShowcaseListener(R.id.layout_dark_theme));
+        MaterialShowcaseView.Builder item = TooltipTourGuideHelper.createSequenceItem(activity, R.id.layout_dark_theme, tooltipText, title, content, new MyIShowcaseListener(R.id.layout_dark_theme));
         item.withRectangleShape();
         item.setPaddingLayoutBtnsDismissSkip(0, 0, 0, 0);
         sequence.addSequenceItem(item.build());
 
+        // Colors for light theme
+        int theme = AppConfig.getInstance().getInt(Constant.KEY_THEME, AppCompatDelegate.MODE_NIGHT_NO);
+        if (theme == AppCompatDelegate.MODE_NIGHT_NO) {
+            content = getString(R.string.khi_ungdung_hoatdong) + ", " + getString(R.string.saukhi_nhapvao_dongnay) + ", " + getString(R.string.you_can_choose_app_bar_color) + Constant.DOT;
+            tooltipText = getString(R.string.button) + " '" + getString(R.string.custom_color) + "'";
+            title = getString(R.string.above_is_button) + " '" + getString(R.string.custom_color) + "'";
+            title = StringUtils.EMPTY;
+            item = TooltipTourGuideHelper.createSequenceItem(activity, R.id.layout_custom_color, tooltipText, title, content, new MyIShowcaseListener(R.id.layout_custom_color));
+            item.withRectangleShape();
+            item.setPaddingLayoutBtnsDismissSkip(0, 0, 0, 0);
+            sequence.addSequenceItem(item.build());
+        }
+
+        // Tour guide
         content = getString(R.string.khi_ungdung_hoatdong) + ", " + getString(R.string.saukhi_nhapvao_dongnay) + ", " + getString(R.string.ungdung_se_huongdan_ban_cach_sudung_tungbuocmot) + Constant.DOT;
         tooltipText = getString(R.string.button) + " '" + getString(R.string.huongdan_sudung) + "'";
         title = getString(R.string.above_is_button) + " '" + getString(R.string.huongdan_sudung) + "'";
         title = StringUtils.EMPTY;
-        item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.layout_tour_guide, tooltipText, title, content, new MyIShowcaseListener(R.id.layout_tour_guide));
+        item = TooltipTourGuideHelper.createSequenceItem(activity, R.id.layout_tour_guide, tooltipText, title, content, new MyIShowcaseListener(R.id.layout_tour_guide));
         item.withRectangleShape();
-        item.setPaddingLayoutBtnsDismissSkip(0, 0, 0, 0);
+        item.setPaddingLayoutBtnsDismissSkip(0, 0, 0, GraphicUtil.dpToPx(100, activity));
         sequence.addSequenceItem(item.build());
 
+        // App and device infos
         content = getString(R.string.khi_ungdung_hoatdong) + ", " + getString(R.string.saukhi_nhapvao_dongnay) + ", " + getString(R.string.ungdung_se_mo_cuaso_hienthi_thongtin) + Constant.DOT;
         tooltipText = getString(R.string.button) + " '" + getString(R.string.device_app_infos) + "'";
         title = getString(R.string.above_is_button) + " '" + getString(R.string.device_app_infos) + "'";
         title = StringUtils.EMPTY;
-        item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.layout_device_app_infos, tooltipText, title, content, new MyIShowcaseListener(R.id.layout_device_app_infos));
+        item = TooltipTourGuideHelper.createSequenceItem(activity, R.id.layout_device_app_infos, tooltipText, title, content, new MyIShowcaseListener(R.id.layout_device_app_infos));
         item.withRectangleShape();
-        item.setPaddingLayoutBtnsDismissSkip(0, 0, 0, 0);
-        item.setMarginsTitle(GraphicUtil.dpToPx(0, activity), GraphicUtil.dpToPx(40, activity), 0, 0);
+        item.setPaddingLayoutBtnsDismissSkip(0, 0, 0, GraphicUtil.dpToPx(100, activity));
+        //item.setMarginsTitle(GraphicUtil.dpToPx(0, activity), GraphicUtil.dpToPx(40, activity), 0, 0);
         sequence.addSequenceItem(item.build());
 
+        // Quit app
         content = getString(R.string.khi_ungdung_hoatdong) + ", " + getString(R.string.saukhi_nhapvao_dongnay) + ", " + getString(R.string.nguoidung_se_tat_hoantoan_ungdung) + Constant.DOT;
         tooltipText = getString(R.string.button) + " '" + getString(R.string.quit_app) + "'";
         title = getString(R.string.above_is_button) + " '" + getString(R.string.quit_app) + "'";
         title = StringUtils.EMPTY;
-        item = TooltipTourGuideHelper.createSequenceItem(mainAct, R.id.layout_quit_app, tooltipText, title, content, new MyIShowcaseListener(R.id.layout_quit_app));
+        item = TooltipTourGuideHelper.createSequenceItem(activity, R.id.layout_quit_app, tooltipText, title, content, new MyIShowcaseListener(R.id.layout_quit_app));
         item.withRectangleShape();
+        item.setPaddingLayoutBtnsDismissSkip(0, 0, 0, GraphicUtil.dpToPx(100, activity));
         item.setMarginsTitle(GraphicUtil.dpToPx(0, activity), GraphicUtil.dpToPx(0, activity), 0, 0);
-        item.setPaddingLayoutBtnsDismissSkip(0, 0, 0, GraphicUtil.dpToPx(56, activity));
         sequence.addSequenceItem(item.build());
 
         sequence.start();
