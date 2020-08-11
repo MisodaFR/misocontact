@@ -14,7 +14,9 @@ import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 import uk.co.deanwild.materialshowcaseview.ShowcaseTooltip;
 
 public class TooltipTourGuideHelper {
+
     private TooltipTourGuideHelper() {
+
     }
 
     public static MaterialShowcaseView.Builder createSequenceItem(final Activity mainAct, int idTargetView, String tooltipText, String title, CharSequence content, IShowcaseListener showcaseListener) {
@@ -27,7 +29,7 @@ public class TooltipTourGuideHelper {
 
         int darkGreen = mainAct.getResources().getColor(R.color.dark_green);
 
-        MaterialShowcaseView.Builder builder = new MaterialShowcaseView.Builder(mainAct)
+        return new MaterialShowcaseView.Builder(mainAct)
                 .setTitleText(title)
                 .setSkipText(mainAct.getString(R.string.cancel_tourguide))
                 .setTarget(mainAct.findViewById(idTargetView))
@@ -39,9 +41,6 @@ public class TooltipTourGuideHelper {
                 .setToolTip(tooltip)
                 .setListener(showcaseListener)
                 .setShapePadding(10);
-
-        return builder;
-
     }
 
 }

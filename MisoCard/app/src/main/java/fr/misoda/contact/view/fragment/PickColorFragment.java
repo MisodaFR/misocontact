@@ -1,5 +1,6 @@
 package fr.misoda.contact.view.fragment;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
@@ -16,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
@@ -39,12 +41,10 @@ import top.defaults.colorpicker.ColorPickerView;
 
 public class PickColorFragment extends Fragment {
     public static final String LOG_TAG = PickColorFragment.class.getSimpleName();
-    private static final String CURRENT_COLOR = "Current color";
     private static final String HEX_COLOR_VALUE_HSL = "Hex color value HSL";
     private static final String HEX_COLOR_VALUE_RGB = "Hex color value RGB";
     private TextView tvPickedColorValueRGB;
     private int selectedColorValue;
-    //private EventBus bus = EventBus.getDefault();
     private boolean colorValueValid = true;
     private TextView tvMsgColorValueInvalid;
     private ColorPicker colorPickerRGB;
@@ -60,6 +60,10 @@ public class PickColorFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_pick_color, container, false);
         tvMsgColorValueInvalid = view.findViewById(R.id.tv_msg_color_value_error);
+
+        Window window = getActivity().getWindow();
+        InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(window.getDecorView().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
         RelativeLayout relaLayoutRGB = view.findViewById(R.id.rela_layout_rgb_picker_color);
         LinearLayout linearLayoutHSL = view.findViewById(R.id.linear_layout_hsl);
@@ -77,7 +81,7 @@ public class PickColorFragment extends Fragment {
                     tvPickedColorValueRGB.getBackground().setColorFilter(selectedColorValue, PorterDuff.Mode.SRC_ATOP);
                     tvPickedColorValueRGB.setText(GraphicUtil.intColorToHexRGB(selectedColorValue));
                     tvPickedColorValueRGB.setTextColor(GraphicUtil.getForegroundWhiteOrBlack(selectedColorValue));
-                    //imm.hideSoftInputFromWindow(window.getDecorView().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                    imm.hideSoftInputFromWindow(window.getDecorView().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                     colorValueValid = true;
                     break;
                 case R.id.radio_hsl:
@@ -88,7 +92,7 @@ public class PickColorFragment extends Fragment {
                     tvColorValueHSL.setBackgroundColor(selectedColorValue);
                     tvColorValueHSL.setTextColor(GraphicUtil.getForegroundWhiteOrBlack(selectedColorValue));
                     tvColorValueHSL.setText(GraphicUtil.intColorToHexARGB(selectedColorValue));
-                    //imm.hideSoftInputFromWindow(window.getDecorView().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                    imm.hideSoftInputFromWindow(window.getDecorView().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                     colorValueValid = true;
                     break;
                 case R.id.radio_hex:
@@ -109,7 +113,6 @@ public class PickColorFragment extends Fragment {
             }
         });
 
-        Window window = getActivity().getWindow();
         // RGB
         buildViewRGB(window, view);
 
@@ -214,13 +217,10 @@ public class PickColorFragment extends Fragment {
                 return;
             }
             selectedColorValue = color;
-            Log.d("TempTag", "selectedColorValue : " + selectedColorValue);
             tvColorValueHSL.setBackgroundColor(selectedColorValue);
             int foregroundWhiteOrBlack = GraphicUtil.getForegroundWhiteOrBlack(selectedColorValue);
-            Log.d("TempTag", "foregroundWhiteOrBlack : " + foregroundWhiteOrBlack);
             tvColorValueHSL.setTextColor(foregroundWhiteOrBlack);
             String text = GraphicUtil.intColorToHexARGB(selectedColorValue);
-            Log.d("TempTag", "text : " + text);
             tvColorValueHSL.setText(text);
 
             setupColorIfLightTheme(color);
@@ -349,7 +349,7 @@ public class PickColorFragment extends Fragment {
         switch (id) {
             case R.id.action_save:
                 if (AppConfig.getInstance().getBoolean(Constant.SHOULD_DISPLAY_TOUR_GUIDE_KEY, true)) {
-                    //presentTooltipTourguideOfMenuItemSetting();
+                    // do nothing now
                 } else {
                     if (colorValueValid) {
                         AppConfig.getInstance().setInt(Constant.CURRENT_COLOR_OF_LIGHT_THEME, selectedColorValue);

@@ -33,7 +33,7 @@
                     android:padding="@dimen/dp_8"
                     android:src="@drawable/ic_moon_white_24_2" />
 
-                <Switch
+                <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/switch_dark_theme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

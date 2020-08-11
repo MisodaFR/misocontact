@@ -19,7 +19,6 @@ import fr.misoda.contact.R;
 import fr.misoda.contact.common.DateTimeUtil;
 import fr.misoda.contact.common.TextUtil;
 
-
 public class DeviceAndAppInfosFragment extends Fragment {
     public static final String LOG_TAG = DeviceAndAppInfosFragment.class.getSimpleName();
 

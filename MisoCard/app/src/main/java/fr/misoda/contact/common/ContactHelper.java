@@ -1,7 +1,9 @@
 package fr.misoda.contact.common;
 
 import android.util.Log;
+import android.webkit.URLUtil;
 
+import com.google.android.gms.common.util.HttpUtils;
 import com.google.i18n.phonenumbers.PhoneNumberMatch;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber;
@@ -42,7 +44,7 @@ public class ContactHelper {
         String[] strings = copyText.split("\n");
         for (String s : strings) {
             boolean isContainDigit = StringUtils.isNotEmpty(StringUtils.getDigits(s));
-            if (StringUtils.isNotBlank(s) && !s.contains("@") && !isContainDigit) {
+            if (StringUtils.isNotBlank(s) && !s.contains("@") && !isContainDigit && !URLUtil.isValidUrl(s)) {
                 return s;
             }
         }

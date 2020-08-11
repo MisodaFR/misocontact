@@ -11,6 +11,7 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.NavController;
@@ -31,7 +32,7 @@ import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 public class SettingFragment extends Fragment {
     private static final String SHOWCASE_ID = "Showcase of SettingFragment";
-    private Switch switchDarkTheme;
+    private SwitchCompat switchDarkTheme;
     private View layoutCustomColor;
 
     @Override

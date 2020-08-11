@@ -1,7 +1,9 @@
 package fr.misoda.contact.common;
 
 public class Constant {
+    
     private Constant() {
+
     }
 
     public static final String APP_NAME = "MisoCard";
@@ -18,6 +20,6 @@ public class Constant {
 
     // Changer ces valeurs ci-dessous chaque release
     public static final int UPDATE_YEAR = 2020;
-    public static final int UPDATE_MONTH = 6; // Le mois est basé sur 0
-    public static final int UPDATE_DAY = 14;
+    public static final int UPDATE_MONTH = 7; // Le mois est basé sur 0
+    public static final int UPDATE_DAY = 11;
 }

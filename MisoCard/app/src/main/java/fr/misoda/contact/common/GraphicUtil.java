@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +18,7 @@ import java.util.Locale;
 public class GraphicUtil {
 
     private GraphicUtil() {
+
     }
 
     // dp to pixel(s)
@@ -36,14 +36,6 @@ public class GraphicUtil {
     }
 
     public static int getForegroundWhiteOrBlack(int backgroundColor) {
-        int alpha = Color.alpha(backgroundColor);
-        Log.d("TempTag", "alpha : " + alpha);
-        /*if (alpha < 128) {
-            return Color.WHITE;
-        } else if (alpha < 255) {
-            return Color.BLACK;
-        }*/
-
         int blue = Color.blue(backgroundColor);
         int green = Color.green(backgroundColor);
         int red = Color.red(backgroundColor);
@@ -148,7 +140,7 @@ public class GraphicUtil {
         return String.format(Locale.getDefault(), "%02X%02X%02X", r, g, b);
     }
 
-    // factor phai > 1
+    // factor must be > 1
     public static int getLighterOrDarkerColor(int color, float factor) {
         if (getForegroundWhiteOrBlack(color) == Color.BLACK) {
             return toDarkerColor(color, factor);
@@ -157,7 +149,7 @@ public class GraphicUtil {
         }
     }
 
-    // factor phai > 1
+    // factor must be > 1
     public static int toLighterColor(int color, float factor) {
         float[] hsl = new float[3];
         ColorUtils.colorToHSL(color, hsl);
@@ -174,7 +166,7 @@ public class GraphicUtil {
         return ColorUtils.HSLToColor(hsl);
     }
 
-    // factor phai > 1
+    // factor must be > 1
     public static int toDarkerColor(int color, float factor) {
         float[] hsl = new float[3];
         ColorUtils.colorToHSL(color, hsl);
