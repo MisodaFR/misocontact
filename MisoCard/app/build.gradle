@@ -95,6 +95,7 @@ dependencies {
     implementation 'com.github.madrapps:pikolo:2.0.1'
     implementation 'com.github.duanhong169:colorpicker:1.1.6'
     implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.7'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

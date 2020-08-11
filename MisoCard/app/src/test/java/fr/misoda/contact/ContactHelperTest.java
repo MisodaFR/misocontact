@@ -4,6 +4,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Set;
+
 import fr.misoda.contact.common.ContactHelper;
 
 public class ContactHelperTest {
@@ -41,4 +44,31 @@ public class ContactHelperTest {
         name = ContactHelper.getName(text);
         Assert.assertEquals("Laura Anna", name);
     }
+
+    @Test
+    public void getWorkPhone() {
+        String text = "+1-555-2345";
+        String phone = ContactHelper.getWorkPhone(text);
+        Assert.assertEquals("", phone);
+
+        text = "+358(0)1234567";
+        phone = ContactHelper.getWorkPhone(text);
+        Assert.assertEquals("+35801234567", phone);
+    }
+
+    @Test
+    public void extractPhoneNumber() {
+        String text = "+358(0)1234567";
+        Set<String> numbers = ContactHelper.extractPhoneNumber(text, null);
+        ArrayList<String> list = new ArrayList<>(numbers);
+        //Assert.assertEquals(1, list.size());
+        //Assert.assertEquals("+358(0)1234567", list.get(0));
+
+        text = "Direct : 01 53 92 37 51";
+        numbers = ContactHelper.extractPhoneNumber(text, "FR");
+        list = new ArrayList<>(numbers);
+        Assert.assertEquals(1, list.size());
+        Assert.assertEquals("+33153923751", list.get(0));
+    }
+
 }

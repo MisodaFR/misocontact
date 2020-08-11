@@ -1,11 +1,21 @@
 package fr.misoda.contact.common;
 
+import android.util.Log;
+
+import com.google.i18n.phonenumbers.PhoneNumberMatch;
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import com.google.i18n.phonenumbers.Phonenumber;
+
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper {
+    public static final String LOG_TAG = ContactHelper.class.getSimpleName();
+
     private ContactHelper() {
     }
 
@@ -104,5 +114,16 @@ public class ContactHelper {
             return StringUtils.EMPTY;
         }
         return digits.startsWith("0") ? digits : "+" + digits;
+    }
+
+    // Review after and use after if need
+    public static Set<String> extractPhoneNumber(String input, String defaultRegion /* FR, ... */) {
+        Set<String> numbers = new HashSet<>();
+        for (PhoneNumberMatch phoneNumberMatch : PhoneNumberUtil.getInstance().findNumbers(input, defaultRegion)) {
+            Phonenumber.PhoneNumber number = phoneNumberMatch.number();
+            //Log.d(LOG_TAG, "Phone == " + number);
+            numbers.add("+" + number.getCountryCode() + number.getNationalNumber());
+        }
+        return numbers;
     }
 }

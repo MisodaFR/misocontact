@@ -3,6 +3,7 @@ package fr.misoda.contact.view.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import java.util.Set;
+
 import fr.misoda.contact.R;
 import fr.misoda.contact.common.AppConfig;
 import fr.misoda.contact.common.Constant;
@@ -27,6 +30,7 @@ import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 public class SaveToContactsFragment extends Fragment {
+    public static final String LOG_TAG = SaveToContactsFragment.class.getSimpleName();
     private static final String SHOWCASE_ID = "Showcase of SaveToContactsFragment";
     private EditText etTextValue;
 
@@ -71,6 +75,9 @@ public class SaveToContactsFragment extends Fragment {
     }
 
     public void createOrEditAContact(String text) {
+        Set<String> phoneNumbers = ContactHelper.extractPhoneNumber(text, "FR");
+        Log.d(LOG_TAG, "Phone numbers : " + phoneNumbers);
+
         // Creates a new Intent to insert or edit a contact
         Intent intent = new Intent(Intent.ACTION_INSERT_OR_EDIT);
         // Sets the MIME type
